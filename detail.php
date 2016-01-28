@@ -228,4 +228,5 @@
 			</div><!-- intro features panel ends -->
 
 			</div>
+</div>
 <?php include "includes/footer.php"?>

@@ -55,4 +55,5 @@
 						 
 						</nav>
 					<!-- End pagination -->
+            </div>
 <?php include "includes/footer.php"?>

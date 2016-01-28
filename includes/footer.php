@@ -1,5 +1,5 @@
 			</div>
-			</div>
+
 		<footer id="footer">
 		<section class="container">
 		<section class="one-third">
