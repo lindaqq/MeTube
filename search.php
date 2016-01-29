@@ -5,8 +5,11 @@
 				<div class="one">
 					<div class="three-fourth">
 					<?php
-                    $query = "select * from posts";
+                    $search = $_GET['search'];
+                    $query = "select * from posts where post_title like '%$search%'";
+                    
                     $select_all_posts = mysqli_query($connection, $query);
+
                     while ($row = mysqli_fetch_assoc($select_all_posts)) {
                         $post_title = $row['post_title'];
                         $post_cat_id = $row['post_cat_id'];
@@ -22,12 +25,12 @@
 								</div>
 							</div>
 							<div class='permalink'>
-								<h4><a href='blog-post.html'>Responsive HTML5 Template Free For Download </a></h4>
+								<h4><a href='blog-post.html'>{$post_title}</a></h4>
 							</div>
 							<ul class='post-meta'>
 								<li><i class='icon-time'></i> 2 July, 2013 </li>
 								<!-- Date -->
-								<li><i class='icon-user'></i><a href='#'>Admin</a></li>
+								<li><i class='icon-user'></i><a href='#'>{$post_author}</a></li>
 								<!-- Author -->
 								<li><i class='icon-tags'></i><a href='#'>Web Development</a></li>
 								<!-- Category -->
@@ -67,15 +70,7 @@
 					
 					
 					<div class="one-fourth sidebar right">
-						<div class="widget">
-							<nav class="top-search">
-							<!-- search starts-->
-							<form action="search.php" method="get">
-								<button class="search-btn"></button>
-								<input class="search-field" type="text" onblur="if(this.value=='')this.value='Search';" onfocus="if(this.value=='Search')this.value='';" value="Search"/>
-							</form>
-							</nav>
-						</div>
+
 						<div class="widget">
 							<h4 class="widget-title">About Our Writing</h4>
 							<p>

@@ -78,8 +78,8 @@
 				<nav class="top-search">
 				<!-- search starts-->
 				<form action="search.php" method="get">
-					<button class="search-btn"></button>
-					<input class="search-field" type="text" onblur="if(this.value=='')this.value='Search';" onfocus="if(this.value=='Search')this.value='';" value="Search"/>
+					<button name="submit" class="search-btn"></button>
+					<input name="search" class="search-field" type="text" onblur="if(this.value=='')this.value='Search';" onfocus="if(this.value=='Search')this.value='';" value="Search"/>
 				</form>
 				</nav>
 				<!--search ends -->
