@@ -45,31 +45,7 @@
 		<!-- main wrapp starts-->
 		<header id="header">
 		<!--header starts -->
-		<div id="header-links">
-			<div class="container">
-				<div class="one-half">
-					<ul class="contact-links">
-						<!-- header social links starts-->
-						<li><a href="#"><i class="icon-home"></i>5 Avenue, Some City </a></li>
-						<li><a href="#"><i class="icon-phone"></i>+987 654 321 </a></li>
-						<li><a href="#"><i class="icon-map-marker"></i>mail@yoursite.com</a></li>
-					</ul>
-				</div>
-				<div class="one-half">
-					<ul class="social-links">
-						<!-- header social links starts-->
-						<li><a href="#" class="tooltip" title="Some Title"><i class="icon-twitter"></i></a></li>
-						<li><a href="#" class="tooltip" title="Some Title"><i class="icon-facebook"></i></a></li>
-						<li><a href="#" class="tooltip" title="Some Title"><i class="icon-linkedin"></i></a></li>
-						<li><a href="#" class="tooltip" title="Some Title"><i class="icon-google-plus"></i></a></li>
-						<li><a href="#" class="tooltip" title="Some Title"><i class="icon-skype"></i></a></li>
-						<li><a href="#" class="tooltip" title="Some Title"><i class="icon-dribbble"></i></a></li>
-						<li><a href="#" class="tooltip" title="Some Title"><i class="icon-pinterest"></i></a></li>
-						<li><a href="#" class="tooltip" title="Some Title"><i class="icon-tumblr"></i></a></li>
-					</ul>
-					<!--header social links ends -->
-				</div>
-			</div>
+		<div class="head-wrapp">
 		</div>
 		<div class="container">
 			<div class="head-wrapp">
