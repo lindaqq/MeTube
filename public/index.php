@@ -1,40 +1,11 @@
 <?php
 
-    // configuration
-    require("../includes/config.php");
+// configuration
+require_once("../includes/config.php");
+    
+// get image paths from database   
+$images = query("SELECT * FROM media order by view_count DESC limit 6");
 
-//    // get user's cash
-//    $rows = query("SELECT cash FROM users WHERE id = ?", $_SESSION["id"]);
-//    if ($rows === false)
-//    {
-//        apologize("Can't find your cash.");
-//    }
-//    $cash = $rows[0]["cash"];
-//
-//    // get user's portfolio
-//    $rows = query("SELECT * FROM portfolios WHERE id = ?", $_SESSION["id"]);
-//    if ($rows === false)
-//    {
-//        apologize("Can't find your portfolio.");
-//    }
-
-    // look up stocks' names and prices
-    $positions = [];
-    foreach ($rows as $row)
-    {
-        $stock = lookup($row["symbol"]);
-        if ($stock !== false)
-        {
-            $positions[] = [
-                "name" => $stock["name"],
-                "price" => $stock["price"],
-                "shares" => $row["shares"],
-                "symbol" => $row["symbol"]
-            ];
-        }
-    }
-
-    // render portfolio
-    render("portfolio.php", ["cash" => $cash, "positions" => $positions, "title" => "Portfolio"]);
-
+// render home page for image, can be changed to video later
+render("image.php", ["images" => $images]);
 ?>

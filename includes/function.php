@@ -1,5 +1,6 @@
 <?php
-include "mysqlClass.inc.php";
+require_once("db.php");
+//include "mysqlClass.inc.php";
 
 
 function user_exist_check ($username, $password){
@@ -87,11 +88,6 @@ function other()
 
 
 /**
- * functions.php
- *
- * Computer Science 50
- * Problem Set 7
- *
  * Helper functions.
  */
 
@@ -202,7 +198,7 @@ function query(/* $sql [, ... ] */)
         try
         {
             // connect to database
-            $handle = new PDO("mysql:dbname=" . $database . ";host=" . $dbhost, $dbuser, $dbpass);
+            $handle = new PDO("mysql:dbname=" . DATABASE . ";host=" . SERVER, USERNAME, PASSWORD);
 
             // ensure that PDO::prepare returns false when passed invalid SQL
             $handle->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
