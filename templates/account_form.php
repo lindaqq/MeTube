@@ -17,17 +17,32 @@
     <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
         <div class="btn-group" role="group">
             <button type="button" id="stars" class="btn btn-primary" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                <div class="hidden-xs">Stars</div>
+                <div class="hidden-xs">Profile</div>
             </button>
         </div>
         <div class="btn-group" role="group">
             <button type="button" id="favorites" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                <div class="hidden-xs">Favorites</div>
+                <div class="hidden-xs">Contact</div>
             </button>
         </div>
         <div class="btn-group" role="group">
             <button type="button" id="following" class="btn btn-default" href="#tab3" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                <div class="hidden-xs">Following</div>
+                <div class="hidden-xs">Subscription</div>
+            </button>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="button" id="following" class="btn btn-default" href="#tab4" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                <div class="hidden-xs">Playlists</div>
+            </button>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="button" id="following" class="btn btn-default" href="#tab5" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                <div class="hidden-xs">Favorites</div>
+            </button>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="button" id="following" class="btn btn-default" href="#tab6" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                <div class="hidden-xs">Uploads</div>
             </button>
         </div>
     </div>
@@ -35,13 +50,43 @@
         <div class="well">
       <div class="tab-content">
         <div class="tab-pane fade in active" id="tab1">
-          <h3>This is tab 1</h3>
+          <h3>My Profile</h3>
+            <?php
+            $username = $user["username"];
+            $password = $user["password"];
+            $email = $user["email"];
+            
+            echo <<<_END
+            <form class="form-signin" action="../public/update_profile.php" method="post">
+                <h4>username:</h4><input type="text" class="form-control" name="username" value=$username required autofocus>
+                <h4>password:</h4><input type="password" class="form-control" name="password" value=$password required>
+                <h4>repeate password:</h4><input type="password" class="form-control" name="password1" placeholder="Repeat Password if changing password" >
+                <h4>email:</h4><input type="text" class="form-control" name="email" value=$email required autofocus>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">
+                    Update My Profile</button>
+                <br>
+                <h4>$errortext</h4>
+            </form>
+_END;
+            
+            ?>
+                    
+            
         </div>
         <div class="tab-pane fade in" id="tab2">
           <h3>This is tab 2</h3>
         </div>
         <div class="tab-pane fade in" id="tab3">
           <h3>This is tab 3</h3>
+        </div>
+          <div class="tab-pane fade in" id="tab4">
+          <h3>This is tab 4</h3>
+        </div>
+          <div class="tab-pane fade in" id="tab5">
+          <h3>This is tab 5</h3>
+        </div>
+          <div class="tab-pane fade in" id="tab6">
+          <h3>This is tab 6</h3>
         </div>
       </div>
     </div>
