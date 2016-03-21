@@ -49,7 +49,18 @@
 
         <div class="well">
       <div class="tab-content">
-        <div class="tab-pane fade in active" id="tab1">
+          <?php
+          if ($active === 1){
+              echo <<<_END
+              <div class="tab-pane fade in active" id="tab1">
+_END;
+          }
+          else{
+              echo <<<_END
+              <div class="tab-pane fade in" id="tab1">
+_END;
+          }
+          ?>
           <h3>My Profile</h3>
             <?php
             $username = $user["username"];
@@ -70,23 +81,103 @@
 _END;
             
             ?>
-                    
-            
+                         
         </div>
-        <div class="tab-pane fade in" id="tab2">
+            
+          <?php
+          if ($active === 2){
+              echo <<<_END
+              <div class="tab-pane fade in active" id="tab2">
+_END;
+          }
+          else{
+              echo <<<_END
+              <div class="tab-pane fade in" id="tab2">
+_END;
+          }
+          ?>
           <h3>This is tab 2</h3>
         </div>
-        <div class="tab-pane fade in" id="tab3">
+    
+        <?php
+          if ($active === 3){
+              echo <<<_END
+              <div class="tab-pane fade in active" id="tab3">
+_END;
+          }
+          else{
+              echo <<<_END
+              <div class="tab-pane fade in" id="tab3">
+_END;
+          }
+          ?>
+    
           <h3>This is tab 3</h3>
         </div>
-          <div class="tab-pane fade in" id="tab4">
+
+        
+         <?php
+          if ($active === 4){
+              echo <<<_END
+              <div class="tab-pane fade in active" id="tab4">
+_END;
+          }
+          else{
+              echo <<<_END
+              <div class="tab-pane fade in" id="tab4">
+_END;
+          }
+          ?>
+    
           <h3>This is tab 4</h3>
         </div>
-          <div class="tab-pane fade in" id="tab5">
+
+        <?php
+          if ($active === 5){
+              echo <<<_END
+              <div class="tab-pane fade in active" id="tab5">
+_END;
+          }
+          else{
+              echo <<<_END
+              <div class="tab-pane fade in" id="tab5">
+_END;
+          }
+          ?>
+    
           <h3>This is tab 5</h3>
         </div>
-          <div class="tab-pane fade in" id="tab6">
-          <h3>This is tab 6</h3>
+
+
+        <?php
+          if ($active === 6){
+              echo <<<_END
+              <div class="tab-pane fade in active" id="tab6">
+_END;
+          }
+          else{
+              echo <<<_END
+              <div class="tab-pane fade in" id="tab6">
+_END;
+          }
+          ?>
+    
+         <h3>Uploads</h3>
+              <form method="post" action="../public/media_upload_process.php" enctype="multipart/form-data" >
+ 
+                <p style="margin:0; padding:0">
+                <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                Add a Media: <label style="color:#663399"><em> (Each file limit 10M)</em></label><br/>
+                <input  name="file" type="file" size="50" />
+  
+	           <input value="Upload" name="submit" type="submit" />
+                </p>                
+            </form>
+            <?php
+                echo $errortext;
+            ?>
         </div>
+          
+          
       </div>
     </div>

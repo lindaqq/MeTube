@@ -67,7 +67,7 @@
     else
     {
         // else render form
-        render("account_form.php", ["user" => $rows[0], "errortext" => $errortext, "title" => "My Account"]);
+        render("account_form.php", ["active" => 1,"user" => $rows[0], "errortext" => $errortext, "title" => "My Account"]);
     }
 
 ?>
