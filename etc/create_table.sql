@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2016-02-17 03:52:48.426
+-- Last modification date: 2016-03-28 04:09:07.218
 
 
 
@@ -10,8 +10,6 @@ CREATE TABLE account (
     id int  NOT NULL  AUTO_INCREMENT,
     username varchar(30)  NOT NULL,
     password varchar(30)  NOT NULL,
-    email varchar(30)  NOT NULL,
-    portrait varchar(30)  NOT NULL,
     CONSTRAINT account_pk PRIMARY KEY (id)
 );
 
@@ -21,11 +19,11 @@ CREATE TABLE audio (
     CONSTRAINT audio_pk PRIMARY KEY (post_id)
 );
 
--- Table category
-CREATE TABLE category (
-    id int  NOT NULL  AUTO_INCREMENT,
-    name varchar(30)  NOT NULL,
-    CONSTRAINT category_pk PRIMARY KEY (id)
+-- Table block
+CREATE TABLE block (
+    mediaid int  NOT NULL,
+    account_id int  NOT NULL,
+    CONSTRAINT block_pk PRIMARY KEY (mediaid,account_id)
 );
 
 -- Table comment
@@ -39,19 +37,10 @@ CREATE TABLE comment (
 
 -- Table contact
 CREATE TABLE contact (
-    user_id int  NOT NULL,
-    user_2_id int  NOT NULL,
-    contact int  NOT NULL  AUTO_INCREMENT,
-    CONSTRAINT contact_pk PRIMARY KEY (contact)
-);
-
--- Table download
-CREATE TABLE download (
-    downloadid int  NOT NULL,
-    user_id int  NOT NULL,
-    mediaid int  NOT NULL,
-    datetime date  NOT NULL,
-    CONSTRAINT download_pk PRIMARY KEY (downloadid)
+    userid1 int  NOT NULL,
+    userid2 int  NOT NULL,
+    type int  NOT NULL,
+    CONSTRAINT contact_pk PRIMARY KEY (userid1,userid2)
 );
 
 -- Table favorite
@@ -62,6 +51,13 @@ CREATE TABLE favorite (
     CONSTRAINT favorite_pk PRIMARY KEY (favorite_id)
 );
 
+-- Table `group`
+CREATE TABLE `group` (
+    groupid int  NOT NULL,
+    account_id int  NOT NULL,
+    CONSTRAINT group_pk PRIMARY KEY (groupid)
+);
+
 -- Table image
 CREATE TABLE image (
     post_id int  NOT NULL,
@@ -70,27 +66,27 @@ CREATE TABLE image (
 
 -- Table media
 CREATE TABLE media (
+    mediaid int  NOT NULL  AUTO_INCREMENT,
     title varchar(30)  NOT NULL,
     user_id int  NOT NULL,
-    type int  NOT NULL,
-    mediaid int  NOT NULL  AUTO_INCREMENT,
+    mediatype int  NOT NULL,
+    category varchar(30)  NOT NULL,
+    blocktype int  NOT NULL,
     path varchar(30)  NOT NULL,
+    detail varchar(200)  NOT NULL,
     post_time date  NOT NULL,
     tags text  NOT NULL,
     view_count int  NOT NULL,
-    category_id int  NOT NULL,
-    detail varchar(200)  NOT NULL,
-    size int  NOT NULL,
-    lastaccesstime date  NOT NULL,
     CONSTRAINT media_pk PRIMARY KEY (mediaid)
 );
 
 -- Table message
 CREATE TABLE message (
-    user_id int  NOT NULL,
-    user_2_id int  NOT NULL,
-    message_id int  NOT NULL  AUTO_INCREMENT,
-    CONSTRAINT message_pk PRIMARY KEY (message_id)
+    messageid int  NOT NULL  AUTO_INCREMENT,
+    type int  NOT NULL,
+    `from` int  NOT NULL,
+    `to` int  NOT NULL,
+    CONSTRAINT message_pk PRIMARY KEY (messageid)
 );
 
 -- Table playlist
@@ -108,12 +104,27 @@ CREATE TABLE playlistHelper (
     CONSTRAINT playlistHelper_pk PRIMARY KEY (id)
 );
 
+-- Table rate
+CREATE TABLE rate (
+    rate_id int  NOT NULL  AUTO_INCREMENT,
+    mediaid int  NOT NULL,
+    account_id int  NOT NULL,
+    CONSTRAINT rate_pk PRIMARY KEY (rate_id)
+);
+
 -- Table subscription
 CREATE TABLE subscription (
     id int  NOT NULL  AUTO_INCREMENT,
     subscriber_id int  NOT NULL,
     channel_id int  NOT NULL,
     CONSTRAINT subscription_pk PRIMARY KEY (id)
+);
+
+-- Table unblock
+CREATE TABLE unblock (
+    mediaid int  NOT NULL,
+    account_id int  NOT NULL,
+    CONSTRAINT unblock_pk PRIMARY KEY (mediaid,account_id)
 );
 
 -- Table video
@@ -131,6 +142,14 @@ CREATE TABLE video (
 
 ALTER TABLE audio ADD CONSTRAINT audio_post FOREIGN KEY audio_post (post_id)
     REFERENCES media (mediaid);
+-- Reference:  block_account (table: block)
+
+ALTER TABLE block ADD CONSTRAINT block_account FOREIGN KEY block_account (account_id)
+    REFERENCES account (id);
+-- Reference:  block_media (table: block)
+
+ALTER TABLE block ADD CONSTRAINT block_media FOREIGN KEY block_media (mediaid)
+    REFERENCES media (mediaid);
 -- Reference:  comment_post (table: comment)
 
 ALTER TABLE comment ADD CONSTRAINT comment_post FOREIGN KEY comment_post (post_id)
@@ -141,19 +160,11 @@ ALTER TABLE comment ADD CONSTRAINT comment_user FOREIGN KEY comment_user (user_i
     REFERENCES account (id);
 -- Reference:  contact_user (table: contact)
 
-ALTER TABLE contact ADD CONSTRAINT contact_user FOREIGN KEY contact_user (user_id)
+ALTER TABLE contact ADD CONSTRAINT contact_user FOREIGN KEY contact_user (userid1)
     REFERENCES account (id);
 -- Reference:  contact_user1 (table: contact)
 
-ALTER TABLE contact ADD CONSTRAINT contact_user1 FOREIGN KEY contact_user1 (user_2_id)
-    REFERENCES account (id);
--- Reference:  download_post (table: download)
-
-ALTER TABLE download ADD CONSTRAINT download_post FOREIGN KEY download_post (mediaid)
-    REFERENCES media (mediaid);
--- Reference:  download_user (table: download)
-
-ALTER TABLE download ADD CONSTRAINT download_user FOREIGN KEY download_user (user_id)
+ALTER TABLE contact ADD CONSTRAINT contact_user1 FOREIGN KEY contact_user1 (userid2)
     REFERENCES account (id);
 -- Reference:  favorite_post (table: favorite)
 
@@ -163,18 +174,14 @@ ALTER TABLE favorite ADD CONSTRAINT favorite_post FOREIGN KEY favorite_post (pos
 
 ALTER TABLE favorite ADD CONSTRAINT favorite_user FOREIGN KEY favorite_user (user_id)
     REFERENCES account (id);
+-- Reference:  group_account (table: `group`)
+
+ALTER TABLE `group` ADD CONSTRAINT group_account FOREIGN KEY group_account (account_id)
+    REFERENCES account (id);
 -- Reference:  image_post (table: image)
 
 ALTER TABLE image ADD CONSTRAINT image_post FOREIGN KEY image_post (post_id)
     REFERENCES media (mediaid);
--- Reference:  message_user (table: message)
-
-ALTER TABLE message ADD CONSTRAINT message_user FOREIGN KEY message_user (user_id)
-    REFERENCES account (id);
--- Reference:  message_user1 (table: message)
-
-ALTER TABLE message ADD CONSTRAINT message_user1 FOREIGN KEY message_user1 (user_2_id)
-    REFERENCES account (id);
 -- Reference:  playlistHelper_playlist (table: playlistHelper)
 
 ALTER TABLE playlistHelper ADD CONSTRAINT playlistHelper_playlist FOREIGN KEY playlistHelper_playlist (playlist_id)
@@ -187,14 +194,18 @@ ALTER TABLE playlistHelper ADD CONSTRAINT playlistHelper_post FOREIGN KEY playli
 
 ALTER TABLE playlist ADD CONSTRAINT playlist_user FOREIGN KEY playlist_user (user_id)
     REFERENCES account (id);
--- Reference:  post_category (table: media)
-
-ALTER TABLE media ADD CONSTRAINT post_category FOREIGN KEY post_category (category_id)
-    REFERENCES category (id);
 -- Reference:  post_user (table: media)
 
 ALTER TABLE media ADD CONSTRAINT post_user FOREIGN KEY post_user (user_id)
     REFERENCES account (id);
+-- Reference:  rate_account (table: rate)
+
+ALTER TABLE rate ADD CONSTRAINT rate_account FOREIGN KEY rate_account (account_id)
+    REFERENCES account (id);
+-- Reference:  rate_media (table: rate)
+
+ALTER TABLE rate ADD CONSTRAINT rate_media FOREIGN KEY rate_media (mediaid)
+    REFERENCES media (mediaid);
 -- Reference:  subscribe (table: subscription)
 
 ALTER TABLE subscription ADD CONSTRAINT subscribe FOREIGN KEY subscribe (channel_id)
@@ -203,6 +214,14 @@ ALTER TABLE subscription ADD CONSTRAINT subscribe FOREIGN KEY subscribe (channel
 
 ALTER TABLE subscription ADD CONSTRAINT subscription_user FOREIGN KEY subscription_user (subscriber_id)
     REFERENCES account (id);
+-- Reference:  unblock_account (table: unblock)
+
+ALTER TABLE unblock ADD CONSTRAINT unblock_account FOREIGN KEY unblock_account (account_id)
+    REFERENCES account (id);
+-- Reference:  unblock_media (table: unblock)
+
+ALTER TABLE unblock ADD CONSTRAINT unblock_media FOREIGN KEY unblock_media (mediaid)
+    REFERENCES media (mediaid);
 -- Reference:  video_post (table: video)
 
 ALTER TABLE video ADD CONSTRAINT video_post FOREIGN KEY video_post (post_id)
@@ -211,4 +230,3 @@ ALTER TABLE video ADD CONSTRAINT video_post FOREIGN KEY video_post (post_id)
 
 
 -- End of file.
-
