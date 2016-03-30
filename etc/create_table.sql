@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2016-03-28 04:09:07.218
+-- Last modification date: 2016-03-29 20:56:44.018
 
 
 
@@ -10,6 +10,8 @@ CREATE TABLE account (
     id int  NOT NULL  AUTO_INCREMENT,
     username varchar(30)  NOT NULL,
     password varchar(30)  NOT NULL,
+    addr varchar(30)  NOT NULL,
+    detail text  NOT NULL,
     CONSTRAINT account_pk PRIMARY KEY (id)
 );
 
@@ -71,12 +73,16 @@ CREATE TABLE media (
     user_id int  NOT NULL,
     mediatype int  NOT NULL,
     category varchar(30)  NOT NULL,
-    blocktype int  NOT NULL,
+    sharetype int  NOT NULL,
+    block int  NOT NULL,
     path varchar(30)  NOT NULL,
     detail varchar(200)  NOT NULL,
     post_time date  NOT NULL,
+    candiscuss int  NOT NULL,
+    canrating int  NOT NULL,
     tags text  NOT NULL,
     view_count int  NOT NULL,
+    avgrate int  NOT NULL,
     CONSTRAINT media_pk PRIMARY KEY (mediaid)
 );
 
