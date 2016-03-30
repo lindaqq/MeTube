@@ -52,7 +52,7 @@ function addUser($username, $password)
     return 1;
 }
 //unit test
-//echo addUser('xiaoqi', '2017');
+//echo addUser('xiaoqi1', '2017');
 
 function updateProfile($username, $addr, $detail) {
     if (!existUser($username)) {
@@ -138,87 +138,141 @@ function rmChannel($subscriber_id, $channel_id) {
 //echo rmChannel('1', '1');
 
 //////////////////addition--friendship parts
-function getFriends ($userid1){
-	$query = "select * from contact where userid1='$userid1' and type = 2";
+function getContacts ($userid1){
+	$query = "select userid2 from contact where userid1='$userid1' and type = 3";
 	$result = mysql_query( $query );
 	if (!$result){
-		die ("friendship_exist_check() failed. Could not query the database: <br />". mysql_error());
+		die ("getContacts() failed. Could not query the database: <br />". mysql_error());
 	}
-	else {
-        return result;
-	}
+    $storeArray = Array();
+    while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+        $storeArray[] =  $row['userid2'];
+    }
+    return $storeArray;
 }
+//unit test
+//foreach (getContacts(4) as $id) {
+//    echo $id;
+//}
 
 function getFoes ($userid1){
-	$query = "select * from contact where userid1='$userid1' and type = 1";
+	$query = "select userid2 from contact where userid1='$userid1' and type = 1";
+	$result = mysql_query( $query );
+	if (!$result){
+		die ("getFoes() failed. Could not query the database: <br />". mysql_error());
+	}
+    $storeArray = Array();
+    while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+        $storeArray[] =  $row['userid2'];
+    }
+    return $storeArray;
+}
+//unit test
+//foreach (getFoes(4) as $id) {
+//    echo $id;
+//}
+
+function getFriends ($userid1){
+	$query = "select userid2 from contact where userid1='$userid1' and type = 2";
+	$result = mysql_query( $query );
+	if (!$result){
+		die ("getFriends() failed. Could not query the database: <br />". mysql_error());
+	}
+    $storeArray = Array();
+    while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+        $storeArray[] =  $row['userid2'];
+    }
+    return $storeArray;
+}
+//unit test
+//foreach (getFriends(4) as $id) {
+//    echo $id;
+//}
+
+function existType($userid1, $userid2) {
+	$query = "select type from contact where userid1='$userid1' and userid2='$userid2' limit 1";
 	$result = mysql_query( $query );
 	if (!$result){
 		die ("friendship_exist_check() failed. Could not query the database: <br />". mysql_error());
 	}
-	else {
-        return result;
-	}
+    $row = mysql_fetch_assoc($result);
+    if ($row == 0) {
+        return 0;
+    }
+    $value=$row['type'];
+    switch($value) {
+        case 3:
+            return 3;
+        case 1:
+            return 1;
+        case 2:
+            return 2;
+        default:
+            return 0;
+    }
 }
 
-function addFriend ($userid1, $userid2){
+function rmExist($userid1, $userid2) {
 	$query = "select * from contact where userid1='$userid1' and userid2='$userid2'";
 	$result = mysql_query( $query );
 	if (!$result){
 		die ("friendship_exist_check() failed. Could not query the database: <br />". mysql_error());
 	}
-	else {
-		$row = mysql_fetch_assoc($result);
-		if($row == 0){
-			$query1 = "insert into contact values ('$userid1','$userid2', 2)";//num 2 means friend
-			$query2 = "insert into contact values ('$userid2','$userid1', 2)";//num 2 means friend
-			echo "insert query:" . $query;
-			$insert = mysql_query( $query1 );
-            $insert = mysql_query( $query2 );
-			if($insert)
-				return 1;
-			else
-				die ("Could not insert into the database: <br />". mysql_error());
-		}
-		else{
-			return 2;
-		}
-	}
-}
 
-function addFoe ($userid1, $userid2){
-	$query = "select * from contact where userid1='$userid1' and userid2='$userid2'";
+    $row = mysql_fetch_assoc($result);
+    if($row == 0){
+        return;
+    }
+	$query = "delete from contact where  userid1 = '$userid1' and userid2 = '$userid2'";
 	$result = mysql_query( $query );
 	if (!$result){
 		die ("friendship_exist_check() failed. Could not query the database: <br />". mysql_error());
-	}
-	else {
-		$row = mysql_fetch_assoc($result);
-		if($row == 0){
-			$query = "insert into contact values ('$userid1','$userid2', 1)";//num 1 means foe
-			echo "insert query:" . $query;
-			$insert = mysql_query( $query );
-			if($insert)
-				return 1;
-			else
-				die ("Could not insert into the database: <br />". mysql_error());
-		}
-		else{
-			return 2;
-		}
-	}
+    }
 }
 
-function rmFoe ($userid1, $userid2){
-	$query = "delete from contact where userid1='$userid1' and userid2='$userid2' and type = 1";
-	$result = mysql_query( $query );
-}
+function addFriend($userid1, $userid2){
+    if (existType($userid2, $userid1) == 1) {
+        return 0;
+    }
+    rmExist($userid1, $userid2);
+    $query = "insert into contact values ('$userid1','$userid2', 2)";//num 2 means friend
 
-function rmFriend ($userid1, $userid2){
-	$query = "delete from contact where userid1='$userid1' and userid2='$userid2' and type = 2";
-	$result = mysql_query( $query );
-    $query = "delete from contact where userid1='$userid2' and userid2='$userid1' and type = 2";
-	$result = mysql_query( $query );
+    $insert = mysql_query( $query );
+    if(!$insert) {
+        die ("Could not insert into the database: <br />". mysql_error());
+    }
+    return 1;
 }
+//unit test
+//echo addFriend('3', '1');
 
+function addFoe($userid1, $userid2){
+    rmExist($userid1, $userid2);
+    $query = "insert into contact values ('$userid1','$userid2', 1)";
+
+    $insert = mysql_query( $query );
+    if(!$insert) {
+        die ("Could not insert into the database: <br />". mysql_error());
+    }
+    return 1;
+}
+//unit test
+//echo addFoe('1', '3');
+
+function addContact($userid1, $userid2){
+    if (existType($userid2, $userid1) == 1) {
+        return 0;
+    }
+    rmExist($userid1, $userid2);
+    $query = "insert into contact values ('$userid1','$userid2', 3)";
+
+    $insert = mysql_query( $query );
+    if(!$insert) {
+        die ("Could not insert into the database: <br />". mysql_error());
+    }
+    return 1;
+}
+//unit test
+//echo addContact('1', '3');
 
 ?>
