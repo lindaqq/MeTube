@@ -1,7 +1,94 @@
 <?php
 include "mysqlClass.inc.php";
+//basic
+function existUser ($username){
+	$query = "select * from account where username='$username'";
+	$result = mysql_query( $query );
+	if (!$result){
+        die ("user_exist_check() failed. Could not query the database: <br />". mysql_error());
+        return 1;
+	}
 
+    $row = mysql_fetch_assoc($result);
+    if($row == 0){
+        return 0;
+    }
+    return 1;
+}
+//unit test
+//echo existUser('ad');
 
+function loginCheck($username, $password)
+{
+	$query = "select * from account where username='$username'";
+	$result = mysql_query( $query );
+
+	if (!$result)
+	{
+	   die ("user_pass_check() failed. Could not query the database: <br />". mysql_error());
+	}
+
+    $row = mysql_fetch_row($result);
+    if(strcmp($row[2],$password))
+        return 0; //wrong password
+    else
+        return 1; //Checked.
+}
+//unit test
+//echo loginCheck('add', 'aaa');
+
+function addUser($username, $password)
+{
+    if (existUser($username)) {
+        return 0;
+    }
+	$query = "insert into account (username, password) values ('$username', '$password')";
+	$result = mysql_query( $query );
+
+	if (!$result)
+	{
+	   die ("addUser() failed. Could not query the database: <br />". mysql_error());
+	}
+    return 1;
+}
+//unit test
+//echo addUser('xiaoqi', '2017');
+
+function updateProfile($username, $addr, $detail) {
+    if (!existUser($username)) {
+        return 0;
+    }
+    $query = "update account set addr = '$addr' , detail = '$detail' where username = '$username'";
+    $result = mysql_query($query);
+
+	if (!$result)
+	{
+	   die ("updateProfile() failed. Could not query the database: <br />". mysql_error());
+	}
+    return 1;
+}
+//unit test
+//echo updateProfile('xiaoqi', 'greenwi', 'good');
+
+function updatePasswd($username, $password) {
+    if (!existUser($username)) {
+        return 0;
+    }
+    $query = "update account set password = '$password'  where username = '$username'";
+    $result = mysql_query($query);
+
+	if (!$result)
+	{
+	   die ("updatePasswd() failed. Could not query the database: <br />". mysql_error());
+	}
+    return 1;
+}
+//unit test
+//echo updatePasswd('xiaoqi', '2016');
+
+//addition--subscription parts
+
+//addition--friendship parts
 function getFriends ($userid1){
 	$query = "select * from contact where userid1='$userid1' and type = 2";
 	$result = mysql_query( $query );
