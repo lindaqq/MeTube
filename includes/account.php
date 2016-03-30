@@ -86,9 +86,58 @@ function updatePasswd($username, $password) {
 //unit test
 //echo updatePasswd('xiaoqi', '2016');
 
-//addition--subscription parts
+/////////////////////addition--subscription parts
+function existChannel($subscriber_id, $channel_id) {
+	$query = "select * from subscription where subscriber_id='$subscriber_id' and channel_id = '$channel_id'";
+	$result = mysql_query( $query );
+	if (!$result){
+        die ("existChannel() failed. Could not query the database: <br />". mysql_error());
+        return 1;
+	}
 
-//addition--friendship parts
+    $row = mysql_fetch_assoc($result);
+    if($row == 0){
+        return 0;
+    }
+    return 1;
+}
+//unit test
+//echo existChannel('1', '1');
+
+function addChannel($subscriber_id, $channel_id)
+{
+    if (existChannel($subscriber_id, $channel_id)) {
+        return 0;
+    }
+	$query = "insert into subscription (subscriber_id, channel_id) values ('$subscriber_id', '$channel_id')";
+	$result = mysql_query( $query );
+
+	if (!$result)
+	{
+	   die ("addChannel() failed. Could not query the database: <br />". mysql_error());
+	}
+    return 1;
+}
+//unit test
+//echo addChannel('1', '1');
+
+function rmChannel($subscriber_id, $channel_id) {
+    if (!existChannel($subscriber_id, $channel_id)) {
+        return 0;
+    }
+	$query = "delete from subscription where  subscriber_id = '$subscriber_id' and channel_id = '$channel_id'";
+	$result = mysql_query( $query );
+
+	if (!$result)
+	{
+	   die ("rmChannel() failed. Could not query the database: <br />". mysql_error());
+	}
+    return 1;
+}
+//unit test
+//echo rmChannel('1', '1');
+
+//////////////////addition--friendship parts
 function getFriends ($userid1){
 	$query = "select * from contact where userid1='$userid1' and type = 2";
 	$result = mysql_query( $query );
@@ -171,30 +220,5 @@ function rmFriend ($userid1, $userid2){
 	$result = mysql_query( $query );
 }
 
-function upload_error($result)
-{
-	//view erorr description in http://us2.php.net/manual/en/features.file-upload.errors.php
-	switch ($result){
-	case 1:
-		return "UPLOAD_ERR_INI_SIZE";
-	case 2:
-		return "UPLOAD_ERR_FORM_SIZE";
-	case 3:
-		return "UPLOAD_ERR_PARTIAL";
-	case 4:
-		return "UPLOAD_ERR_NO_FILE";
-	case 5:
-		return "File has already been uploaded";
-	case 6:
-		return  "Failed to move file from temporary directory";
-	case 7:
-		return  "Upload file failed";
-	}
-}
-
-function other()
-{
-	//You can write your own functions here.
-}
 
 ?>
