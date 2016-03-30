@@ -54,12 +54,13 @@
             <?php
                 if(isset($_SESSION["id"])){
                     echo <<<_END
-                    <button  type = "button" onclick="document.location.href = '../public/account.php'" class="btn btn-primary navbar-right" style="margin-left:20px">My Account</button>
+                    <button  type = "button" onclick="document.location.href = '../public/logout.php'" class="btn btn-default navbar-right" style="margin-left:20px">Log Out</button>
+                    <button  type = "button" onclick="document.location.href = '../public/account.php'" class="btn btn-primary navbar-right">My Account</button>
 _END;
                 }
                 else{
                     echo <<<_END
-                    <button  type = "button" onclick="document.location.href = '../public/login.php'" class="btn btn-default navbar-right" style="margin-left:20px">Login</button>
+                    <button  type = "button" onclick="document.location.href = '../public/login.php'" class="btn btn-default navbar-right" style="margin-left:20px">Sign in</button>
         
                  <button type = "button" onclick="document.location.href = '../public/register.php'" class="btn btn-primary navbar-right">Register</button>
 _END;
