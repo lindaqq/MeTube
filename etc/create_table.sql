@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2016-04-01 14:18:00.71
+-- Last modification date: 2016-04-01 16:20:48.251
 
 
 
@@ -20,7 +20,7 @@ CREATE TABLE comment (
     mediaid int  NOT NULL,
     username varchar(30)  NOT NULL,
     text text  NOT NULL,
-    posttime timestamp  NOT NULL,
+    posttime timestamp  NOT NULL  DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT comment_pk PRIMARY KEY (commentid)
 );
 
@@ -38,7 +38,7 @@ CREATE TABLE discuss (
     groupid int  NOT NULL,
     username varchar(30)  NOT NULL,
     content text  NOT NULL,
-    posttime timestamp  NOT NULL,
+    posttime timestamp  NOT NULL  DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT discuss_pk PRIMARY KEY (discussid)
 );
 
@@ -67,12 +67,12 @@ CREATE TABLE media (
     sharetype int  NOT NULL,
     path varchar(30)  NOT NULL,
     detail text  NOT NULL,
-    posttime timestamp  NOT NULL,
+    posttime timestamp  NOT NULL  DEFAULT CURRENT_TIMESTAMP,
     candiscuss int  NOT NULL,
     canrate int  NOT NULL,
     keywords text  NOT NULL,
-    viewcount int  NOT NULL,
-    avgrate int  NOT NULL,
+    viewcount int  NOT NULL  DEFAULT 0,
+    avgrate int  NOT NULL  DEFAULT 0,
     CONSTRAINT media_pk PRIMARY KEY (mediaid)
 );
 
