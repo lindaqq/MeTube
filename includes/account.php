@@ -1,5 +1,6 @@
 <?php
-include "mysqlClass.inc.php";
+include_once ("mysqlClass.inc.php");
+//$db = new mysql_db(SERVER, USERNAME, PASSWORD, DATABASE);
 //basic
 function existUser ($username){
 	$query = "select * from account where username='$username'";
@@ -52,7 +53,8 @@ function addUser($username, $password)
     return 1;
 }
 //unit test
-//echo addUser('xiaoqi1', '2017');
+//echo addUser('fangyu1', '2017');
+
 
 function updateProfile($username, $addr, $detail) {
     if (!existUser($username)) {
@@ -69,6 +71,25 @@ function updateProfile($username, $addr, $detail) {
 }
 //unit test
 //echo updateProfile('xiaoqi', 'greenwi', 'good');
+
+function getProfile($username) {
+    if (!existUser($username)) {
+        return 0;
+    }
+    $query = "select addr, detail from account  where username = '$username'";
+    $result = mysql_query($query);
+
+	if (!$result)
+	{
+	   die ("getProfile() failed. Could not query the database: <br />". mysql_error());
+	}
+    $row = mysql_fetch_assoc($result);
+
+    return $row;
+}
+//unit test
+//echo getProfile('xiaoqi1')['detail'];
+
 
 function updatePasswd($username, $password) {
     if (!existUser($username)) {
@@ -102,7 +123,7 @@ function existChannel($subscriber_id, $channel_id) {
     return 1;
 }
 //unit test
-//echo existChannel('1', '1');
+//echo existChannel('fangyu1', 'xiaoqi1');
 
 function addChannel($subscriber_id, $channel_id)
 {
@@ -135,7 +156,7 @@ function rmChannel($subscriber_id, $channel_id) {
     return 1;
 }
 //unit test
-//echo rmChannel('1', '1');
+//echo rmChannel('fangyu1', 'xiaoqi1');
 
 //////////////////addition--friendship parts
 function getContacts ($userid1){
@@ -168,7 +189,7 @@ function getFoes ($userid1){
     return $storeArray;
 }
 //unit test
-//foreach (getFoes(4) as $id) {
+//foreach (getFoes(fangyu1) as $id) {
 //    echo $id;
 //}
 
@@ -185,8 +206,8 @@ function getFriends ($userid1){
     return $storeArray;
 }
 //unit test
-//foreach (getFriends(4) as $id) {
-//    echo $id;
+//foreach (getFriends('fangyu1') as $id) {
+//    echo gettype($id);
 //}
 
 function existType($userid1, $userid2) {
@@ -244,7 +265,7 @@ function addFriend($userid1, $userid2){
     return 1;
 }
 //unit test
-//echo addFriend('3', '1');
+//echo addFriend('fangyu1', 'xiaoqi4');
 
 function addFoe($userid1, $userid2){
     rmExist($userid1, $userid2);
@@ -257,7 +278,7 @@ function addFoe($userid1, $userid2){
     return 1;
 }
 //unit test
-//echo addFoe('1', '3');
+//echo addFoe('fangyu1', 'xiaoqi3');
 
 function addContact($userid1, $userid2){
     if (existType($userid2, $userid1) == 1) {
@@ -275,4 +296,5 @@ function addContact($userid1, $userid2){
 //unit test
 //echo addContact('1', '3');
 
+//$db->sql_close();
 ?>
