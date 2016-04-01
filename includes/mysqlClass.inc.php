@@ -102,5 +102,4 @@ class mysql_db {
 }
 
 include_once ("db.php");
-$db = new mysql_db(SERVER, USERNAME, PASSWORD, DATABASE);
 ?>
