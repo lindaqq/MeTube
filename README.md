@@ -8,18 +8,17 @@ table account (id, username, password, addr, detail) addr and detail do not need
   b. check username and password.  
   c. add username and password.  
   d. update profile(addr, detail).  
+  e. get profile
   g. update password  
   
 addition:  
 table subscription (id, subscriber_id, channel_id)  
-  v. check channel of subscriber exist or not
+  v. check (channel  subscriber) exist or not
   e. add channel of subscriber.  
   f. remove channel of subscriber.  
   
-table (userid1, userid2, type) type=0 is contact, type=1 is foe/block, type=2 is friend  
-  a. retrieve friends of myself.  
-  g. retrieve foes of myself.  
-  f. retrieve contact of myself
+table contact(userid1, userid2, type) type=3 is contact, type=1 is foe/block, type=2 is friend  
+  a. retrieve friends/foes/contact of myself.  
   b. add a friend relationship to you
   c. add a foe to you.  
   c. add a contact to you.  
@@ -27,31 +26,32 @@ table (userid1, userid2, type) type=0 is contact, type=1 is foe/block, type=2 is
   d. return the friendship type A to B
   
 ####Data sharing service  
-table media (mediaid, title, user_id, mediatype, category, sharetype, block, path, detail, post_time, canDiscuss, canrating, tags, view_count, avgrate)  
+table media (mediaid, title, username, type, category, sharetype, path, detail, posttime, canDiscuss, canrate, keywords, viewcount, avgrate)  
 type=1 video, type=2 audio, type=3 image,   
-sharetype=0 public, sharetype=1 just friends  
-blocktype=0 no block, blocktype=1 has block  
+sharetype=0 public, sharetype=1 just friends
+category=1 sports, category=2 entainment
 
   basic scenes for Data sharing service  
   --upload and download  
-  g. add media with all attributes(title detail keywords)
-  h. download media by anyone 
-  f. view media by anyone
+  g. add media with all attributes(title, username, type, catetory, detail, keywords, sharetype(blocked friends), candiscuss, canrate, )
+  f. view media 
 
 addition:  
   share with everybody or just friends, 
   allow discussion or not, 
   allow rating or not  
-  select block users
-  remove block users
+
 
 
 ####media service  
-table media (mediaid, title, user_id, mediatype, category, blocktype, path, detail, post_time, canDiscuss, canrating, tags, view_count, avgrate)  
+table media (mediaid, title, username, type, category, sharetype, path, detail, posttime, canDiscuss, canrate, keywords, viewcount, avgrate)  
+type=1 video, type=2 audio, type=3 image,   
+sharetype=0 public, sharetype=1 just friends
+category=1 sports, category=2 entainment
 
 
   basic scenes for media service   
---view(without blocked ones and with unblocked ones)  
+--view 
 by category and type, by type,  
 type=1 video, type=2 audio, type=3 image,   
 
