@@ -8,21 +8,14 @@
             <img alt="" src="../templates/images/account.png">
         </div>
         <div class="card-info"> <span class="card-title"><?php 
-            $username = $user["username"];
+            $username = $_SESSION["username"];
             echo $username;
             ?></span>
 
         </div>
     </div>
-    
-    
-    
-    
-    
-    
-    
     <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
-        <div class="btn-group" role="group">
+         <div class="btn-group" role="group">
             <button type="button" id="stars" class="btn btn-primary" onclick="document.location.href = '../public/account.php'"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                 <div class="hidden-xs">Profile</div>
             </button>
@@ -55,27 +48,56 @@
     </div>
 
         <div class="well">
-          <h3>My Profile</h3>
-            <?php
-            $username = $user["username"];
-            $password = $user["password"];
-            $email = $user["email"];
-            
-            echo <<<_END
-            <form class="form-signin" action="../public/update_profile.php" method="post">
-                <h4>username:</h4><input type="text" class="form-control" name="username" value=$username required autofocus>
-                <h4>password:</h4><input type="password" class="form-control" name="password" value=$password required>
-                <h4>repeate password:</h4><input type="password" class="form-control" name="password1" placeholder="Repeat Password if changing password" >
-                <button class="btn btn-lg btn-primary btn-block" type="submit">
-                    Update My Profile</button>
-                <br>
-                <h4>$errortext</h4>
-            </form>
+      
+          <p class="lead"> Contacts: </p>
+  		    <div class="row text-center">
+        
+            <?php    
+            for($i = 0; $i < 10; $i++){
+                echo <<<_END
+                <div class="col-sm-2 col-md-2 col-lg-2 col-xs-4">
+
+      			   <div class="img-thumbnail"> <img src="../templates/images/account.png" alt="Thumbnail Image 1" class="img-responsive" width="100" height="100"></div>
+      			<p>contact name</p>
+                <p>[drop]</p>
+    		</div>
 _END;
-            
+            }
             ?>
-                         
         </div>
             
-         
-</div>
+            <p class="lead"> Friends: </p>
+  		    <div class="row text-center">
+        
+            <?php    
+            for($i = 0; $i < 10; $i++){
+                echo <<<_END
+                <div class="col-sm-2 col-md-2 col-lg-2 col-xs-4">
+
+      			   <div class="img-thumbnail"> <img src="../templates/images/account.png" alt="Thumbnail Image 1" class="img-responsive" width="100" height="100"></div>
+      			<p>contact name</p>
+                <p>[drop]</p>
+    		</div>
+_END;
+            }
+            ?>
+        </div>
+            
+            <p class="lead"> foes: </p>
+  		    <div class="row text-center">
+        
+            <?php    
+            for($i = 0; $i < 10; $i++){
+                echo <<<_END
+                <div class="col-sm-2 col-md-2 col-lg-2 col-xs-4">
+
+      			   <div class="img-thumbnail"> <img src="../templates/images/account.png" alt="Thumbnail Image 1" class="img-responsive" width="100" height="100"></div>
+      			<p>contact name</p>
+                <p>[drop]</p>
+    		</div>
+_END;
+            }
+            ?>
+        </div>
+
+    </div>

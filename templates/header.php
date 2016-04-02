@@ -52,7 +52,7 @@
 
                 </div>
             <?php
-                if(isset($_SESSION["id"])){
+                if(isset($_SESSION["username"])){
                     echo <<<_END
                     <button  type = "button" onclick="document.location.href = '../public/logout.php'" class="btn btn-default navbar-right" style="margin-left:20px">Log Out</button>
                     <button  type = "button" onclick="document.location.href = '../public/account.php'" class="btn btn-primary navbar-right">My Account</button>

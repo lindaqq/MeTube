@@ -6,9 +6,9 @@
                 <img class="profile-img" src="../templates/images/account.png"
                     alt="" width = "150" height="150">
                 <form class="form-signin" action="../public/register.php" method="post">
-                <input type="text" class="form-control" name="username" placeholder="Username" required autofocus>
-                <input type="password" class="form-control" name="password" placeholder="Password" required>
-                <input type="password" class="form-control" name="password1" placeholder="Repeat Password" required>
+                <input type="text" class="form-control" name="username" placeholder="Username" maxlength="10" required autofocus>
+                <input type="password" class="form-control" name="password" placeholder="Password" maxlength="10" required>
+                <input type="password" class="form-control" name="password1" placeholder="Repeat Password" maxlength="10" required>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">
                     Register</button>
                 <label class="checkbox pull-left">

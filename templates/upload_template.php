@@ -14,21 +14,14 @@
 
         </div>
     </div>
-    
-    
-    
-    
-    
-    
-    
     <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
         <div class="btn-group" role="group">
-            <button type="button" id="stars" class="btn btn-primary" onclick="document.location.href = '../public/account.php'"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            <button type="button" id="stars" class="btn btn-primary" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                 <div class="hidden-xs">Profile</div>
             </button>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" id="favorites" class="btn btn-default" onclick="document.location.href = '../public/contact.php'"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+            <button type="button" id="favorites" class="btn btn-default" onclick="document.location.href = '../public/account.php'"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
                 <div class="hidden-xs">Contact</div>
             </button>
         </div>
@@ -55,27 +48,22 @@
     </div>
 
         <div class="well">
-          <h3>My Profile</h3>
-            <?php
-            $username = $user["username"];
-            $password = $user["password"];
-            $email = $user["email"];
-            
-            echo <<<_END
-            <form class="form-signin" action="../public/update_profile.php" method="post">
-                <h4>username:</h4><input type="text" class="form-control" name="username" value=$username required autofocus>
-                <h4>password:</h4><input type="password" class="form-control" name="password" value=$password required>
-                <h4>repeate password:</h4><input type="password" class="form-control" name="password1" placeholder="Repeat Password if changing password" >
-                <button class="btn btn-lg btn-primary btn-block" type="submit">
-                    Update My Profile</button>
-                <br>
-                <h4>$errortext</h4>
+         <h3>Uploads</h3>
+              <form method="post" action="../public/media_upload_process.php" enctype="multipart/form-data" >
+ 
+                <p style="margin:0; padding:0">
+                <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                Add a Media: <label style="color:#663399"><em> (Each file limit 10M)</em></label><br/>
+                <input  name="file" type="file" size="50" />
+  
+	           <input value="Upload" name="submit" type="submit" />
+                </p>                
             </form>
-_END;
-            
+            <?php
+                echo $errortext;
             ?>
-                         
         </div>
-            
-         
-</div>
+          
+          
+      </div>
+    </div>

@@ -8,11 +8,7 @@ require("../includes/config.php");
 *
 *******************************************************/
 
-$user = query("select * from account where id = ?", $_SESSION["id"]);
-
-$username=$user[0]["username"];
-$userid = $_SESSION["id"];
-
+echo "upload";
 
 //Create Directory if doesn't exist
 if(!file_exists('uploads/')){
@@ -59,7 +55,7 @@ if(!file_exists($dirfile))
 	}
 	
 	//You can process the error code of the $result here.
-    render("account_form.php", ["active" => 6, "user" => $user[0],"errortext" => $result], "titile" => My Account);
+    render("account_form.php", ["errortext" => $result], "titile" => My Account);
 ?>
 
 <!--meta http-equiv="refresh" content="0;url=browse.php?result=<?/*php echo $result;*/?>"-->
