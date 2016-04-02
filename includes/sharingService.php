@@ -21,6 +21,50 @@ function addMedia($title, $username, $type, $catetory, $sharetype, $sharedfriend
 //echo addMedia('phpddd', 'fangyu1', 1, 1, 1, array('xiao1', 'xiao2'), '/upload', 'this is good', 1, 1, 'long, nike');
 //echo addMedia('php2', 'fangyu1', 1, 1, 0, array(), '/upload', 'this is good', 1, 1, 'long, nike');
 
-//function getMediaInfo()
+function rmBlock($mediaid, $friend) {
+    $query = "select * from sharedfriends where mediaid = '$mediaid' and username = '$friend'";
+    $result = mysql_query($query)
+        or die("check share exist fails". mysql_error());
+    $row = mysql_fetch_assoc($result);
+    if ($row != 0) {
+        return 1;
+    }
 
+    $shareInsert = "insert into sharedfriends (mediaid, username) values ('$mediaid', '$friend')";
+    mysql_query($shareInsert) or die("remove block to sharefriends fails". mysql_error());
+    return 1;
+}
+//unit test
+//echo rmblock(9, 'xiao3');
+
+function getUploads($username) {
+    $query = "select mediaid, title, username, sharetype, viewcount, posttime from media where username = '$username'";
+    $result = mysql_query($query) or die("remove block to sharefriends fails". mysql_error());
+    $storeArray = Array();
+    while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+        if ($row['sharetype'] == 0) {
+            $row['block'] = array();
+            $storeArray[] = $row;
+            continue;
+        }
+        $mediaid = $row['mediaid'];
+        $blockquery = "select userid2 from contact where userid1='$username' and userid2 not in(select username from sharedfriends where mediaid='$mediaid')";
+        $blocks = mysql_query($blockquery) or die("blockquery fails". mysql_error());
+
+        $storeBlock = Array();
+        while ($rowBlock = mysql_fetch_array($blocks, MYSQL_ASSOC)) {
+            $storeBlock[] =  $rowBlock['userid2'];
+        }
+
+        $row['block'] = $storeBlock;
+        $storeArray[] = $row;
+    }
+    return $storeArray;
+}
+//unit test
+//echo '<pre>'; print_r(getUploads('fangyu1')); echo '</pre>';
+
+function getView($mediaid) {
+
+}
 ?>
