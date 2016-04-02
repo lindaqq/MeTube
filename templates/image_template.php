@@ -19,6 +19,13 @@
             </div>
             
             <div class="row">
+            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> Subscribe</a>
+            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> Add to favorites</a>
+            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> Add to Playlists</a>
+            </div>
+            
+            <br><br>
+            <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
                 <div class="thumbnail">
                     <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
