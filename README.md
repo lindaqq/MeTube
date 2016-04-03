@@ -53,32 +53,65 @@ category=1 sports, category=2 entainment
   basic scenes for media service   
 --view 
 by category and type, by type,  
-type=1 video, type=2 audio, type=3 image,   
+type=1 video, type=2 audio, type=3 image
 
 by user(subscription),  
 table subscription (id, subscriber_id, channel_id)  
+browseByChannel($username)
+only public media
 
 by user's play list, 
 table playlist (id, subscriber_id, channel_id)  
+showPlaylists($username)
+browseByPlaylist($playlistid)
+rmPlaylistMedia($playlistid, $mediaid)
+addPlaylistMedia($playlistid, mediaid)
 
 by user's favorite list, 
-table playlist (id, subscriber_id, channel_id)  
-
+table favorite (id, subscriber_id, channel_id)
+browseByFavorite($username)
+rmFavorite($username, $mediaid)
+addFavorite($username, $mediaid)
 
 addition:
  show by most viewed, by upload recent  
+browseByViewcount($num)
+browseByUploadrecent($num)
+
    f. media's view++  
-   c. rate media  
+
    
   show attributes (title, username, category, post_time)(addition: view_count, avgrate)  
 
 ####User interaction service  
+Messages
+sendMessage(sender, receiver, message)
+getMessages(username)
+
+Comments
+addComment(username, mediaid)
+getComments(mediaid) return with username
+rmComment(commentid)
 
 addition:  
-view_count, comment, rate
-  b. detail show(title, username, post_time, view_count, avgrate, path, detail, comment)  
-  d. add comment  
-  e. remove comment of owner  
+   c. rate media  
+rateMedia($mediaid, $username)
+    
+  e. group
+createGroup($groupName, detail)
+getDiscusses($groupid)
+addDiscuss($groupid, $username)
 
 ####search service  
-by recommend of one post(todo), by filter(todo), by tags(todo with wordcloud)  
+keyword-based search
+search($word)
+
+filter 
+filterSearch($word, $type, $category, $posttime )
+
+show words of  wordcloud
+manually
+
+media recommendation
+with keywords and category uploadrecently
+
