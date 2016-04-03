@@ -1,6 +1,6 @@
 <?php
 require_once('mysqlClass.inc.php');
-$db = new mysql_db(SERVER, USERNAME, PASSWORD, DATABASE);
+//$db = new mysql_db(SERVER, USERNAME, PASSWORD, DATABASE);
 
 function browseByChannel($username) {
     $query = "select mediaid, title, username,  viewcount, posttime from media where username = '$username'";
