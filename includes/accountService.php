@@ -38,8 +38,7 @@ function loginCheck($username, $password)
 //unit test
 //echo loginCheck('add', 'aaa');
 
-function addUser($username, $password)
-{
+function addUser($username, $password) {
     if (existUser($username)) {
         return 0;
     }
