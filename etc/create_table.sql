@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2016-04-01 16:20:48.251
+-- Last modification date: 2016-04-03 15:30:11.814
 
 
 
@@ -76,18 +76,23 @@ CREATE TABLE media (
     CONSTRAINT media_pk PRIMARY KEY (mediaid)
 );
 
+CREATE INDEX media_idx_1 ON media (mediaid);
+
+
 -- Table message
 CREATE TABLE message (
     messageid int  NOT NULL  AUTO_INCREMENT,
-    `from` varchar(30)  NOT NULL,
-    `to` varchar(30)  NOT NULL,
+    sender varchar(30)  NOT NULL,
+    receiver varchar(30)  NOT NULL,
     content text  NOT NULL,
+    posttime timestamp  NOT NULL  DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT message_pk PRIMARY KEY (messageid)
 );
 
 -- Table playlist
 CREATE TABLE playlist (
     playlistid int  NOT NULL  AUTO_INCREMENT,
+    playlistname varchar(30)  NOT NULL,
     username varchar(30)  NOT NULL,
     CONSTRAINT playlist_pk PRIMARY KEY (playlistid)
 );
@@ -160,7 +165,7 @@ ALTER TABLE discuss ADD CONSTRAINT groupaccount_group FOREIGN KEY groupaccount_g
     REFERENCES `group` (groupid);
 -- Reference:  message_contact (table: message)
 
-ALTER TABLE message ADD CONSTRAINT message_contact FOREIGN KEY message_contact (`from`,`to`)
+ALTER TABLE message ADD CONSTRAINT message_contact FOREIGN KEY message_contact (sender,receiver)
     REFERENCES contact (userid1,userid2);
 -- Reference:  playlistHelper_playlist (table: playlistmedia)
 
