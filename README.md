@@ -35,8 +35,12 @@ category=1 sports, category=2 entainment
   basic scenes for Data sharing service  
   --upload and download  
   g. add media with all attributes(title, username, type, catetory, detail, keywords, sharetype(blocked friends), candiscuss, canrate, )  
-  f. view media   
-
+  f. view media  
+  viewplus($mediaid)  
+  updateAvgrate($mediaid)  
+  viewMedia($mediaid)  
+  view all the infomation of media detail here
+  
 addition:  
   share with everybody or just friends,   
   allow discussion or not,   
@@ -80,9 +84,7 @@ browseByViewcountAndType($type, $num)
 browseByUploadrecentAndType($type, $num)  
 
 browseByFriendshare($username)  
-
-   
-  show attributes (title, username, category, post_time)(addition: view_count, avgrate)    
+  
 
 ####User interaction service    
 Messages  
@@ -91,28 +93,35 @@ getMessages($username)
 
 Comments  
 addComment($username, $mediaid)  
-getComments($mediaid) return with username    
+getComments($mediaid)    
 rmComment($commentid)  
 
 addition:    
-   c. rate media    
-rateMedia($mediaid, $username)  
+   c. rate media     
+rmRate($mediaid, $username)  
+existRate($mediaid, $username)  
+rateMedia($mediaid, $username, $score)  
     
-  e. group  
-createGroup($groupName, detail)  
+  e. groups  
+function createGroup($groupName, $topic, $detail) return groupid  
+function showGroups()  
 getDiscusses($groupid)  
-addDiscuss($groupid, $username)  
+addDiscuss( $username, $groupid, $content)  
 
 ####search service    
 keyword-based search  
-search($word)  
+search($words) return list of (mediaid, title)  
+multiple words
 
-filter   
-filterSearch($word, $type, $category, $posttime )  
+filter  
+$type = 0 means All, $category = 0 means All,  
+$starttime = '' means All  
+filterSearch($words, $type, $category, $starttime )  
 
 show words of  wordcloud  
 manually  
+search($words)  
 
 media recommendation  
-with keywords and category uploadrecently  
-
+with keywords    
+recommend($mediaid, $num)
