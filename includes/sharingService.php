@@ -1,6 +1,6 @@
 <?php
 require_once('mysqlClass.inc.php');
-$db = new mysql_db(SERVER, USERNAME, PASSWORD, DATABASE);
+//$db = new mysql_db(SERVER, USERNAME, PASSWORD, DATABASE);
 
 function addMedia($title, $username, $type, $catetory, $sharetype, $sharedfriends, $path, $detail, $candiscuss, $canrate, $keywords) {
     $insert = "insert into media (title, username, type, category, sharetype, path, detail, canDiscuss, canrate, keywords) values ('$title', '$username', '$type', '$catetory', '$sharetype', '$path', '$detail', '$candiscuss', '$canrate', '$keywords')";
@@ -64,7 +64,39 @@ function getUploads($username) {
 //unit test
 //echo '<pre>'; print_r(getUploads('fangyu1')); echo '</pre>';
 
-function getView($mediaid) {
-
+function viewplus($mediaid) {
+    $query = "UPDATE media
+        SET viewcount = viewcount + 1
+        WHERE mediaid = '$mediaid'";
+    mysql_query($query) or die ("viewplus() failed. Could not query the database: <br />". mysql_error());
+    return 1;
 }
+//unit test
+//echo viewplus(1);
+
+function updateAvgrate($mediaid) {
+    $query = "select count(score) as num from rate where mediaid = '$mediaid'";
+    $result = mysql_query($query) or die ("updateAvgrate() failed. Could not query the database: <br />". mysql_error());
+    $row = mysql_fetch_assoc($result);
+    if ($row['num'] == 0) {
+        return 1;
+    }
+
+    $query = "update media set avgrate = (select sum(score)/count(score) from rate where mediaid = '$mediaid') where mediaid = '$mediaid'";
+    mysql_query($query) or die ("updateAvgrate() failed. Could not query the database: <br />". mysql_error());
+    return 1;
+}
+//unit test
+//echo updateAvgrate(1);
+
+function viewMedia($mediaid) {
+    updateAvgrate($mediaid);
+    $query = "select * from media where mediaid = '$mediaid'";
+    $result = mysql_query($query) or die("viewMedia fails". mysql_error());
+    $row = mysql_fetch_array($result, MYSQL_ASSOC);
+    viewplus($mediaid);
+    return $row;
+}
+//unit test
+//echo '<pre>'; print_r(viewMedia('1')); echo '</pre>';
 ?>
