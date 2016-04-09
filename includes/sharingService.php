@@ -1,6 +1,6 @@
 <?php
 require_once('mysqlClass.inc.php');
-$db = new mysql_db(SERVER, USERNAME, PASSWORD, DATABASE);
+//$db = new mysql_db(SERVER, USERNAME, PASSWORD, DATABASE);
 
 function addMedia($title, $username, $type, $catetory, $sharetype, $sharedfriends, $path, $detail, $candiscuss, $canrate, $keywords) {
     $insert = "insert into media (title, username, type, category, sharetype, path, detail, canDiscuss, canrate, keywords) values ('$title', '$username', '$type', '$catetory', '$sharetype', '$path', '$detail', '$candiscuss', '$canrate', '$keywords')";
