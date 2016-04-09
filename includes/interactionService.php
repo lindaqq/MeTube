@@ -1,7 +1,7 @@
 <?php
 include_once ("mysqlClass.inc.php");
 include_once ("accountService.php");
-$db = new mysql_db(SERVER, USERNAME, PASSWORD, DATABASE);
+//$db = new mysql_db(SERVER, USERNAME, PASSWORD, DATABASE);
 
 function sendMessage($sender, $receiver, $message)   {
     if (existType($receiver, $sender) == 1) {
