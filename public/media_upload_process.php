@@ -1,21 +1,15 @@
 <?php
-// configuration
-require("../includes/config.php"); 
 
-/******************************************************
-*
-* upload document from user
-*
-*******************************************************/
-
-echo "upload";
-
-//Create Directory if doesn't exist
+    // configuration
+    require("../includes/config.php"); 
+    
+    if ($_SERVER["REQUEST_METHOD"] == "POST"){
+        //Create Directory if doesn't exist
 if(!file_exists('uploads/')){
 	mkdir('uploads/');
 	chmod('uploads', 0755);
 }
-$dirfile = 'uploads/'.$userid.$username.'/';
+$dirfile = 'uploads/'.$username.'/';
 if(!file_exists($dirfile))
 	mkdir($dirfile);
 	chmod($dirfile, 0755);
@@ -39,8 +33,8 @@ if(!file_exists($dirfile))
 				else /*Successfully upload file*/
 				{
 					//insert into media table
-					$insert = "insert into media(mediaid, title,user_id,type, path)".
-							  "values(NULL,'". urlencode($_FILES["file"]["name"])."','$userid','".$_FILES["file"]["type"]."', '$upfile')";
+					$insert = "insert into media(mediaid, filename,username,type, path)".
+							  "values(NULL,'". urlencode($_FILES["file"]["name"])."','$username','".$_FILES["file"]["type"]."', '$upfile')";
 					$queryresult = mysql_query($insert)
 						  or die("Insert into Media error in media_upload_process.php " .mysql_error());
 					$result="0";
@@ -55,7 +49,10 @@ if(!file_exists($dirfile))
 	}
 	
 	//You can process the error code of the $result here.
-    render("account_form.php", ["errortext" => $result], "titile" => My Account);
+        render("upload_template.php", ["errortext" => $result,"titile" => "Uploads"]);
+    }else{
+        render("upload_template.php", ["errortext" => "","titile" => "Uploads"]);
+    }
+
 ?>
 
-<!--meta http-equiv="refresh" content="0;url=browse.php?result=<?/*php echo $result;*/?>"-->

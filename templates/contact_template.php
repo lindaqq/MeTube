@@ -48,8 +48,22 @@
     </div>
 
         <div class="well">
+            <div class="row">
+                <div class="col-sm-2 col-md-2 col-lg-2">
+                    <p class="lead"> Contacts:  </p>   
+                </div>
+                
+                <div class="col-sm-6 col-md-6 col-lg-6 ">
+                       <input type="text" class="input-sm form-control" name="newcontact" placeholder="add new contact"/>
+                </div>
+                <div class="col-sm-2 col-md-2 col-lg-2">
+                    <a href="#" class="btn btn-primary btn-primary">Add</a>
+                </div>
+                 
+            
+            </div>
       
-          <p class="lead"> Contacts: </p>
+          
   		    <div class="row text-center">
         
             <?php    

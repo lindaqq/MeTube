@@ -37,8 +37,8 @@
             
             
             //////////// how to detect insert failure????????????????????????????????
-            $rows = query("SELECT * FROM account WHERE username = ?", $_POST["username"]);
-            $_SESSION["id"] = $rows[0]["id"];
+            //$rows = query("SELECT * FROM account WHERE username = ?", $_POST["username"]);
+            $_SESSION["username"] = $_POST["username"];
             require_once("../public/index.php");
         }
 

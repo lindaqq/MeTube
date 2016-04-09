@@ -49,7 +49,7 @@ _END;
                     		<p></p>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <select class="input-sm form-control">
+                                    <select name = "category" class="input-sm form-control">
                                       <option>Category 1</option>
                                       <option>Category 2</option>
                                       <option>Category 3</option>
