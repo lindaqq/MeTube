@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2016-04-03 15:30:11.814
+-- Last modification date: 2016-04-09 22:21:52.886
 
 
 
@@ -14,15 +14,24 @@ CREATE TABLE account (
     CONSTRAINT account_pk PRIMARY KEY (username)
 );
 
+CREATE INDEX account_idx_1 ON account (username);
+
+
 -- Table comment
 CREATE TABLE comment (
     commentid int  NOT NULL  AUTO_INCREMENT,
-    mediaid int  NOT NULL,
     username varchar(30)  NOT NULL,
-    text text  NOT NULL,
+    mediaid int  NOT NULL,
+    content text  NOT NULL,
     posttime timestamp  NOT NULL  DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT comment_pk PRIMARY KEY (commentid)
 );
+
+CREATE INDEX comment_idx_1 ON comment (commentid);
+
+
+CREATE INDEX comment_idx_2 ON comment (mediaid);
+
 
 -- Table contact
 CREATE TABLE contact (
@@ -32,9 +41,15 @@ CREATE TABLE contact (
     CONSTRAINT contact_pk PRIMARY KEY (userid1,userid2)
 );
 
+CREATE INDEX contact_idx_1 ON contact (userid1,type);
+
+
+CREATE INDEX contact_idx_2 ON contact (userid1,userid2);
+
+
 -- Table discuss
 CREATE TABLE discuss (
-    discussid int  NOT NULL,
+    discussid int  NOT NULL  AUTO_INCREMENT,
     groupid int  NOT NULL,
     username varchar(30)  NOT NULL,
     content text  NOT NULL,
@@ -49,13 +64,23 @@ CREATE TABLE favorite (
     CONSTRAINT favorite_pk PRIMARY KEY (username,mediaid)
 );
 
--- Table `group`
-CREATE TABLE `group` (
-    groupid int  NOT NULL,
+CREATE INDEX favorite_idx_1 ON favorite (username);
+
+
+CREATE INDEX favorite_idx_2 ON favorite (username,mediaid);
+
+
+-- Table groups
+CREATE TABLE groups (
+    groupid int  NOT NULL  AUTO_INCREMENT,
     groupname varchar(30)  NOT NULL,
+    topic varchar(30)  NOT NULL,
     detail text  NOT NULL,
-    CONSTRAINT group_pk PRIMARY KEY (groupid)
+    CONSTRAINT groups_pk PRIMARY KEY (groupid)
 );
+
+CREATE INDEX groups_idx_1 ON groups (groupid);
+
 
 -- Table media
 CREATE TABLE media (
@@ -72,11 +97,32 @@ CREATE TABLE media (
     canrate int  NOT NULL,
     keywords text  NOT NULL,
     viewcount int  NOT NULL  DEFAULT 0,
-    avgrate int  NOT NULL  DEFAULT 0,
+    avgrate double(4,3)  NOT NULL  DEFAULT 0,
     CONSTRAINT media_pk PRIMARY KEY (mediaid)
 );
 
 CREATE INDEX media_idx_1 ON media (mediaid);
+
+
+CREATE INDEX media_idx_2 ON media (username);
+
+
+CREATE INDEX media_idx_3 ON media (type);
+
+
+CREATE INDEX media_idx_4 ON media (type,category,posttime);
+
+
+CREATE INDEX media_idx_5 ON media (posttime);
+
+
+CREATE INDEX media_idx_6 ON media (category);
+
+
+CREATE INDEX media_idx_7 ON media (type,posttime);
+
+
+CREATE INDEX media_idx_8 ON media (type,category);
 
 
 -- Table message
@@ -97,6 +143,9 @@ CREATE TABLE playlist (
     CONSTRAINT playlist_pk PRIMARY KEY (playlistid)
 );
 
+CREATE INDEX playlist_idx_1 ON playlist (username);
+
+
 -- Table playlistmedia
 CREATE TABLE playlistmedia (
     playlistid int  NOT NULL,
@@ -104,13 +153,25 @@ CREATE TABLE playlistmedia (
     CONSTRAINT playlistmedia_pk PRIMARY KEY (playlistid,mediaid)
 );
 
+CREATE INDEX playlistmedia_idx_1 ON playlistmedia (playlistid);
+
+
+CREATE INDEX playlistmedia_idx_2 ON playlistmedia (playlistid,mediaid);
+
+
 -- Table rate
 CREATE TABLE rate (
-    rateid int  NOT NULL  AUTO_INCREMENT,
     mediaid int  NOT NULL,
     username varchar(30)  NOT NULL,
-    CONSTRAINT rate_pk PRIMARY KEY (rateid)
+    score int  NOT NULL,
+    CONSTRAINT rate_pk PRIMARY KEY (mediaid,username)
 );
+
+CREATE INDEX rate_idx_1 ON rate (mediaid,username);
+
+
+CREATE INDEX rate_idx_2 ON rate (mediaid);
+
 
 -- Table sharedfriends
 CREATE TABLE sharedfriends (
@@ -119,12 +180,24 @@ CREATE TABLE sharedfriends (
     CONSTRAINT sharedfriends_pk PRIMARY KEY (mediaid,username)
 );
 
+CREATE INDEX sharedfriends_idx_1 ON sharedfriends (username);
+
+
+CREATE INDEX sharedfriends_idx_2 ON sharedfriends (mediaid,username);
+
+
+CREATE INDEX sharedfriends_idx_3 ON sharedfriends (mediaid);
+
+
 -- Table subscription
 CREATE TABLE subscription (
     subscriber_id varchar(30)  NOT NULL,
     channel_id varchar(30)  NOT NULL,
     CONSTRAINT subscription_pk PRIMARY KEY (subscriber_id,channel_id)
 );
+
+CREATE INDEX subscription_idx_1 ON subscription (subscriber_id,channel_id);
+
 
 
 
@@ -162,7 +235,7 @@ ALTER TABLE discuss ADD CONSTRAINT groupaccount_account FOREIGN KEY groupaccount
 -- Reference:  groupaccount_group (table: discuss)
 
 ALTER TABLE discuss ADD CONSTRAINT groupaccount_group FOREIGN KEY groupaccount_group (groupid)
-    REFERENCES `group` (groupid);
+    REFERENCES groups (groupid);
 -- Reference:  message_contact (table: message)
 
 ALTER TABLE message ADD CONSTRAINT message_contact FOREIGN KEY message_contact (sender,receiver)

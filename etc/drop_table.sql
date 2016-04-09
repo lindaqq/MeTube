@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2016-04-03 15:06:33.816
+-- Last modification date: 2016-04-09 22:21:52.886
 
 
 
@@ -35,8 +35,8 @@ DROP TABLE contact;
 DROP TABLE discuss;
 -- Table favorite
 DROP TABLE favorite;
--- Table `group`
-DROP TABLE `group`;
+-- Table groups
+DROP TABLE groups;
 -- Table media
 DROP TABLE media;
 -- Table message
