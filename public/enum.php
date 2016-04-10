@@ -1,3 +1,3 @@
 <?php
-static $Keywords = array("all", "video", "audio", "image");
+static $Keywords = array("baseball", "basketball", "water", "sky", "movie", "sound", "star", "fly", "ace");
 ?>

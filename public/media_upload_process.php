@@ -3,6 +3,7 @@
     // configuration
     require("../includes/config.php"); 
     require("../includes/sharingService.php"); 
+    require("../includes/accountService.php"); 
     require("enum.php");
     $db = new mysql_db(SERVER, USERNAME, PASSWORD, DATABASE);
     
