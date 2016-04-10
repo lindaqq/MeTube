@@ -1,29 +1,26 @@
 
 <div class="row">
     <h1>Article Thumbnails</h1>
-    <!--p>Use it to your news site, feature a article.</p-->
+    <p>Use it to your news site, feature a article.</p>
 </div>
     <div class="row">
 		<div class="col-sm-6 col-md-6 col-lg-6">
             <div class="row">
 			<!-- artigo em destaque -->
 			<div class="featured-article">
-				<img src="http://placehold.it/482x350" alt="" class="thumb">
+				<a href="#">
+					<img src="http://placehold.it/482x350" alt="" class="thumb">
+				</a>
 				<div class="block-title">
-					<!--h2>Lorem ipsum dolor asit amet</h2-->
-					<p class="by-author"><small>By Jhon Doe &nbsp;&nbsp;&nbsp;&nbsp; Viewed: 234 &nbsp;&nbsp;&nbsp;&nbsp; Avg Rating: 3.5</small></p>
-				</div>  
-			</div>       
+					<h2>Lorem ipsum dolor asit amet</h2>
+					<p class="by-author"><small>By Jhon Doe</small></p>
+				</div>
+			</div>
             </div>
             
             <div class="row">
-                <h3>Description:</h3>
+                Viewed: 234 &nbsp;&nbsp;&nbsp;&nbsp; Avg Rating: 3.5
             </div>
-            
-            <div class="row">
-                Lorem ipsum dolor asit amet Lorem ipsum dolor asit amet Lorem ipsum dolor asit amet Lorem ipsum dolor asit amet Lorem ipsum dolor asit amet Lorem ipsum dolor asit amet Lorem ipsum dolor asit amet
-            </div>
-            
             <br>
             
             <div class="row">
@@ -64,9 +61,9 @@
             <br>
             
             <div class="row">
-            <a href="../public/image.php?subscribe=..." class="btn btn-primary"><span class="glyphicon glyphicon-thumbs-up"></span> Subscribe</a>
-            <a href="../public/image.php?favorite=..." class="btn btn-danger"><span class="glyphicon glyphicon-thumbs-up"></span> Add to favorites</a>
-            <a href="../public/image.php?favorite=..." class="btn btn-warning"><span class="glyphicon glyphicon-thumbs-up"></span> Download</a>
+            <a href="../public/image.php?id=<?php echo $mediaid?>&subscribe=<?php echo $mediaid?>" class="btn btn-primary"><span class="glyphicon glyphicon-thumbs-up"></span> Subscribe</a>
+            <a href="../public/image.php?id=<?php echo $mediaid?>&favorite=<?php echo $mediaid?>" class="btn btn-danger"><span class="glyphicon glyphicon-thumbs-up"></span> Add to favorites</a>
+            <a href="../public/image.php?id=<?php echo $mediaid?>&download=<?php echo $mediaid?>" class="btn btn-warning"><span class="glyphicon glyphicon-thumbs-up"></span> Download</a>
             </div>
             
             <br>
