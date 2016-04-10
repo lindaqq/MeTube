@@ -31,12 +31,12 @@
             </button>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" id="following" class="btn btn-primary" onclick="document.location.href = '../public/playlist.php'"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            <button type="button" id="following" class="btn btn-default" onclick="document.location.href = '../public/playlist.php'"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                 <div class="hidden-xs">Playlists</div>
             </button>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" id="following" class="btn btn-default" nclick="document.location.href = '../public/favorite.php'"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            <button type="button" id="following" class="btn btn-primary" nclick="document.location.href = '../public/favorite.php'"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                 <div class="hidden-xs">Favorites</div>
             </button>
         </div>

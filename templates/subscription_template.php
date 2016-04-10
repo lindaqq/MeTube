@@ -21,12 +21,12 @@
             </button>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" id="favorites" class="btn btn-primary" onclick="document.location.href = '../public/contact.php'"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+            <button type="button" id="favorites" class="btn btn-default" onclick="document.location.href = '../public/contact.php'"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
                 <div class="hidden-xs">Contact</div>
             </button>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" id="following" class="btn btn-default" onclick="document.location.href = '../public/subscribe.php'" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            <button type="button" id="following" class="btn btn-primary" onclick="document.location.href = '../public/subscribe.php'" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                 <div class="hidden-xs">Subscription</div>
             </button>
         </div>
@@ -49,7 +49,7 @@
 
         <div class="well">
             <div class="row">
-                <div class="col-sm-2 col-md-2 col-lg-2">
+                <div class="col-sm-6 col-md-6 col-lg-6">
                     <p class="lead"> My Subscriptions:  </p>   
                 </div>
             
@@ -57,14 +57,15 @@
           
   		    <div class="row text-center">
             <?php
-                //foreach($contacts as $contact){
-                for ($i = 0; $i < 12; $i++){
+                echo $errortext;
+                
+                foreach($subscriptions as $subscription){
                     echo <<<_END
                 <div class="col-sm-2 col-md-2 col-lg-2 col-xs-4">
 
       			   <div class="img-thumbnail"> <img src="../templates/images/account.png" alt="Thumbnail Image 1" class="img-responsive" width="100" height="100"></div>
-      			<p>username</p>
-                <a href="../public/subscribe.php?subscribe=username"><p>[drop]</p></a>
+      			<p>$subscription</p>
+                <a href="../public/subscribe.php?subscribe=$subscription"><p>[drop]</p></a>
     		</div>
 _END;
                 }  

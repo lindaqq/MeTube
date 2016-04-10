@@ -15,33 +15,33 @@
         </div>
     </div>
     <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
-        <div class="btn-group" role="group">
-            <button type="button" id="stars" class="btn btn-primary" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+         <div class="btn-group" role="group">
+            <button type="button" id="stars" class="btn btn-default" onclick="document.location.href = '../public/account.php'"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                 <div class="hidden-xs">Profile</div>
             </button>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" id="favorites" class="btn btn-default" onclick="document.location.href = '../public/account.php'"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+            <button type="button" id="favorites" class="btn btn-default" onclick="document.location.href = '../public/contact.php'"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
                 <div class="hidden-xs">Contact</div>
             </button>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" id="following" class="btn btn-default" href="#tab3" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            <button type="button" id="following" class="btn btn-default" onclick="document.location.href = '../public/subscribe.php'" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                 <div class="hidden-xs">Subscription</div>
             </button>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" id="following" class="btn btn-default" href="#tab4" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            <button type="button" id="following" class="btn btn-default" onclick="document.location.href = '../public/playlist.php'"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                 <div class="hidden-xs">Playlists</div>
             </button>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" id="following" class="btn btn-default" href="#tab5" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            <button type="button" id="following" class="btn btn-default" nclick="document.location.href = '../public/favorite.php'"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                 <div class="hidden-xs">Favorites</div>
             </button>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" id="following" class="btn btn-default" onclick="document.location.href = '../public/media_upload_process.php'"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            <button type="button" id="following" class="btn btn-primary" onclick="document.location.href = '../public/media_upload_process.php'"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                 <div class="hidden-xs">Uploads</div>
             </button>
         </div>
