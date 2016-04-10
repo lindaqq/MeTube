@@ -4,6 +4,7 @@
     require("../includes/config.php"); 
     require("../includes/sharingService.php"); 
     require("enum.php");
+    $db = new mysql_db(SERVER, USERNAME, PASSWORD, DATABASE);
     
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         //Create Directory if doesn't exist
@@ -21,11 +22,11 @@ if(!file_exists($dirfile))
 	{
 		$upfile = $dirfile.urlencode($_FILES["file"]["name"]);
 	  
-	  if(file_exists($upfile))
-	  {
-	  	$result="5"; //The file has been uploaded.
-	  }
-	  else{
+	  //if(file_exists($upfile))
+	  //{
+	  //	$result="5"; //The file has been uploaded.
+	  //}
+	  //else{
 			if(is_uploaded_file($_FILES["file"]["tmp_name"]))
 			{
 				if(!move_uploaded_file($_FILES["file"]["tmp_name"],$upfile))
@@ -34,14 +35,36 @@ if(!file_exists($dirfile))
 				}
 				else /*Successfully upload file*/
 				{
-					//insert into media table
-          //addMedia($title, '$_SESSION["username"]', $Type['$_POST["type"]'], $catetory, $sharetype, $sharedfriends, '$upfile', $detail, $candiscuss, $canrate, $keywords)
-                    /*
-					$insert = "insert into media(mediaid, filename,username,type, path)".
-							  "values(NULL,'". urlencode($_FILES["file"]["name"])."','$_SESSION["username"]','".$_FILES["file"]["type"]."', '$upfile')";
-					$queryresult = mysql_query($insert)
-						  or die("Insert into Media error in media_upload_process.php " .mysql_error());
-                          */
+          $title = $_POST['title'];
+          $username = $_SESSION["username"];
+          $type = $_POST['type'];
+          $catetory = $_POST['category'];
+          $sharetype = $_POST['share'];
+          
+          $sharedfriends = array();
+          if ($sharetype == 1) {
+            $arrBlock = split(',' , str_replace(' ', '', $_POST['block']));
+            $friends = getFriends($username);
+            foreach ($friends as $friend) {
+              if (in_array($friend, $arrBlock)) {
+                continue;
+              }
+              $sharedfriends[] = $friend;
+            }
+          }
+
+          $path = $upfile;
+          $detail = $_POST['description'];
+          $candiscuss = isset($_POST['discuss']) ? 1 : 0;
+          $canrate = isset($_POST['rate']) ? 1 : 0;
+
+          $keywords = '';
+          foreach( $_POST['keyword'] as $word) {
+            $keywords .= $Keywords[$word]. ',';
+          }
+
+		     	//insert into media table
+          addMedia($title, $username, $type, $catetory, $sharetype, $sharedfriends, $path, $detail, $candiscuss, $canrate, $keywords);
 					$result="0";
 					chmod($upfile, 0644);
 				}
@@ -50,7 +73,7 @@ if(!file_exists($dirfile))
 			{
 					$result="7"; //upload file failed
 			}
-		}
+		//}
 	}
 	
 	//You can process the error code of the $result here.
@@ -58,7 +81,7 @@ if(!file_exists($dirfile))
     }else{
         render("upload_template.php", ["errortext" => "","titile" => "Uploads"]);
     }
-    echo $Type['$_POST["type"]'];
+    $db->sql_close();
 
 ?>
 
