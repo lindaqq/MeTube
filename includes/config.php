@@ -3,7 +3,7 @@
 
     // display errors, warnings, and notices
     ini_set("display_errors", true);
-    error_reporting(E_ALL);
+    error_reporting(E_ALL ^ E_DEPRECATED);
 
     // requirements
     require_once("function.php");
