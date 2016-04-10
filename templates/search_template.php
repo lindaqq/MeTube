@@ -2,6 +2,7 @@
 <div class="panel panel-default">
     <div class="panel-body">
         <form class="form-inline" name="input" method="post" action="../public/search.php" id="filter-tables">
+<input type="hidden" name="key" value="<?php echo isset($key)?$key:"" ?>"></input>
         	<div class="row">
                 <div class="col-sm-4 col-md-4 col-lg-4">
                     <div class="panel panel-default">
@@ -46,7 +47,7 @@
                     		<h4 class="muted">File Type</h4>
                                 <div class="row">
                                 <div class="col-sm-12">
-                                    <select name = "category" class="input-md form-control">
+                                    <select name = "type" class="input-md form-control">
                                         <option value="0">all</option>
                                       <option value="1">video</option>
                                       <option value="2">audio</option>
@@ -68,12 +69,13 @@
 
 <div class="row text-center">
     <?php
-         for($i=0; $i < 30; $i++){
+        foreach($result as $media) {
+          $title = $media['title'];
                echo <<<_END
             <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
 
       			<div class="img-thumbnail"> <a href="../public/image.php?id=1"><img src="../templates/images/400X200.gif" alt="Thumbnail Image 1" class="img-responsive"></a></div>
-      			<p>image name</p>
+      			<p>$title</p>
     		</div> 
 _END;
              /////////////////// paganation??
