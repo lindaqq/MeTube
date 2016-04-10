@@ -146,15 +146,18 @@ _END;
 		<div class="col-sm-4 col-md-4 col-lg-4 col-md-offset-1 col-lg-offset-1">
 			<ul class="media-list main-list">
                 <?php
-                for($i=0; $i < 10; $i++){
+                foreach($recommend as $media) {
+                  $title = $media["title"];
+                  $username = $media["username"];
+
                     echo <<<_END
                     <li class="media">
 			    <a class="pull-left" href="#">
 			      <img class="media-object" src="http://placehold.it/150x90" alt="...">
 			    </a>
 			    <div class="media-body">
-			      <h4 class="media-heading">Lorem ipsum dolor asit amet</h4>
-			      <p class="by-author">By Jhon Doe</p>
+			      <h4 class="media-heading">$title</h4>
+			      <p class="by-author">By $username</p>
 			    </div>
                   </li>
 _END;

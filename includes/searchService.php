@@ -45,7 +45,7 @@ function recommend($mediaid, $num) {
     }
     $clause=implode(' OR ' ,$clauses);
 
-    $sql="select mediaid, title from media
+    $sql="select mediaid, title,username from media
           WHERE mediaid != '$mediaid'
           and ($clause) limit $num";
     $result = mysql_query($sql);
