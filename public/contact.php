@@ -42,10 +42,13 @@
     else if ($_SERVER["REQUEST_METHOD"] == "POST"){
         
         if(!empty($_POST["contact"])){
-            if(existUser($_POST["contact"]) === 0){
+            if ($_POST["contact"] === $_SESSION["username"]){
+                $errortext_contact = "can't add yourself";
+            }
+            else if(existUser($_POST["contact"]) === 0){
                 $errortext_contact = "user ".$_POST["contact"]. " doesn't exist";
             }
-            else{
+            else {
                 $result = addContact($_SESSION["username"], $_POST["contact"]);
                 if($result === 0){
                 $errortext_contact = "you are a foe of ".$_POST["contact"].", you can't add ".$_POST["contact"]." as a contact";
@@ -58,7 +61,10 @@
             
         }
         else if (!empty($_POST["friend"])){
-            if(existUser($_POST["friend"]) === 0){
+            if ($_POST["friend"] === $_SESSION["username"]){
+                $errortext_friend = "can't add yourself";
+            }
+            else if(existUser($_POST["friend"]) === 0){
                 $errortext_friend = "user ".$_POST["friend"]." doesn't exist";
             }
             else{
@@ -74,7 +80,10 @@
              
         }
         else if (!empty($_POST["foe"])){
-            if(existUser($_POST["foe"]) === 0){
+            if ($_POST["foe"] === $_SESSION["username"]){
+                $errortext_foe = "can't add yourself";
+            }
+            else if(existUser($_POST["foe"]) === 0){
                 $errortext_foe = "user ".$_POST["foe"]." doesn't exist";
             }
             else{

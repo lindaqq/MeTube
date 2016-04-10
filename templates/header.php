@@ -42,9 +42,9 @@
 
              <!--
             <form class="navbar-form navbar-right" role="search"> -->
-            <form class="navbar-form" role="search">
+            <form class="navbar-form" role="search" action="../public/search.php" method="post">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search this site" size="50">
+                    <input type="text" class="form-control" placeholder="Search this site" name="keywords" size="50">
                     <span class="input-group-btn">
                         <button type="submit" class="btn btn-default"> Search
                         <span class="glyphicon glyphicon-search"></span>

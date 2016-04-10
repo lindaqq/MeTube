@@ -58,7 +58,7 @@
   		    <div class="row text-center">
             <?php
                 //foreach($contacts as $contact){
-                for ($i = 0; $i < 12; $i++)
+                for ($i = 0; $i < 12; $i++){
                     echo <<<_END
                 <div class="col-sm-2 col-md-2 col-lg-2 col-xs-4">
 
