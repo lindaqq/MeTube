@@ -1,26 +1,29 @@
 
 <div class="row">
     <h1>Article Thumbnails</h1>
-    <p>Use it to your news site, feature a article.</p>
+    <!--p>Use it to your news site, feature a article.</p-->
 </div>
     <div class="row">
 		<div class="col-sm-6 col-md-6 col-lg-6">
             <div class="row">
 			<!-- artigo em destaque -->
 			<div class="featured-article">
-				<a href="#">
-					<img src="http://placehold.it/482x350" alt="" class="thumb">
-				</a>
+				<img src="http://placehold.it/482x350" alt="" class="thumb">
 				<div class="block-title">
-					<h2>Lorem ipsum dolor asit amet</h2>
-					<p class="by-author"><small>By Jhon Doe</small></p>
-				</div>
-			</div>
+					<!--h2>Lorem ipsum dolor asit amet</h2-->
+					<p class="by-author"><small>By Jhon Doe &nbsp;&nbsp;&nbsp;&nbsp; Viewed: 234 &nbsp;&nbsp;&nbsp;&nbsp; Avg Rating: 3.5</small></p>
+				</div>  
+			</div>       
             </div>
             
             <div class="row">
-                Viewed: 234 &nbsp;&nbsp;&nbsp;&nbsp; Avg Rating: 3.5
+                <h3>Description:</h3>
             </div>
+            
+            <div class="row">
+                Lorem ipsum dolor asit amet Lorem ipsum dolor asit amet Lorem ipsum dolor asit amet Lorem ipsum dolor asit amet Lorem ipsum dolor asit amet Lorem ipsum dolor asit amet Lorem ipsum dolor asit amet
+            </div>
+            
             <br>
             
             <div class="row">
