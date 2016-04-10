@@ -4,8 +4,9 @@ include_once ("mysqlClass.inc.php");
 
 //for keywords search and wordcloud search
 function search($words) {
+    $storeArray = Array();
     if(empty($words)){
-        return 0;
+        return $storeArray;
     }
 
     $parts = explode(" ",trim($words));
@@ -22,7 +23,6 @@ function search($words) {
          die("search() fails". mysql_error());
      }
 
-    $storeArray = Array();
     while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
         $storeArray[] = $row;
         continue;
