@@ -34,7 +34,7 @@
        
         <div class="collapse navbar-collapse" id="navbar1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="../public/index.php">Image</a></li>
+                <!--li class="active"--><li><a href="../public/index.php">Image</a></li>
                 <li><a href="#">Video</a></li>
                 
                 <li><a href="#">Audio</a></li>

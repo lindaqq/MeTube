@@ -2,9 +2,15 @@
 
 // configuration
 require_once("../includes/config.php");
+require("../includes/mediaService.php");
     
 $id = $_GET["id"];
-//echo $id;
+$playlists = Array();
 
-render("image_template.php", ["titile" => "MeTube"]);
+if(isset($_SESSION["username"])){
+    $playlists = showPlaylists($_SESSION["username"]);
+}
+
+
+render("image_template.php", ["id" => $id, "playlists" => $playlists, "titile" => $_GET["name"]]);
 ?>
