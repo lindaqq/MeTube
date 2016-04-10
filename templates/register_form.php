@@ -9,19 +9,18 @@
                 <input type="text" class="form-control" name="username" placeholder="Username" maxlength="10" required autofocus>
                 <input type="password" class="form-control" name="password" placeholder="Password" maxlength="10" required>
                 <input type="password" class="form-control" name="password1" placeholder="Repeat Password" maxlength="10" required>
+                <textarea  class="form-control" name="detail" rows="4" cols="50" placeholder="about me"></textarea>
+                
+                    <br><br>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">
                     Register</button>
-                <label class="checkbox pull-left">
-                    <input type="checkbox" value="remember-me">
-                    Remember me
-                </label>
-                <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
+                
                 </form>
                 <?php
                     echo $errortext;
                 ?>
             </div>
-            <a href="#" class="text-center new-account">Create an account </a>
+            
         </div>
     </div>
 </div>

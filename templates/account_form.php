@@ -65,8 +65,8 @@
             <form class="form-signin" action="../public/update_profile.php" method="post">
                 <h4>$username</h4>
                 <h4>password:</h4><input type="password" class="form-control" name="password" value=$password required>
-                <h4>repeate password:</h4><input type="password" class="form-control" name="password1" placeholder="Repeat Password if changing password" >
-                <h4>About me: </h4><textarea  class="form-control" name="detail" rows="4" cols="50" value=$detail></textarea>
+                <h4>repeate password:</h4><input type="password" class="form-control" name="password1" placeholder="Repeat Password if need to change" >
+                <h4>About me: </h4><textarea  class="form-control" name="detail" rows="4" cols="50" >$detail</textarea>
                 
                 <br><br>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">

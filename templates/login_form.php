@@ -10,17 +10,13 @@
                 <input type="password" class="form-control" name="password" placeholder="Password" maxlength="10" required>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">
                     Sign in</button>
-                <label class="checkbox pull-left">
-                    <input type="checkbox" value="remember-me">
-                    Remember me
-                </label>
-                <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
+                
                 </form>
                 <?php
                     echo $errortext;
                 ?>
             </div>
-            <a href="#" class="text-center new-account">Create an account </a>
+            
         </div>
     </div>
 </div>

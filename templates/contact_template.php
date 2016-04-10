@@ -53,20 +53,39 @@
                     <p class="lead"> Contacts:  </p>   
                 </div>
                 
-                <div class="col-sm-6 col-md-6 col-lg-6 ">
-                       <input type="text" class="input-sm form-control" name="newcontact" placeholder="add new contact"/>
-                </div>
-                <div class="col-sm-2 col-md-2 col-lg-2">
-                    <a href="#" class="btn btn-primary btn-primary">Add</a>
-                </div>
-                 
+                 <form action="../public/contact.php" method="post">
+                    
+                    <div class="col-sm-4 col-md-4 col-lg-4 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 ">
+                       <input type="text" class="input-sm form-control" name="contact" placeholder="add username of the new contact"/>
+                    </div>
+                    <div class="col-sm-2 col-md-2 col-lg-2">
+                        <!--a href="#" class="btn btn-primary btn-primary">Add</a-->
+                        <button class="btn btn-primary btn-primary" type="submit">
+                        Add</button>
+                    </div>
+                </form>
             
             </div>
       
           
   		    <div class="row text-center">
+            <?php
+                foreach($contacts as $contact){
+                    echo <<<_END
+                <div class="col-sm-2 col-md-2 col-lg-2 col-xs-4">
+
+      			   <div class="img-thumbnail"> <img src="../templates/images/account.png" alt="Thumbnail Image 1" class="img-responsive" width="100" height="100"></div>
+      			<p>$contact</p>
+                <p>[drop]</p>
+    		</div>
+_END;
+                }  
+                
+            ?>
         
-            <?php    
+                
+            <?php  
+                /*
             for($i = 0; $i < 10; $i++){
                 echo <<<_END
                 <div class="col-sm-2 col-md-2 col-lg-2 col-xs-4">
@@ -77,10 +96,33 @@
     		</div>
 _END;
             }
+            */
             ?>
         </div>
             
-            <p class="lead"> Friends: </p>
+            <br><br>
+            <div class="row">
+                <div class="col-sm-2 col-md-2 col-lg-2">
+                    <p class="lead"> Friends:  </p>   
+                </div>
+                
+                 <form action="../public/contact.php" method="post">
+                    
+                    <div class="col-sm-4 col-md-4 col-lg-4 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 ">
+                       <input type="text" class="input-sm form-control" name="friend" placeholder="add username of new friend"/>
+                    </div>
+                    <div class="col-sm-2 col-md-2 col-lg-2">
+                        <!--a href="#" class="btn btn-primary btn-primary">Add</a-->
+                        <button class="btn btn-primary btn-primary" type="submit">
+                        Add</button>
+                    </div>
+                </form>
+            
+            </div>
+      
+            
+            
+            <!--p class="lead"> Friends: </p-->
   		    <div class="row text-center">
         
             <?php    
@@ -97,7 +139,25 @@ _END;
             ?>
         </div>
             
-            <p class="lead"> foes: </p>
+            <br><br>
+            <div class="row">
+                <div class="col-sm-2 col-md-2 col-lg-2">
+                    <p class="lead"> Foes:  </p>   
+                </div>
+                
+                 <form action="../public/contact.php" method="post">
+                    
+                    <div class="col-sm-4 col-md-4 col-lg-4 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 ">
+                       <input type="text" class="input-sm form-control" name="foe" placeholder="add username of new foe"/>
+                    </div>
+                    <div class="col-sm-2 col-md-2 col-lg-2">
+                        <!--a href="#" class="btn btn-primary btn-primary">Add</a-->
+                        <button class="btn btn-primary btn-primary" type="submit">
+                        Add</button>
+                    </div>
+                </form>
+            
+            </div>
   		    <div class="row text-center">
         
             <?php    

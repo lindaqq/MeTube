@@ -33,7 +33,13 @@
         }
         // insert new username/password
         else{
-            query("insert into account (username, password) values (?, ?)", $_POST["username"], $_POST["password"]);
+            if(empty($_POST["detail"])){
+                query("insert into account (username, password) values (?, ?)", $_POST["username"], $_POST["password"]);
+            }
+            else{
+                query("insert into account (username, password,detail) values (?, ?,?)", $_POST["username"], $_POST["password"], $_POST["detail"]);
+            }
+            
             
             
             //////////// how to detect insert failure????????????????????????????????

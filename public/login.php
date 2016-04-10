@@ -32,7 +32,7 @@
             // compare hash of user's input against hash that's in database
             if ($_POST["password"] === $row["password"])
             {
-                // remember that user's now logged in by storing user's ID in session
+                // remember that user's now logged in by storing user's username in session
                 $_SESSION["username"] = $row["username"];
 
                 // redirect to homepage
