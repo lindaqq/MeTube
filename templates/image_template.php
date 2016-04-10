@@ -19,9 +19,30 @@
             </div>
             
             <div class="row">
-            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> Subscribe</a>
-            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> Add to favorites</a>
-            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> Add to Playlists</a>
+            <a href="../public/image.php?subscribe=..." class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> Subscribe</a>
+            <a href="../public/image.php?favorite=..." class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> Add to favorites</a>
+            </div>
+            
+            <div class="row">
+                <div class="row">
+                    
+                    <?php
+                        
+                    for($i=0; $i < 12; $i++){
+                        echo <<<_END
+                        <div class="col-sm-3 col-md-3 col-lg-3">
+                        <label class="checkbox">
+                      <input type="checkbox" name="keyword[]" value="$i">
+                        keyword $i
+                        </label>
+                        </div>
+_END;
+        }   
+                    ?> 
+                    
+                    <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> Add to Playlists</a>
+                </div>
+            
             </div>
             
             <br><br>

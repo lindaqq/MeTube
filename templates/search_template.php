@@ -1,7 +1,7 @@
 
 <div class="panel panel-default">
     <div class="panel-body">
-        <form class="form-inline" name="input" method="get" action="#" id="filter-tables">
+        <form class="form-inline" name="input" method="post" action="../public/search.php" id="filter-tables">
         	<div class="row">
                 <div class="col-sm-4 col-md-4 col-lg-4">
                     <div class="panel panel-default">
