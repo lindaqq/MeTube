@@ -24,9 +24,9 @@
         $friends = getFriends($_SESSION["username"]);
         $foes = getFoes($_SESSION["username"]);
         
-        //$db.sql_close();
         render("contact_template.php", ["contacts" => $contacts, "friends" => $friends, "foes" => $foes,  "errortext" => "","titile" => "Contact"]);
     }
+    $db->sql_close();
 
 
 ?>
