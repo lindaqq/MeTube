@@ -68,12 +68,13 @@
 
 <div class="row text-center">
     <?php
-         for($i=0; $i < 30; $i++){
+        foreach($result as $media) {
+          echo 'asd';
                echo <<<_END
             <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
 
       			<div class="img-thumbnail"> <a href="../public/image.php?id=1"><img src="../templates/images/400X200.gif" alt="Thumbnail Image 1" class="img-responsive"></a></div>
-      			<p>image name</p>
+      			<p>$media['title']</p>
     		</div> 
 _END;
              /////////////////// paganation??
