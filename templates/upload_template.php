@@ -95,23 +95,10 @@
                     <div class="row text-center">
                     
                      <?php
-                        /*
-                    for($i = 0; $i < 12; $i++){
+                        
+                    for($i=0; $i < 12; $i++){
                         echo <<<_END
                         <div class="col-sm-3 col-md-3 col-lg-3">
-                        <label class="checkbox">
-                      <input type="checkbox" name="keyword[]" value="keyword $i">
-                        keyword $i
-                        </label>
-                        </div>
-_END;  
-                        
-                    }
-                    */
-                        
-         for($i=0; $i < 12; $i++){
-               echo <<<_END
-            <div class="col-sm-3 col-md-3 col-lg-3">
                         <label class="checkbox">
                       <input type="checkbox" name="keyword[]" value="$i">
                         keyword $i
