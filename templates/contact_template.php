@@ -66,6 +66,12 @@
                 </form>
             
             </div>
+            
+            <?php
+                echo <<<_END
+                <h6> $errortext_contact </h6>
+_END;
+            ?>
       
           
   		    <div class="row text-center">
@@ -107,9 +113,13 @@ _END;
             
             </div>
       
+            <?php
+                echo <<<_END
+                <h6> $errortext_friend </h6>
+_END;
+            ?>
             
             
-            <!--p class="lead"> Friends: </p-->
   		    <div class="row text-center">
         
            <?php
@@ -146,6 +156,13 @@ _END;
                 </form>
             
             </div>
+            
+            <?php
+                echo <<<_END
+                <h6> $errortext_foe </h6>
+_END;
+            ?>
+            
   		    <div class="row text-center">
         
            <?php

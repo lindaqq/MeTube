@@ -61,7 +61,7 @@
                     <div class="row text-center">
                         <div class="col-sm-4 col-md-4 col-lg-4">
                         <label class="radio">
-                      <input type="radio" name="type" value="video">
+                      <input type="radio" name="type" value="video" checked>
                         video
                         </label>
                         </div>
