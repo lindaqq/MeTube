@@ -157,6 +157,20 @@ function rmChannel($subscriber_id, $channel_id) {
 //unit test
 //echo rmChannel('fangyu1', 'xiaoqi1');
 
+// get all subscriptions of $user_id
+function getChannels($user_id) {
+    $query = "select * from subscription where subscriber_id= '$user_id'";
+	$result = mysql_query( $query );
+	if (!$result){
+		die ("getChannels() failed. Could not query the database: <br />". mysql_error());
+	}
+    $storeArray = Array();
+    while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+        $storeArray[] =  $row['channel_id'];
+    }
+    return $storeArray;
+}
+
 //////////////////addition--friendship parts
 function getContacts ($userid1){
 	$query = "select userid2 from contact where userid1='$userid1' and type = 3";

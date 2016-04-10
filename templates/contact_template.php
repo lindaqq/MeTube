@@ -16,12 +16,12 @@
     </div>
     <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
          <div class="btn-group" role="group">
-            <button type="button" id="stars" class="btn btn-primary" onclick="document.location.href = '../public/account.php'"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            <button type="button" id="stars" class="btn btn-default" onclick="document.location.href = '../public/account.php'"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                 <div class="hidden-xs">Profile</div>
             </button>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" id="favorites" class="btn btn-default" onclick="document.location.href = '../public/contact.php'"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+            <button type="button" id="favorites" class="btn btn-primary" onclick="document.location.href = '../public/contact.php'"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
                 <div class="hidden-xs">Contact</div>
             </button>
         </div>
@@ -82,7 +82,7 @@ _END;
 
       			   <div class="img-thumbnail"> <img src="../templates/images/account.png" alt="Thumbnail Image 1" class="img-responsive" width="100" height="100"></div>
       			<p>$contact</p>
-                <p>[drop]</p>
+                <a href="../public/contact.php?contact=$contact"><p>[drop]</p></a>
     		</div>
 _END;
                 }  
@@ -129,7 +129,7 @@ _END;
 
       			   <div class="img-thumbnail"> <img src="../templates/images/account.png" alt="Thumbnail Image 1" class="img-responsive" width="100" height="100"></div>
       			<p>$friend</p>
-                <p>[drop]</p>
+                <a href="../public/contact.php?friend=$friend"><p>[drop]</p></a>
     		</div>
 _END;
                 }  
@@ -172,7 +172,7 @@ _END;
 
       			   <div class="img-thumbnail"> <img src="../templates/images/account.png" alt="Thumbnail Image 1" class="img-responsive" width="100" height="100"></div>
       			<p>$foe</p>
-                <p>[drop]</p>
+                <a href="../public/contact.php?foe=$foe"><p>[drop]</p></a>
     		</div>
 _END;
                 }  
