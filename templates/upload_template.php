@@ -61,21 +61,21 @@
                     <div class="row text-center">
                         <div class="col-sm-4 col-md-4 col-lg-4">
                         <label class="radio">
-                      <input type="radio" name="type" value="video">
+                      <input type="radio" name="type" value="1" checked>
                         video
                         </label>
                         </div>
                         
                         <div class="col-sm-4 col-md-4 col-lg-4">
                         <label class="radio">
-                      <input type="radio" name="type" value="audio">
+                      <input type="radio" name="type" value="2">
                         audio
                         </label>
                         </div>
                         
                         <div class="col-sm-4 col-md-4 col-lg-4">
                         <label class="radio">
-                      <input type="radio" name="type" value="image">
+                      <input type="radio" name="type" value="3">
                         image
                         </label>
                         </div>
@@ -84,11 +84,9 @@
                     
                     <h4>Category:</h4>
                     <select name = "category" class="input-sm form-control">
-                                      <option>Category 1</option>
-                                      <option>Category 2</option>
-                                      <option>Category 3</option>
-                                      <option>Category 4</option>
-                                      <option>Category 5</option>
+                                      <option value="1">Sports</option>
+                                      <option value="2">Entertainment</option>
+                                      
                     </select>
                     
                        
@@ -114,7 +112,7 @@ _END;
                echo <<<_END
             <div class="col-sm-3 col-md-3 col-lg-3">
                         <label class="checkbox">
-                      <input type="checkbox" name="keyword[]" value="keyword $i">
+                      <input type="checkbox" name="keyword[]" value="$i">
                         keyword $i
                         </label>
                         </div>
@@ -130,11 +128,11 @@ _END;
                     <div class="row text-center">
                         <div class="col-sm-6 col-md-6 col-lg-6">
                             <label class="radio">
-                         <input type="radio" name="share" value="everyone" checked>share to everyone </label>
+                         <input type="radio" name="share" value="0" checked>share to everyone </label>
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6">
                             <label class="radio">
-                         <input type="radio" name="share" value="friends" >share to friends only </label>
+                         <input type="radio" name="share" value="1" >share to friends only </label>
                         </div>
                     
                     </div>
@@ -148,11 +146,11 @@ _END;
                     <div class="row text-center">
                         <div class="col-sm-6 col-md-6 col-lg-6">
                             <label class="checkbox">
-                         <input type="checkbox" name="discuss" value="yes" checked>can be discussed</label>
+                         <input type="checkbox" name="discuss" value="1" checked>can be discussed</label>
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6">
                             <label class="checkbox">
-                         <input type="checkbox" name="rate" value="yes" checked>can be rated </label>
+                         <input type="checkbox" name="rate" value="1" checked>can be rated </label>
                         </div>
                     
                     </div>
