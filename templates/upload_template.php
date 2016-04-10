@@ -86,6 +86,7 @@
                     <select name = "category" class="input-sm form-control">
                                       <option value="1">Sports</option>
                                       <option value="2">Entertainment</option>
+                                        <option value="3">Others</option>
                                       
                     </select>
                     
