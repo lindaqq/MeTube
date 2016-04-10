@@ -56,7 +56,7 @@
                  <form action="../public/contact.php" method="post">
                     
                     <div class="col-sm-4 col-md-4 col-lg-4 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 ">
-                       <input type="text" class="input-sm form-control" name="contact" placeholder="add username of the new contact"/>
+                       <input type="text" class="input-md form-control" name="contact" placeholder="add username of new contact"/>
                     </div>
                     <div class="col-sm-2 col-md-2 col-lg-2">
                         <!--a href="#" class="btn btn-primary btn-primary">Add</a-->
@@ -84,20 +84,7 @@ _END;
             ?>
         
                 
-            <?php  
-                /*
-            for($i = 0; $i < 10; $i++){
-                echo <<<_END
-                <div class="col-sm-2 col-md-2 col-lg-2 col-xs-4">
 
-      			   <div class="img-thumbnail"> <img src="../templates/images/account.png" alt="Thumbnail Image 1" class="img-responsive" width="100" height="100"></div>
-      			<p>contact name</p>
-                <p>[drop]</p>
-    		</div>
-_END;
-            }
-            */
-            ?>
         </div>
             
             <br><br>
@@ -109,7 +96,7 @@ _END;
                  <form action="../public/contact.php" method="post">
                     
                     <div class="col-sm-4 col-md-4 col-lg-4 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 ">
-                       <input type="text" class="input-sm form-control" name="friend" placeholder="add username of new friend"/>
+                       <input type="text" class="input-md form-control" name="friend" placeholder="add username of new friend"/>
                     </div>
                     <div class="col-sm-2 col-md-2 col-lg-2">
                         <!--a href="#" class="btn btn-primary btn-primary">Add</a-->
@@ -125,17 +112,18 @@ _END;
             <!--p class="lead"> Friends: </p-->
   		    <div class="row text-center">
         
-            <?php    
-            for($i = 0; $i < 10; $i++){
-                echo <<<_END
+           <?php
+                foreach($friends as $friend){
+                    echo <<<_END
                 <div class="col-sm-2 col-md-2 col-lg-2 col-xs-4">
 
       			   <div class="img-thumbnail"> <img src="../templates/images/account.png" alt="Thumbnail Image 1" class="img-responsive" width="100" height="100"></div>
-      			<p>contact name</p>
+      			<p>$friend</p>
                 <p>[drop]</p>
     		</div>
 _END;
-            }
+                }  
+                
             ?>
         </div>
             
@@ -148,7 +136,7 @@ _END;
                  <form action="../public/contact.php" method="post">
                     
                     <div class="col-sm-4 col-md-4 col-lg-4 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 ">
-                       <input type="text" class="input-sm form-control" name="foe" placeholder="add username of new foe"/>
+                       <input type="text" class="input-md form-control" name="foe" placeholder="add username of new foe"/>
                     </div>
                     <div class="col-sm-2 col-md-2 col-lg-2">
                         <!--a href="#" class="btn btn-primary btn-primary">Add</a-->
@@ -160,17 +148,18 @@ _END;
             </div>
   		    <div class="row text-center">
         
-            <?php    
-            for($i = 0; $i < 10; $i++){
-                echo <<<_END
+           <?php
+                foreach($foes as $foe){
+                    echo <<<_END
                 <div class="col-sm-2 col-md-2 col-lg-2 col-xs-4">
 
       			   <div class="img-thumbnail"> <img src="../templates/images/account.png" alt="Thumbnail Image 1" class="img-responsive" width="100" height="100"></div>
-      			<p>contact name</p>
+      			<p>$foe</p>
                 <p>[drop]</p>
     		</div>
 _END;
-            }
+                }  
+                
             ?>
         </div>
 
