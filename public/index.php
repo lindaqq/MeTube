@@ -6,11 +6,11 @@ require_once("../includes/mediaService.php");
 $db = new mysql_db(SERVER, USERNAME, PASSWORD,DATABASE);
     
 // get image paths from database   
-$popular = browseByViewcountAndType(3, 9);
-$recent = browseByUploadrecentAndType(3, 9);
+$populars = browseByViewcountAndType(3, 9);
+$recents = browseByUploadrecentAndType(3, 9);
 
 // render home page for image, can be changed to video later
-render("image_homepage.php", ["images" => $popular]);
+render("image_homepage.php", ["populars" => $populars, "recents" => $recents]);
 $db->sql_close();
 ?>
 
