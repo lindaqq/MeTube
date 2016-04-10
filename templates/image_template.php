@@ -19,32 +19,102 @@
             </div>
             
             <div class="row">
-            <a href="../public/image.php?subscribe=..." class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> Subscribe</a>
-            <a href="../public/image.php?favorite=..." class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> Add to favorites</a>
+                Viewed: 234 &nbsp;&nbsp;&nbsp;&nbsp; Avg Rating: 3.5
             </div>
+            <br>
             
             <div class="row">
-                <div class="row">
-                    
-                    <?php
+                <div class="col-sm-2 col-md-2 col-lg-2">
+                    Rate:
+                </div>
+                
+                <form class="form-inline" role="form" action="../public/image.php" method="rate">
+                   <div class="col-sm-2 col-md-2 col-lg-2">
+                        <label class="radio">
+                      <input type="radio" name="rate" value="1">
+                        1
+                        </label>
+                        </div>
                         
-                    for($i=0; $i < 12; $i++){
+                        <div class="col-sm-2 col-md-2 col-lg-2">
+                        <label class="radio">
+                      <input type="radio" name="rate" value="2">
+                        2
+                        </label>
+                        </div>
+                        
+                        <div class="col-sm-2 col-md-2 col-lg-2">
+                        <label class="radio">
+                      <input type="radio" name="rate" value="3">
+                        3
+                        </label>
+                        </div>
+                        
+                        <div class="col-sm-3 col-md-3 col-lg-3">
+                            <button class="btn btn-primary btn-small" type="submit">Rate</button>
+                        </div>
+                
+                </form>
+                    
+                
+            </div>
+            <br>
+            
+            <div class="row">
+            <a href="../public/image.php?subscribe=..." class="btn btn-primary"><span class="glyphicon glyphicon-thumbs-up"></span> Subscribe</a>
+            <a href="../public/image.php?favorite=..." class="btn btn-danger"><span class="glyphicon glyphicon-thumbs-up"></span> Add to favorites</a>
+            <a href="../public/image.php?favorite=..." class="btn btn-warning"><span class="glyphicon glyphicon-thumbs-up"></span> Download</a>
+            </div>
+            
+            <br>
+            <div class="row">
+                    <form role="form" action="../public/image.php" method="post">
+                        <div class="row">
+                            <div class="col-sm-4 col-md-4 col-lg-4">
+                            <button class="btn btn-info" type="submit">Add to Playlists:</button>
+                            </div>
+                        </div>
+                            
+                        <div class="row">
+                            
+                            <?php
+                        
+                    for($i=0; $i < 4; $i++){
                         echo <<<_END
                         <div class="col-sm-3 col-md-3 col-lg-3">
                         <label class="checkbox">
-                      <input type="checkbox" name="keyword[]" value="$i">
-                        keyword $i
+                      <input type="checkbox" name="playlist[]" value="$i">
+                        playlist $i
                         </label>
                         </div>
 _END;
         }   
                     ?> 
-                    
-                    <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> Add to Playlists</a>
-                </div>
-            
+                        </div>
+                            
+                    </form>
             </div>
             
+            <br><br>
+            <p>Add new comment:</p>
+            
+                <form role="form" action="../pulbic/image.php" method="post">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12 ">   
+                            <textarea  class="form-control" name="comment" rows="4" cols="50" placeholder="add new comment" ></textarea>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-4 col-md-4 col-lg-4">
+                        <button class="btn btn-info" type="submit">Add</button>
+                        </div>
+                    </div>
+                
+                    
+                </form>
+            
+           
             <br><br>
             <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
