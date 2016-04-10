@@ -2,6 +2,8 @@
 
     // configuration
     require("../includes/config.php"); 
+    require("../includes/sharingService.php"); 
+    require("enum.php");
     
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         //Create Directory if doesn't exist
@@ -33,8 +35,9 @@ if(!file_exists($dirfile))
 				else /*Successfully upload file*/
 				{
 					//insert into media table
-					$insert = "insert into media(mediaid, filename,username,type, path)".
-							  "values(NULL,'". urlencode($_FILES["file"]["name"])."','$_SESSION["username"]','".$_FILES["file"]["type"]."', '$upfile')";
+          //addMedia($title, '$_SESSION["username"]', $Type['$_POST["type"]'], $catetory, $sharetype, $sharedfriends, '$upfile', $detail, $candiscuss, $canrate, $keywords)
+					//$insert = "insert into media(mediaid, filename,username,type, path)".
+					//		  "values(NULL,'". urlencode($_FILES["file"]["name"])."','$_SESSION["username"]','".$_FILES["file"]["type"]."', '$upfile')";
 					$queryresult = mysql_query($insert)
 						  or die("Insert into Media error in media_upload_process.php " .mysql_error());
 					$result="0";
@@ -53,6 +56,7 @@ if(!file_exists($dirfile))
     }else{
         render("upload_template.php", ["errortext" => "","titile" => "Uploads"]);
     }
+    echo $Type['$_POST["type"]'];
 
 ?>
 
