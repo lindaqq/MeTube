@@ -198,10 +198,11 @@ _END;
                 foreach($recommend as $media) {
                   $title = $media["title"];
                   $username = $media["username"];
+                  $id = $media["mediaid"];
 
                     echo <<<_END
                     <li class="media">
-			    <a class="pull-left" href="#">
+			    <a class="pull-left" href="image.php?id=$id">
 			      <img class="media-object" src="http://placehold.it/150x90" alt="...">
 			    </a>
 			    <div class="media-body">
