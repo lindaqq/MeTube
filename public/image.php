@@ -60,7 +60,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 
 
-render("image_template.php", ["media" => $media,"comments" => $comments,"mediaid" => $mediaid, "recommend" => $recommend,"playlists" => $playlists, "titile" => $_GET["name"]]);
+//render("image_template.php", ["media" => $media,"comments" => $comments,"mediaid" => $mediaid, "recommend" => $recommend,"playlists" => $playlists, "titile" => $_GET["name"]]);
+render("image_template.php", ["media" => $media,"comments" => $comments,"mediaid" => $mediaid, "recommend" => $recommend,"playlists" => $playlists]);
 
 $db->sql_close();
 ?>
