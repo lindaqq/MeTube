@@ -33,7 +33,7 @@ _END;
                     Rate:
                 </div>
                 
-                <form class="form-inline" role="form" action="../public/image.php" method="get">
+                <form class="form-inline" role="form" action="../public/image.php?id=$mediaid" method="post">
                    <div class="col-sm-2 col-md-2 col-lg-2">
                         <label class="radio">
                       <input type="radio" name="rate" value="1" checked>
@@ -77,7 +77,6 @@ _END;
                 
                 ?>
             
-            <!--a href="../public/image.php?id=$mediaid&download=$mediaid?" class="btn btn-warning"><span class="glyphicon glyphicon-thumbs-up"></span> Download</a-->
                 <a href="<?php echo $media["path"]?>" download class="btn btn-warning"><span class="glyphicon glyphicon-thumbs-up"></span> Download</a>
             </div>
             
@@ -99,7 +98,7 @@ _END;
             else{
                 echo <<<_END
                 <div class="row"> 
-                    <form role="form" action="../public/image.php" method="post">
+                    <form role="form" action="../public/image.php?id=$mediaid" method="post">
                         <div class="row">
                             <div class="col-sm-4 col-md-4 col-lg-4">
                             <button class="btn btn-info" type="submit">Add to Playlists:</button>
@@ -138,7 +137,7 @@ _END;
             <div class="row">
             <h3>Add new comment:</h3>
             
-                <form role="form" action="../public/image.php" method="post">
+                <form role="form" action="../public/image.php?id=$mediaid" method="post">
                     <div class="row">
                         <div class="col-sm-12 col-md-12 col-lg-12 ">   
                             <textarea  class="form-control" name="comment" rows="4" cols="50" placeholder="add new comment" ></textarea>
