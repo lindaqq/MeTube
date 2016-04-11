@@ -16,7 +16,7 @@ function search($words) {
     }
     $clause=implode(' OR ' ,$clauses);
 
-    $sql="select mediaid, title, type, category, posttime from media WHERE ($clause) ";
+    $sql="select mediaid, title, type, category, posttime from media WHERE ($clause)  and sharetype = 0";
     $result = mysql_query($sql);
      if(!$result){
         //redirect("errors/error_db.html");
@@ -47,7 +47,7 @@ function recommend($mediaid, $num) {
 
     $sql="select mediaid, title,username from media
           WHERE mediaid != '$mediaid'
-          and ($clause) limit $num";
+          and ($clause)  and sharetype = 0 limit $num";
     $result = mysql_query($sql);
      if(!$result){
         //redirect("errors/error_db.html");
@@ -102,7 +102,7 @@ function filterSearch($words, $type, $category, $starttime) {
         ($clause) and
         $typeClause and
         $cateClause and
-        $timeClause ";
+        $timeClause  and sharetype = 0";
     $result = mysql_query($sql);
      if(!$result){
         //redirect("errors/error_db.html");
