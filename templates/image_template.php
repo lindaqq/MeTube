@@ -1,7 +1,11 @@
-
+<?php
+$title = $media["title"];
+$username = $media["username"];
+$viewcount = $media["viewcount"];
+$avgrate = $media["avgrate"];
+echo <<<_END
 <div class="row">
-    <h1>Article Thumbnails</h1>
-    <p>Use it to your news site, feature a article.</p>
+    <h1>$title</h1>
 </div>
     <div class="row">
 		<div class="col-sm-6 col-md-6 col-lg-6">
@@ -12,23 +16,24 @@
 					<img src="http://placehold.it/482x350" alt="" class="thumb">
 				</a>
 				<div class="block-title">
-					<h2>Lorem ipsum dolor asit amet</h2>
-					<p class="by-author"><small>By Jhon Doe</small></p>
+					<p class="by-author"><small>By $username &nbsp;&nbsp;&nbsp;&nbsp;Viewed: $viewcount &nbsp;&nbsp;&nbsp;&nbsp;Avg Rating: $avgrate</small></p>
 				</div>
 			</div>
-            </div>
+        </div>
             
-            <div class="row">
-                Viewed: 234 &nbsp;&nbsp;&nbsp;&nbsp; Avg Rating: 3.5
-            </div>
             <br>
-            
+_END;
+?>
+
+<?php
+        if ($media["canrate"] == 1){
+            echo <<<_END
             <div class="row">
                 <div class="col-sm-2 col-md-2 col-lg-2">
                     Rate:
                 </div>
                 
-                <form class="form-inline" role="form" action="../public/image.php" method="rate">
+                <form class="form-inline" role="form" action="../public/image.php" method="get">
                    <div class="col-sm-2 col-md-2 col-lg-2">
                         <label class="radio">
                       <input type="radio" name="rate" value="1">
@@ -52,21 +57,36 @@
                         
                         <div class="col-sm-3 col-md-3 col-lg-3">
                             <button class="btn btn-primary btn-small" type="submit">Rate</button>
-                        </div>
-                
-                </form>
-                    
-                
+                        </div>                
+                </form> 
             </div>
             <br>
+_END;
+        }
+?>
+            
             
             <div class="row">
-            <a href="../public/image.php?id=<?php echo $mediaid?>&subscribe=<?php echo $mediaid?>" class="btn btn-primary"><span class="glyphicon glyphicon-thumbs-up"></span> Subscribe</a>
-            <a href="../public/image.php?id=<?php echo $mediaid?>&favorite=<?php echo $mediaid?>" class="btn btn-danger"><span class="glyphicon glyphicon-thumbs-up"></span> Add to favorites</a>
-            <a href="../public/image.php?id=<?php echo $mediaid?>&download=<?php echo $mediaid?>" class="btn btn-warning"><span class="glyphicon glyphicon-thumbs-up"></span> Download</a>
+                <?php
+                    if(isset($_SESSION["username"])){
+                        echo <<<_END
+                        <a href="../public/image.php?id=$mediaid&subscribe=$mediaid" class="btn btn-primary"><span class="glyphicon glyphicon-thumbs-up"></span> Subscribe</a>
+                        
+                        <a href="../public/image.php?id=$mediaid&favorite=$mediaid" class="btn btn-danger"><span class="glyphicon glyphicon-thumbs-up"></span> Add to favorites</a>
+_END;
+                    }
+                
+                ?>
+            
+            <!--a href="../public/image.php?id=$mediaid&download=$mediaid?" class="btn btn-warning"><span class="glyphicon glyphicon-thumbs-up"></span> Download</a-->
+                <a href="<?php echo $media["path"]?> download" class="btn btn-warning"><span class="glyphicon glyphicon-thumbs-up"></span> Download</a>
             </div>
             
             <br>
+
+    <?php
+        if(isset($_SESSION["username"])){
+            echo <<<_END
             <div class="row">
                     <form role="form" action="../public/image.php" method="post">
                         <div class="row">
@@ -74,28 +94,49 @@
                             <button class="btn btn-info" type="submit">Add to Playlists:</button>
                             </div>
                         </div>
-                            
-                        <div class="row">
-                            
-                            <?php
-                        
-                    for($i=0; $i < 4; $i++){
-                        echo <<<_END
+_END;
+            $count = count($playlists);
+            if($count === 0){
+                echo <<<_END
+                <div class="row">
+                    <p> you don't have any playlist. Add one in your account </p>
+                </div>
+_END;
+            }
+            else{
+                echo <<<_END
+                <div class="row"> 
+_END;
+                    foreach($playlists as $playlist){
+                        $playlistid = $playlist["playlistid"];
+                        $playlistname = $playlist["playlistname"];
+                echo <<<_END
                         <div class="col-sm-3 col-md-3 col-lg-3">
                         <label class="checkbox">
-                      <input type="checkbox" name="playlist[]" value="$i">
-                        playlist $i
+                      <input type="checkbox" name="playlist[]" value=$playlistid>
+                        $playlistname
                         </label>
                         </div>
 _END;
+
         }   
-                    ?> 
+                echo <<<_END
                         </div>
-                            
-                    </form>
+                        </form>
             </div>
-            
             <br><br>
+_END;
+            }
+            
+                        
+        }
+    ?>
+            
+            
+            
+    <?php
+        if($media["candiscuss"] == 1){
+            echo <<<_END
             <p>Add new comment:</p>
             
                 <form role="form" action="../pulbic/image.php" method="post">
@@ -113,10 +154,17 @@ _END;
                 
                     
                 </form>
+                <br><br>
+_END;
             
-           
-            <br><br>
-            <div class="row">
+            foreach($comments as $comment){
+                $username = $comment["username"];
+                $content = $comment["content"];
+                $posttime = $comment["posttime"];
+                $posttime = split(' ', $posttime)[0];
+                
+                echo <<<_END
+                 <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
                 <div class="thumbnail">
                     <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
@@ -126,18 +174,24 @@ _END;
                 <div class="col-sm-10 col-md-10 col-lg-10">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <strong>myusername</strong> <span class="text-muted">commented 5 days ago</span>
+                            <strong>$username</strong> <span class="text-muted">$posttime</span>
                         </div>
                         <div class="panel-body">
-                            Panel content ..............................................................
-                            .................................................................
+                            $content
                         </div><!-- /panel-body -->
                     </div><!-- /panel panel-default -->
                 </div><!-- /col-sm-5 -->
-            
-            
-            
             </div>
+_END;
+            }
+        }
+
+    ?>
+        
+            
+           
+            
+           
 			<!-- /.featured-article -->
 		</div>
 		<div class="col-sm-4 col-md-4 col-lg-4 col-md-offset-1 col-lg-offset-1">
@@ -164,3 +218,5 @@ _END;
                 ?>
 			</ul>
 		</div>
+</div>
+
