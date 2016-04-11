@@ -11,7 +11,7 @@ echo <<<_END
 		<div class="col-sm-6 col-md-6 col-lg-6">
             <div class="row">
 			<!-- artigo em destaque -->
-			 <div class="featured-article">
+			<div class="featured-article">
 				<a href="#">
 					<img src="http://placehold.it/482x350" alt="" class="thumb">
 				</a>
@@ -64,8 +64,9 @@ _END;
 _END;
         }
 ?>
-
-<div class="row">
+            
+            
+            <div class="row">
                 <?php
                     if(isset($_SESSION["username"])){
                         echo <<<_END
@@ -78,34 +79,33 @@ _END;
                 ?>
             
             <!--a href="../public/image.php?id=$mediaid&download=$mediaid?" class="btn btn-warning"><span class="glyphicon glyphicon-thumbs-up"></span> Download</a-->
-                <a href="<?php echo $media["path"]?>" download class="btn btn-warning"><span class="glyphicon glyphicon-thumbs-up"></span> Download</a>
+                <a href="<?php echo $media["path"]?> download" class="btn btn-warning"><span class="glyphicon glyphicon-thumbs-up"></span> Download</a>
             </div>
             
             <br>
 
- <?php
+    <?php
         if(isset($_SESSION["username"])){
-
-            $count = count($playlists);
-            if($count === 0){
-                 echo <<<_END
+            echo <<<_END
             <div class="row">
-                    <button class="btn btn-info">Add to Playlists:</button><p> you don't have any playlist. Add one in your account </p>
-                
-            </div>
-          
-_END;
-            }
-            else{
-                echo <<<_END
-                <div class="row"> 
                     <form role="form" action="../public/image.php" method="post">
                         <div class="row">
                             <div class="col-sm-4 col-md-4 col-lg-4">
                             <button class="btn btn-info" type="submit">Add to Playlists:</button>
                             </div>
                         </div>
-                        <div class="row>
+_END;
+            $count = count($playlists);
+            if($count === 0){
+                echo <<<_END
+                <div class="row">
+                    <p> you don't have any playlist. Add one in your account </p>
+                </div>
+_END;
+            }
+            else{
+                echo <<<_END
+                <div class="row"> 
 _END;
                     foreach($playlists as $playlist){
                         $playlistid = $playlist["playlistid"];
@@ -122,21 +122,24 @@ _END;
         }   
                 echo <<<_END
                         </div>
-                    </form>
+                        </form>
             </div>
             <br><br>
 _END;
             }
+            
+                        
         }
     ?>
-
-
-<?php
+            
+            
+            
+    <?php
         if($media["candiscuss"] == 1){
             if (isset($_SESSION["username"])){
             echo <<<_END
             <div class="row">
-            <h3>Add new comment:</h3>
+            <p>Add new comment:</p>
             
                 <form role="form" action="../pulbic/image.php" method="post">
                     <div class="row">
@@ -189,8 +192,10 @@ _END;
 
     ?>
         
-
-
+            
+           
+            
+           
 			<!-- /.featured-article -->
 		</div>
 		<div class="col-sm-4 col-md-4 col-lg-4 col-md-offset-1 col-lg-offset-1">
