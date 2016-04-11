@@ -36,7 +36,7 @@ _END;
                 <form class="form-inline" role="form" action="../public/image.php" method="get">
                    <div class="col-sm-2 col-md-2 col-lg-2">
                         <label class="radio">
-                      <input type="radio" name="rate" value="1">
+                      <input type="radio" name="rate" value="1" checked>
                         1
                         </label>
                         </div>
