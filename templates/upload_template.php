@@ -95,13 +95,14 @@
                     <div class="row text-center">
                     
                      <?php
-                        
-                    for($i=0; $i < 12; $i++){
+                    $i = -1;
+                    foreach($keywords as $word) {
+                        $i = $i + 1;
                         echo <<<_END
                         <div class="col-sm-3 col-md-3 col-lg-3">
                         <label class="checkbox">
                       <input type="checkbox" name="keyword[]" value="$i">
-                        keyword $i
+                        $word
                         </label>
                         </div>
 _END;
