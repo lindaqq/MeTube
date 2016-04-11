@@ -138,7 +138,7 @@ _END;
             <div class="row">
             <h3>Add new comment:</h3>
             
-                <form role="form" action="../pulbic/image.php" method="post">
+                <form role="form" action="../public/image.php" method="post">
                     <div class="row">
                         <div class="col-sm-12 col-md-12 col-lg-12 ">   
                             <textarea  class="form-control" name="comment" rows="4" cols="50" placeholder="add new comment" ></textarea>
