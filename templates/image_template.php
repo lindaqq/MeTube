@@ -3,6 +3,7 @@ $title = $media["title"];
 $username = $media["username"];
 $viewcount = $media["viewcount"];
 $avgrate = $media["avgrate"];
+$path = $media["path"];
 echo <<<_END
 <div class="row">
     <h1>$title</h1>
@@ -13,7 +14,7 @@ echo <<<_END
 			<!-- artigo em destaque -->
 			 <div class="featured-article">
 				<a href="#">
-					<img src="http://placehold.it/482x350" alt="" class="thumb">
+					<img src=$path alt="" class="thumb">
 				</a>
 				<div class="block-title">
 					<p class="by-author"><small>By $username &nbsp;&nbsp;&nbsp;&nbsp;Viewed: $viewcount &nbsp;&nbsp;&nbsp;&nbsp;Avg Rating: $avgrate</small></p>
