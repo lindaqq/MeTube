@@ -3,6 +3,7 @@
 // configuration
 require("../includes/config.php"); 
 require("../includes/searchService.php"); 
+require("enum.php"); 
 $db = new mysql_db(SERVER, USERNAME, PASSWORD,DATABASE);
 
 // $_POST["keywords"] should be the search keyword
@@ -31,7 +32,7 @@ if (!isset($_POST["keywords"])) {
   $result = search($_POST["keywords"]); 
 }
 
-  render("search_template.php", ["title" => "Search Result", "result" => $result, "key" => $key]);
+  render("search_template.php", ["title" => "Search Result", "result" => $result, "key" => $key, "keywords" => $Keywords]);
 $db->sql_close();
 ?>
 
