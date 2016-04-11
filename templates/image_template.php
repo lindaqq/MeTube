@@ -79,7 +79,7 @@ _END;
                 ?>
             
             <!--a href="../public/image.php?id=$mediaid&download=$mediaid?" class="btn btn-warning"><span class="glyphicon glyphicon-thumbs-up"></span> Download</a-->
-                <a href="<?php echo $media["path"]?> download" class="btn btn-warning"><span class="glyphicon glyphicon-thumbs-up"></span> Download</a>
+                <a href="<?php echo $media["path"]?>" download class="btn btn-warning"><span class="glyphicon glyphicon-thumbs-up"></span> Download</a>
             </div>
             
             <br>
