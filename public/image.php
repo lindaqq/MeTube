@@ -16,20 +16,6 @@ if(isset($_SESSION["username"])){
     $username = $_SESSION["username"];
 }
 
-$recommend = recommend($mediaid, 8); 
-$media = viewMedia($mediaid);
-$comments = getComments($mediaid);
-
-
-if (isset($_GET["subscribe"])) {
-  if (!isset($username)) {
-    continue;
-  }
-  $subscriber_id = $username;
-  $channel_id = $media['username'];
-  addChannel($subscriber_id, $channel_id);
-  
-}
 if (isset($_GET["favorite"])) {
   if (!isset($username)) {
     continue;
@@ -57,6 +43,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $score = $_POST["rate"];
     rateMedia($mediaid, $username, $score);
   }
+}
+
+$recommend = recommend($mediaid, 8); 
+$media = viewMedia($mediaid);
+$comments = getComments($mediaid);
+
+if (isset($_GET["subscribe"])) {
+  if (!isset($username)) {
+    continue;
+  }
+  $subscriber_id = $username;
+  $channel_id = $media['username'];
+  addChannel($subscriber_id, $channel_id);
 }
 
 
