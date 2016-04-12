@@ -50,7 +50,7 @@
         <div class="well">
             <div class="row">
                 <div class="col-sm-6 col-md-6 col-lg-6">
-                    <p class="lead"> $playlistname </p>   
+                <p class="lead"><?php echo $playlistname?> </p>   
                 </div>
             
             </div>
@@ -60,11 +60,12 @@
                 
                 foreach($medias as $media){
                     $title = $media["title"];
+                    $mediaid = $media["mediaid"];
                     
                     echo <<<_END
                 <div class="img-thumbnail"> <img src="../templates/images/100x125.gif" alt="Thumbnail Image 1" class="img-responsive" width="100" height="100"></div>
       			<p>$title</p>
-                <a href="../public/single_playlist.php?drop=$playlistid"><p>[drop]</p></a>
+                <a href="../public/single_playlist.php?playlistid=$playlistid&playlistname=$playlistname&drop=$mediaid"><p>[drop]</p></a>
     		</div>
 _END;
                 }  

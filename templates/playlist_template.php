@@ -76,7 +76,7 @@
                   $playlistname = $playlist["playlistname"];
                     echo <<<_END
                 <div class="col-sm-2 col-md-2 col-lg-2 col-xs-4">
-      			<a href="../public/single_playlist.php?playlist=$playlistid"><p>$playlistname</p></a>
+      			<a href="../public/single_playlist.php?playlistid=$playlistid&playlistname=$playlistname"><p>$playlistname</p></a>
     		</div>
 _END;
                 }  
