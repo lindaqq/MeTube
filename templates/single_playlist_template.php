@@ -50,33 +50,21 @@
         <div class="well">
             <div class="row">
                 <div class="col-sm-6 col-md-6 col-lg-6">
-                    <p class="lead"> My Playlists:  </p>   
+                    <p class="lead"> $playlistname </p>   
                 </div>
-                
-                 <form action="../public/playlist.php" method="post">
-                    
-                    <div class="col-sm-4 col-md-4 col-lg-4 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 ">
-                       <input type="text" class="input-md form-control" name="playlist" placeholder="add name of new playlist"/>
-                    </div>
-                    <div class="col-sm-2 col-md-2 col-lg-2">
-                        <!--a href="#" class="btn btn-primary btn-primary">Add</a-->
-                        <button class="btn btn-primary btn-primary" type="submit">
-                        Add</button>
-                    </div>
-                </form>
             
             </div>
           
   		    <div class="row text-center">
             <?php
-                //echo $errortext;
-                $playlistid = $playlist["playlistid"];
-                $playlistname = $playlist["playlistname"];
                 
-                foreach($playlists as $playlist){
+                foreach($medias as $media){
+                    $title = $media["title"];
+                    
                     echo <<<_END
-                <div class="col-sm-2 col-md-2 col-lg-2 col-xs-4">
-      			<a href="../public/single_playlist.php?subscribe=$playlistid"><p>$playlistname</p></a>
+                <div class="img-thumbnail"> <img src="../templates/images/100x125.gif" alt="Thumbnail Image 1" class="img-responsive" width="100" height="100"></div>
+      			<p>$title</p>
+                <a href="../public/single_playlist.php?drop=$playlistid"><p>[drop]</p></a>
     		</div>
 _END;
                 }  

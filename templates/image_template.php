@@ -14,7 +14,7 @@ echo <<<_END
 			<!-- artigo em destaque -->
 			 <div class="featured-article">
 				<a href="#">
-					<img src=$path alt="" class="thumb">
+					<img src=$path alt="" class="thumb" max-height = 300>
 				</a>
 				<div class="block-title">
 					<p class="by-author"><small>By $username &nbsp;&nbsp;&nbsp;&nbsp;Viewed: $viewcount &nbsp;&nbsp;&nbsp;&nbsp;Avg Rating: $avgrate</small></p>
@@ -27,7 +27,13 @@ _END;
 ?>
 
 <?php
-        if ($media["canrate"] == 1){
+        
+?>
+
+<div class="row">
+                <?php
+                    if(isset($_SESSION["username"])){
+                        if ($media["canrate"] == 1){
             echo <<<_END
             <div class="row">
                 <div class="col-sm-2 col-md-2 col-lg-2">
@@ -64,13 +70,9 @@ _END;
             <br>
 _END;
         }
-?>
-
-<div class="row">
-                <?php
-                    if(isset($_SESSION["username"])){
+                        
                         echo <<<_END
-                        <a href="../public/image.php?id=$mediaid&subscribe=$mediaid" class="btn btn-primary"><span class="glyphicon glyphicon-thumbs-up"></span> Subscribe</a>
+                        <a href="../public/image.php?id=$mediaid&subscribe=$mediaid" class="btn btn-primary"><span class="glyphicon glyphicon-thumbs-up"></span> Subscribe $username</a>
                         
                         <a href="../public/image.php?id=$mediaid&favorite=$mediaid" class="btn btn-danger"><span class="glyphicon glyphicon-thumbs-up"></span> Add to favorites</a>
 _END;
