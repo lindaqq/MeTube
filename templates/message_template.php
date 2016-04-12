@@ -70,12 +70,13 @@
                 foreach($messages as $message){
                   $content = $message["content"];
                   $sender = $message["sender"];
-                    $posttime = $comment["posttime"];
+                  $receiver = $message["receiver"];
+                  $posttime = $message["posttime"];
                 $posttime = split(' ', $posttime)[0];
                     
                     echo <<<_END
                     <a href="#" class="list-group-item">
-                        <h6 class="list-group-item-heading">Send by $sender, $posttime</h6>
+                        <h6 class="list-group-item-heading">From $sender to $receiver $posttime</h6>
                         <p class="list-group-item-text">$content </p>
                     </a>
 _END;
