@@ -3,15 +3,16 @@
     <div class="col-sm-6 col-md-6 col-lg-6">
         <div class="list-group">
             <?php               
-                for($i=0; $i < 6; $i++){
-                    
+                foreach($groups as $group) {
+                  $groupname = $group["groupname"];
+                  $detail = $group["detail"];
                     echo <<<_END
                     <a href="#" class="list-group-item">
                         <h4 class="list-group-item-heading">
                            
-                                group name
+                                $groupname
                         </h4>
-                        <p class="list-group-item-text">group description </p>
+                        <p class="list-group-item-text">$detail</p>
                         <br>
                         <div class="list-group-item-text">
                             <button onclick="document.location.href = '../public/topic.php'" class="btn btn-primary btn-primary" type="button">Join</button>
