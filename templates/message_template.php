@@ -77,7 +77,7 @@
                     echo <<<_END
                     <a href="#" class="list-group-item">
                         <h6 class="list-group-item-heading">From $sender to $receiver $posttime</h6>
-                        <p class="list-group-item-text">$content </p>
+                        <p class="list-group-item-text">$content</p>
                     </a>
 _END;
                 }  
@@ -93,7 +93,18 @@ _END;
             <div class="row text-center">
                 <form action="../public/message.php" method="post">
                     
-                    <h4>To:</h4><input class="form-control" name="receiver" placeholder="username of receiver" >
+                    <h4>To:</h4><select name = "category" class="input-sm form-control">
+                        <?php
+                            foreach($contacts as $contact){
+                                $name = $contact["userid2"];
+                                
+                                echo <<<_END
+                                <option value=$name>$name</option>
+_END;
+                            }
+                        ?>                   
+                    </select>
+                    
                     <h4>Content: </h4><textarea  class="form-control" name="content" rows="4" cols="50" ></textarea>
                     <div class="col-sm-2 col-md-2 col-lg-2">
                         <!--a href="#" class="btn btn-primary btn-primary">Add</a-->
