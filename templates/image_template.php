@@ -26,11 +26,7 @@ echo <<<_END
 _END;
 ?>
 
-<?php
-        
-?>
-
-<div class="row">
+<div class="row well">
                 <?php
                     if(isset($_SESSION["username"])){
                         if ($media["canrate"] == 1){
@@ -85,13 +81,13 @@ _END;
             
             <br>
 
- <?php
+<?php
         if(isset($_SESSION["username"])){
 
             $count = count($playlists);
             if($count === 0){
                  echo <<<_END
-            <div class="row">
+            <div class="row well">
                     <button class="btn btn-info">Add to Playlists:</button><p> you don't have any playlist. Add one in your account </p>
                 
             </div>
@@ -100,14 +96,14 @@ _END;
             }
             else{
                 echo <<<_END
-                <div class="row"> 
+                <div class="well">
                     <form role="form" action="../public/image.php?id=$mediaid" method="post">
                         <div class="row">
                             <div class="col-sm-4 col-md-4 col-lg-4">
                             <button class="btn btn-info" type="submit">Add to Playlists:</button>
                             </div>
                         </div>
-                        <div class="row>
+                        <div class="row text-center">
 _END;
                     foreach($playlists as $playlist){
                         $playlistid = $playlist["playlistid"];
@@ -131,7 +127,6 @@ _END;
             }
         }
     ?>
-
 
 <?php
         if($media["candiscuss"] == 1){
@@ -190,12 +185,34 @@ _END;
         }
 
     ?>
-        
 
 
-			<!-- /.featured-article -->
+<!-- /.featured-article -->
 		</div>
-		<div class="col-sm-4 col-md-4 col-lg-4 col-md-offset-1 col-lg-offset-1">
+		<div class="col-sm-4 col-md-4 col-lg-4 col-md-offset-1 col-lg-offset-1">      
+            <div class="row">
+                <p>Category:<?php echo "category"?></p>
+            </div>
+            <div class="row">
+                <p>Keywords:</p>
+            </div>
+            <div class="row">
+                <?php
+                    for($i = 0; $i < 3; $i++){
+                        echo <<<_END
+                        <div class="col-sm-4 col-md-4 col-lg-4">
+                            <button class="btn btn-success btn-sm">keyword $i</button>
+                        </div>
+_END;
+                    }
+                ?>
+            </div>
+            <br><br>
+            <div class="row">
+                <p class="lead">Recommendations:</p>
+            </div>
+            
+            <div class="row">
 			<ul class="media-list main-list">
                 <?php
                 foreach($recommend as $media) {
@@ -218,6 +235,6 @@ _END;
                 
                 ?>
 			</ul>
+            </div>
 		</div>
 </div>
-
