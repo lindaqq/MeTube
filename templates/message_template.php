@@ -93,7 +93,7 @@ _END;
             <div class="row text-center">
                 <form action="../public/message.php" method="post">
                     
-                    <h4>To:</h4><select name = "category" class="input-sm form-control">
+                    <h4>To:</h4><select name = "receiver" class="input-sm form-control">
                         <?php
                             foreach($contacts as $contact){
                                 $name = $contact["userid2"];
