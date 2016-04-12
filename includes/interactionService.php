@@ -131,8 +131,8 @@ function rateMedia($mediaid, $username, $score) {
 //unit test
 //echo rateMedia('1', 'fangyu', 5);
 
-function createGroup($groupname, $topic, $detail) {
-    $query = "insert into groups (groupname, topic, detail) values ('$groupname', '$topic', '$detail')";
+function createGroup($groupname, $detail) {
+    $query = "insert into groups (groupname, detail) values ('$groupname', '$detail')";
 	$result = mysql_query( $query );
 
 	if (!$result)
@@ -142,10 +142,10 @@ function createGroup($groupname, $topic, $detail) {
     return mysql_insert_id();
 }
 //unit test not passed
-//echo createGroup('asd', 'sdf','asdfasd');
+//echo createGroup('asd','asdfasd');
 
 function showGroups() {
-    $query = "select groupid, groupname,   topic, detail from groups";
+    $query = "select groupid, groupname, detail from groups";
     $result = mysql_query($query) or die("showGroups() fails". mysql_error());
 
     $storeArray = Array();
@@ -170,8 +170,8 @@ function getDiscusses($groupid) {
 //unit test
 //echo '<pre>'; print_r(getDiscusses(1)); echo '</pre>';
 
-function addDiscuss( $username, $groupid, $content) {
-	$query = "insert into discuss (username, groupid, content) values ('$username', '$groupid', '$content')";
+function addDiscuss( $username, $groupid, $topic, $content) {
+	$query = "insert into discuss (username, groupid, topic, content) values ('$username', '$groupid','$topic', '$content')";
 	$result = mysql_query( $query );
 
 	if (!$result)
@@ -181,5 +181,5 @@ function addDiscuss( $username, $groupid, $content) {
     return 1;
 }
 //unit test
-//echo addDiscuss('fangyu', 2, 'aasdfass');
+//echo addDiscuss('fangyu', 1, 1, 'aasdfass');
 
