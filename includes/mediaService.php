@@ -44,6 +44,19 @@ function browseByPlaylist($playlistid) {
 //unit test
 //echo '<pre>'; print_r(browseByPlaylist('1')); echo '</pre>';
 
+function addPlaylist($playlistname, $username) {
+	$query = "insert into playlist (playlistname, username) values ('$playlistname', '$username')";
+	$result = mysql_query( $query );
+
+	if (!$result)
+	{
+	   die ("addPlaylist() failed. Could not query the database: <br />". mysql_error());
+	}
+    return 1;
+}
+//unit test
+//echo addPlaylist('old', 'fangyu');
+
 function existPlaylistMedia($playlistid, $mediaid) {
 	$query = "select * from playlistmedia where playlistid='$playlistid' and mediaid = '$mediaid'";
 	$result = mysql_query( $query );
@@ -78,7 +91,7 @@ function rmPlaylistMedia($playlistid, $mediaid) {
 //echo rmPlaylistMedia('1', '9');
 
 function addPlaylistMedia($playlistid, $mediaid) {
-    if (existPlaylistMedia($playlistid, $mediaid)) {
+  if (existPlaylistMedia($playlistid, $mediaid)) {
         return 0;
     }
 	$query = "insert into playlistmedia (playlistid, mediaid) values ('$playlistid', '$mediaid')";
