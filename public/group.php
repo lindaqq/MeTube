@@ -6,7 +6,6 @@ require_once("../includes/config.php");
 require("../includes/interactionService.php");
 
 $db = new mysql_db(SERVER, USERNAME, PASSWORD,DATABASE);
-$username = $_SESSION["username"];
 
 if (isset($_POST["groupname"])) {
   $groupname = $_POST["groupname"];
