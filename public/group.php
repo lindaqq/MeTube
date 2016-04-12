@@ -1,10 +1,23 @@
 <?php
 
 // configuration
-require("../includes/config.php"); 
+require_once("../includes/config.php");
 
+require("../includes/interactionService.php");
 
-render("group_template.php", ["title" => "Group"]);
+$db = new mysql_db(SERVER, USERNAME, PASSWORD,DATABASE);
+$username = $_SESSION["username"];
 
+if (isset($_POST["groupname"])) {
+  $groupname = $_POST["groupname"];
+  $detail = $_POST["detail"];
+  createGroup($groupname, $detail);
+}
+
+$groups = showGroups();
+
+render("group_template.php", ["title" => "Group", "groups" => $groups]);
+
+$db->sql_close();
 ?>
 
