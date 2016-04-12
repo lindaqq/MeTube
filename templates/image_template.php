@@ -20,7 +20,7 @@ echo <<<_END
 					<p class="by-author"><small>By $username &nbsp;&nbsp;&nbsp;&nbsp;Viewed: $viewcount &nbsp;&nbsp;&nbsp;&nbsp;Avg Rating: $avgrate</small></p>
 				</div>
 			</div>
-        </div>
+            </div>
             
             <br>
 _END;
@@ -125,7 +125,7 @@ _END;
                 echo <<<_END
                         </div>
                     </form>
-            </div>
+                </div>
             <br><br>
 _END;
             }
@@ -215,7 +215,6 @@ _END;
                   </li>
 _END;
                 }
-                
                 
                 ?>
 			</ul>

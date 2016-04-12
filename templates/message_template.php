@@ -31,7 +31,7 @@
             </button>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" id="following" class="btn btn-primary" onclick="document.location.href = '../public/playlist.php'"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            <button type="button" id="following" class="btn btn-default" onclick="document.location.href = '../public/playlist.php'"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                 <div class="hidden-xs">Playlists</div>
             </button>
         </div>
@@ -43,6 +43,11 @@
         <div class="btn-group" role="group">
             <button type="button" id="following" class="btn btn-default" onclick="document.location.href = '../public/media_upload_process.php'"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                 <div class="hidden-xs">Uploads</div>
+            </button>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="button" id="following" class="btn btn-primary" onclick="document.location.href = '../public/message.php'"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                <div class="hidden-xs">Messages</div>
             </button>
         </div>
     </div>
@@ -82,6 +87,8 @@ _END;
         
             </div>  
             
+            <br><br>
+            <p>Send New Message:</p>
             <div class="row text-center">
                 <form action="../public/message.php" method="post">
                     

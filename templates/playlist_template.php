@@ -45,6 +45,11 @@
                 <div class="hidden-xs">Uploads</div>
             </button>
         </div>
+        <div class="btn-group" role="group">
+            <button type="button" id="following" class="btn btn-default" onclick="document.location.href = '../public/message.php'"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                <div class="hidden-xs">Messages</div>
+            </button>
+        </div>
     </div>
 
         <div class="well">
@@ -76,7 +81,8 @@
                   $playlistname = $playlist["playlistname"];
                     echo <<<_END
                 <div class="col-sm-2 col-md-2 col-lg-2 col-xs-4">
-      			<a href="../public/single_playlist.php?playlistid=$playlistid&playlistname=$playlistname"><p>$playlistname</p></a>
+                    <div class="img-thumbnail"> <img src="../templates/images/playlist.png" alt="Thumbnail Image 1" class="img-responsive" width="100" height="100"></div>
+      			   <a href="../public/single_playlist.php?playlistid=$playlistid&playlistname=$playlistname"><p>$playlistname</p></a>
     		</div>
 _END;
                 }  

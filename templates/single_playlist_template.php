@@ -45,6 +45,11 @@
                 <div class="hidden-xs">Uploads</div>
             </button>
         </div>
+        <div class="btn-group" role="group">
+            <button type="button" id="following" class="btn btn-default" onclick="document.location.href = '../public/message.php'"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                <div class="hidden-xs">Messages</div>
+            </button>
+        </div>
     </div>
 
         <div class="well">
@@ -63,7 +68,7 @@
                     $mediaid = $media["mediaid"];
                     
                     echo <<<_END
-                <div class="img-thumbnail"> <img src="../templates/images/100x125.gif" alt="Thumbnail Image 1" class="img-responsive" width="100" height="100"></div>
+                <div class="img-thumbnail"> <img src="../templates/images/media.png" alt="Thumbnail Image 1" class="img-responsive" width="100" height="100"></div>
       			<p>$title</p>
                 <a href="../public/single_playlist.php?playlistid=$playlistid&playlistname=$playlistname&drop=$mediaid"><p>[drop]</p></a>
     		</div>
