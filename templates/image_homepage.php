@@ -13,7 +13,7 @@
                
             <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
                 <div class = "panel panel-default">
-      			   <div class="img-thumbnail"> <a href="../public/image.php?id=$id & name=$title"><img src="../templates/images/400X200.gif" alt="Thumbnail Image 1" class="img-responsive"></a></div>
+      			   <div class="img-thumbnail"> <a href="../public/image.php?id=$id&name=$title"><img src="../templates/images/400X200.gif" alt="Thumbnail Image 1" class="img-responsive"></a></div>
       			   <p>$title</p>
                     <h6>viewed: $viewcount</h6>
                     <h6>uploaded at: $posttime</h6>
@@ -39,7 +39,7 @@ _END;
                echo <<<_END
             <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
                 <div class = "panel panel-default">
-      			   <div class="img-thumbnail"> <a href="../public/image.php?id=$id & name=$title"><img src="../templates/images/400X200.gif" alt="Thumbnail Image 1" class="img-responsive"></a></div>
+      			   <div class="img-thumbnail"> <a href="../public/image.php?id=$id&name=$title"><img src="../templates/images/400X200.gif" alt="Thumbnail Image 1" class="img-responsive"></a></div>
       			   <p>$title</p>
                     <h6>viewed: $viewcount</h6>
                     <h6>uploaded at: $posttime</h6>

@@ -52,6 +52,11 @@
                 <div class="hidden-xs">Uploads</div>
             </button>
         </div>
+        <div class="btn-group" role="group">
+            <button type="button" id="following" class="btn btn-default" onclick="document.location.href = '../public/message.php'"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                <div class="hidden-xs">Messages</div>
+            </button>
+        </div>
     </div>
 
         <div class="well">

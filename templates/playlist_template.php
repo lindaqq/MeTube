@@ -36,7 +36,7 @@
             </button>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" id="following" class="btn btn-default" nclick="document.location.href = '../public/favorite.php'"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            <button type="button" id="following" class="btn btn-default" onclick="document.location.href = '../public/favorite.php'"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                 <div class="hidden-xs">Favorites</div>
             </button>
         </div>
@@ -49,7 +49,7 @@
 
         <div class="well">
             <div class="row">
-                <div class="col-sm-6 col-md-6 col-lg-6">
+                <div class="col-sm-3 col-md-3 col-lg-3">
                     <p class="lead"> My Playlists:  </p>   
                 </div>
                 

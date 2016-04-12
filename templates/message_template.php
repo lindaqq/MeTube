@@ -31,12 +31,12 @@
             </button>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" id="following" class="btn btn-default" onclick="document.location.href = '../public/playlist.php'"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            <button type="button" id="following" class="btn btn-primary" onclick="document.location.href = '../public/playlist.php'"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                 <div class="hidden-xs">Playlists</div>
             </button>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" id="following" class="btn btn-primary" onclick="document.location.href = '../public/favorite.php'"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            <button type="button" id="following" class="btn btn-default" onclick="document.location.href = '../public/favorite.php'"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                 <div class="hidden-xs">Favorites</div>
             </button>
         </div>
@@ -49,32 +49,52 @@
 
         <div class="well">
             <div class="row">
-                <div class="col-sm-6 col-md-6 col-lg-6">
-                    <p class="lead"> My Favorites: </p>   
-                </div>
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    <p class="lead"> My Messages:  </p>   
+                </div>  
             
             </div>
           
+            
   		    <div class="row text-center">
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                    <div class="list-group">
             <?php
+                //echo $errortext;
                 
-                foreach($favorites as $favorite){
-                    $title = $favorite["title"];
-                    $id = $favorite["mediaid"];
+                foreach($messages as $message){
+                  $content = $message["content"];
+                  $sender = $message["sender"];
+                    $posttime = $comment["posttime"];
+                $posttime = split(' ', $posttime)[0];
                     
                     echo <<<_END
-                <div class="img-thumbnail"> <img src="../templates/images/100x125.gif" alt="Thumbnail Image 1" class="img-responsive" width="100" height="100"></div>
-      			<p>$title</p>
-                <a href="../public/favorite.php?drop=$id"><p>[drop]</p></a>
-    		</div>
+                    <a href="#" class="list-group-item">
+                        <h6 class="list-group-item-heading">Send by $sender, $posttime</h6>
+                        <p class="list-group-item-text">$content </p>
+                    </a>
 _END;
                 }  
                 
             ?>
+                    </div>
+                </div>
         
-                
-
-        </div>
+            </div>  
             
+            <div class="row text-center">
+                <form action="../public/message.php" method="post">
+                    
+                    <h4>To:</h4><input class="form-control" name="receiver" placeholder="username of receiver" >
+                    <h4>Content: </h4><textarea  class="form-control" name="content" rows="4" cols="50" ></textarea>
+                    <div class="col-sm-2 col-md-2 col-lg-2">
+                        <!--a href="#" class="btn btn-primary btn-primary">Add</a-->
+                        <button class="btn btn-primary btn-primary" type="submit">
+                        Send</button>
+                    </div>
+                    <br><br>
+                    <h4>$errortext</h4>
+                </form>
             
+            </div>     
     </div>
