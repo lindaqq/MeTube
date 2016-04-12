@@ -191,17 +191,18 @@ _END;
 		</div>
 		<div class="col-sm-4 col-md-4 col-lg-4 col-md-offset-1 col-lg-offset-1">      
             <div class="row">
-                <p>Category:<?php echo "category"?></p>
+                <p>Category:<?php echo $Category[$media["category"]]?></p>
             </div>
             <div class="row">
                 <p>Keywords:</p>
             </div>
             <div class="row">
                 <?php
-                    for($i = 0; $i < 3; $i++){
+                    $words = split(",",substr($media["keywords"],0, -1));
+                    foreach($words as $word) {
                         echo <<<_END
                         <div class="col-sm-4 col-md-4 col-lg-4">
-                            <button class="btn btn-success btn-sm">keyword $i</button>
+                            <button class="btn btn-success btn-sm">$word</button>
                         </div>
 _END;
                     }

@@ -2,6 +2,7 @@
 
 // configuration
 require_once("../includes/config.php");
+require_once("enum.php");
 
 require("../includes/mediaService.php");
 require("../includes/searchService.php"); 
@@ -49,7 +50,7 @@ if (isset($username) && isset($_GET["subscribe"])) {
 }
 
 
-render("image_template.php", ["media" => $media,"comments" => $comments,"mediaid" => $mediaid, "recommend" => $recommend,"playlists" => $playlists]);
+render("image_template.php", ["media" => $media,"comments" => $comments,"mediaid" => $mediaid, "recommend" => $recommend,"playlists" => $playlists, "Category" => $Category, "Keywords" => $Keywords]);
 
 $db->sql_close();
 ?>
