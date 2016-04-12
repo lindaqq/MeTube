@@ -58,13 +58,14 @@
   		    <div class="row text-center">
             <?php
                 
-                foreach($medias as $media){
-                    $title = $media["title"];
+                foreach($favorites as $favorite){
+                    $title = $favorite["title"];
+                    $id = $favorite["mediaid"];
                     
                     echo <<<_END
                 <div class="img-thumbnail"> <img src="../templates/images/100x125.gif" alt="Thumbnail Image 1" class="img-responsive" width="100" height="100"></div>
       			<p>$title</p>
-                <a href="../public/single_playlist.php?drop=$playlistid"><p>[drop]</p></a>
+                <a href="../public/favorite.php?drop=$id"><p>[drop]</p></a>
     		</div>
 _END;
                 }  
