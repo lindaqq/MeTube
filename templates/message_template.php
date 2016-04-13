@@ -62,7 +62,7 @@
           
             
   		    <div class="row text-center">
-                <div class="col-sm-8 col-md-8 col-lg-8">
+                <div class="col-sm-8 col-md-8 col-lg-8 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
                     <div class="list-group">
             <?php
                 //echo $errortext;
@@ -91,6 +91,7 @@ _END;
             <br><br>
             <p>Send New Message:</p>
             <div class="row text-center">
+                <div class="col-sm-8 col-md-8 col-lg-8 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
                 <form action="../public/message.php" method="post">
                     
                     <h4>To:</h4><select name = "receiver" class="input-sm form-control">
@@ -112,8 +113,8 @@ _END;
                         Send</button>
                     </div>
                     <br><br>
-                    <h4>$errortext</h4>
+                    
                 </form>
-            
+                </div>
             </div>     
     </div>

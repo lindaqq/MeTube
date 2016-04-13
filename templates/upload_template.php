@@ -99,7 +99,7 @@
                     <h4>Keywords:</h4>
                     <div class="row text-center">
                         
-                        <textarea  class="form-control" name="keywords" rows="4" cols="50" placeholder="type in keywords; separated by ;"></textarea>
+                        <textarea  class="form-control" name="keywords" rows="4" cols="50" placeholder="type in keywords.  separated by ,"></textarea>
                     
                      <?php
                         /*
@@ -140,7 +140,7 @@ _END;
                      
                     
                     <h4>block certain friends:</h4>
-                        <textarea  class="form-control" name="block" rows="4" cols="50" placeholder="type in usernames of your friends that you want to block. Separate by ;" ></textarea>
+                        <textarea  class="form-control" name="block" rows="4" cols="50" placeholder="type in usernames of your friends that you want to block. Separate by ," ></textarea>
                     
                     
                     <h4>Settings:</h4>
