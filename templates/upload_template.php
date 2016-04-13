@@ -98,8 +98,11 @@
                        
                     <h4>Keywords:</h4>
                     <div class="row text-center">
+                        
+                        <textarea  class="form-control" name="keywords" rows="4" cols="50" placeholder="type in keywords; separated by ;"></textarea>
                     
                      <?php
+                        /*
                     $i = -1;
                     foreach($keywords as $word) {
                         $i = $i + 1;
@@ -111,7 +114,11 @@
                         </label>
                         </div>
 _END;
+                        
+                        
+                        
         }   
+                */
     
                     ?> 
                     </div>
