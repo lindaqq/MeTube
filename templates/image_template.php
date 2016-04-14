@@ -191,7 +191,7 @@ _END;
 		</div>
 		<div class="col-sm-4 col-md-4 col-lg-4 col-md-offset-1 col-lg-offset-1">      
             <div class="row">
-                <p>Category:<?php echo $Category[$media["type"]]?></p>
+                <p>Category:<?php echo $Category[$media["category"]]?></p>
             </div>
             <div class="row">
                 <p>Keywords:</p>
