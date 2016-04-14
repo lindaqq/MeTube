@@ -191,15 +191,21 @@ _END;
 		</div>
 		<div class="col-sm-4 col-md-4 col-lg-4 col-md-offset-1 col-lg-offset-1">      
             <div class="row">
-                <p>Category:<?php echo $Category[$media["category"]]?></p>
+                <p>Category:<?php echo $Category[$media["type"]]?></p>
             </div>
             <div class="row">
                 <p>Keywords:</p>
             </div>
             <div class="row">
                 <?php
-                    $words = split(",",substr($media["keywords"],0, -1));
+                    //$words = split(",",substr($media["keywords"],0, -1));
+                    $wordstr = $media["keywords"];
+                    $wordstr = preg_replace('/\s+/', '', $wordstr);
+                    $words = split(",",$wordstr);
                     foreach($words as $word) {
+                      if ($word == "") {
+                        continue;
+                      }
                         echo <<<_END
                         <div class="col-sm-4 col-md-4 col-lg-4">
                             <button class="btn btn-success btn-sm">$word</button>

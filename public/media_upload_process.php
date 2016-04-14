@@ -59,10 +59,11 @@ if(!file_exists($dirfile))
           $candiscuss = isset($_POST['discuss']) ? 1 : 0;
           $canrate = isset($_POST['rate']) ? 1 : 0;
 
-          $keywords = '';
-          foreach( $_POST['keyword'] as $word) {
-            $keywords .= $Keywords[$word]. ',';
-          }
+          $keywords = preg_replace('/\s+/', '', $_POST['keywords']);
+          //$keywords = '';
+          //foreach( $_POST['keyword'] as $word) {
+          //  $keywords .= $Keywords[$word]. ',';
+          //}
 
 		     	//insert into media table
           addMedia($title, $username, $type, $catetory, $sharetype, $sharedfriends, $path, $detail, $candiscuss, $canrate, $keywords);
