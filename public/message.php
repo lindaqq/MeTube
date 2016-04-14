@@ -19,7 +19,6 @@ $friends = getFriends ($userid1);
 $contacts = getContacts ($userid1);
 $messages = getMessages($username);
 $contacts = array_merge($friends, $contacts);
-print_r($contacts);
 
 render("message_template.php", ["messages" => $messages, "contacts" => $contacts]);
 

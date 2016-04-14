@@ -97,10 +97,9 @@ _END;
                     <h4>To:</h4><select name = "receiver" class="input-sm form-control">
                         <?php
                             foreach($contacts as $contact){
-                                $name = $contact["userid2"];
                                 
                                 echo <<<_END
-                                <option value=$name>$name</option>
+                                <option value=$contact>$contact</option>
 _END;
                             }
                         ?>                   
