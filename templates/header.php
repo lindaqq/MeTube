@@ -35,8 +35,8 @@
         <div class="collapse navbar-collapse" id="navbar1">
             <ul class="nav navbar-nav">
                 <!--li class="active"--><li><a href="../public/index.php">Image</a></li>
-                <li><a href="../public/video.php">Video</a></li>
-                <li><a href="../public/audio.php">Audio</a></li>
+                <li><a href="../public/index.php">Video</a></li>
+                <li><a href="../public/index.php">Audio</a></li>
                 <li><a href="../public/group.php">Group</a></li>
             </ul>
 
