@@ -62,7 +62,7 @@
           
   		    <div class="row text-center">
             <?php
-                
+require("../public/enum.php");                
                 foreach($medias as $media){
                     $title = $media["title"];
                     $mediaid = $media["mediaid"];
