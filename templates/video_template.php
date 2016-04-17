@@ -14,7 +14,10 @@ echo <<<_END
 			<!-- artigo em destaque -->
 			 <div class="featured-article">
 				<a href="#">
-					<img src=$path alt="" class="thumb" max-height = 300>
+          <video width="480" height="320" controls>
+            <source src=$path type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
 				</a>
 				<div class="block-title">
 					<p class="by-author"><small>By $username &nbsp;&nbsp;&nbsp;&nbsp;Viewed: $viewcount &nbsp;&nbsp;&nbsp;&nbsp;Avg Rating: $avgrate</small></p>

@@ -197,8 +197,8 @@ function browseByUploadrecentAndType($type, $num) {
 //unit test
 //echo '<pre>'; print_r(browseByUploadrecentAndType('1', 3)); echo '</pre>';
 
-function browseByFriendshare($username) {
-    $query = "select mediaid, title, username,  viewcount, posttime from media where mediaid in (select mediaid from sharedfriends where username='$username')";
+function browseByFriendshare($username, $type) {
+    $query = "select mediaid, title, username,  viewcount, posttime from media where mediaid in (select mediaid from sharedfriends where username='$username' and type='$type')";
     $result = mysql_query($query) or die("browseByFriendshare fails". mysql_error());
 
     $storeArray = Array();

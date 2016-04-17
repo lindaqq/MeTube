@@ -14,7 +14,14 @@
                
             <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
                 <div class = "panel panel-default">
-      			   <div class="img-thumbnail"> <a href="../public/video.php?id=$id"><img src=$path alt="Thumbnail Image 1" class="img-responsive"></a></div>
+               <div class="img-thumbnail"> 
+                <a href="../public/video.php?id=$id">
+          <video width="400" height="200">
+            <source src=$path type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+                </a>
+              </div>
       			   <p>$title</p>
                     <h6>viewed: $viewcount</h6>
                     <h6>uploaded at: $posttime</h6>
@@ -41,7 +48,14 @@ _END;
                echo <<<_END
             <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
                 <div class = "panel panel-default">
-      			   <div class="img-thumbnail"> <a href="../public/video.php?id=$id"><img src="$path" alt="Thumbnail Image 1" class="img-responsive"></a></div>
+               <div class="img-thumbnail"> 
+                <a href="../public/video.php?id=$id">
+          <video width="400" height="200">
+            <source src=$path type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+                </a>
+              </div>
       			   <p>$title</p>
                     <h6>viewed: $viewcount</h6>
                     <h6>uploaded at: $posttime</h6>
@@ -65,7 +79,15 @@ _END;
                echo <<<_END
             <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
                 <div class = "panel panel-default">
-      			   <div class="img-thumbnail"> <a href="../public/video.php?id=$id"><img src= "$path" alt="Thumbnail Image 1" class="img-responsive"></a></div>
+               <div class="img-thumbnail"> 
+                <a href="../public/video.php?id=$id">
+          <video width="400" height="200">
+            <source src=$path type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+                </a>
+              </div>
+
       			   <p>$title</p>
                     <h6>viewed: $viewcount</h6>
                     <h6>uploaded at: $posttime</h6>
