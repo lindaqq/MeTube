@@ -3,7 +3,7 @@ require_once('mysqlClass.inc.php');
 //$db = new mysql_db(SERVER, USERNAME, PASSWORD, DATABASE);
 
 function browseByChannel($username) {
-    $query = "select mediaid, title, username,  viewcount, posttime from media where username = '$username' and sharetype = 0";
+    $query = "select mediaid, title,type, username,  viewcount, posttime from media where username = '$username' and sharetype = 0";
     $result = mysql_query($query) or die("browseByChannel fails". mysql_error());
 
     $storeArray = Array();
@@ -31,7 +31,7 @@ function showPlaylists($username) {
 //echo '<pre>'; print_r(showPlaylists('fangyu1')); echo '</pre>';
 
 function browseByPlaylist($playlistid) {
-    $query = "select mediaid, title, username from media where mediaid in (select mediaid from playlistmedia where playlistid='$playlistid')";
+    $query = "select mediaid, title,type, username from media where mediaid in (select mediaid from playlistmedia where playlistid='$playlistid')";
     $result = mysql_query($query) or die("browseByPlaylist fails". mysql_error());
 
     $storeArray = Array();
@@ -107,7 +107,7 @@ function addPlaylistMedia($playlistid, $mediaid) {
 //echo addPlaylistMedia('1', '9');
 
 function browseByFavorite($username) {
-    $query = "select mediaid, title, username from media where mediaid in (select mediaid from favorite where username='$username')";
+    $query = "select mediaid, title,type, username from media where mediaid in (select mediaid from favorite where username='$username')";
     $result = mysql_query($query) or die("browseByFavorite fails". mysql_error());
 
     $storeArray = Array();

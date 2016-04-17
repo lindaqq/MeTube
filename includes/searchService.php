@@ -45,7 +45,7 @@ function recommend($mediaid, $num) {
     }
     $clause=implode(' OR ' ,$clauses);
 
-    $sql="select mediaid, title,username, path from media
+    $sql="select mediaid, title,username, path,type from media
           WHERE mediaid != '$mediaid'
           and ($clause)  and sharetype = 0 limit $num";
     $result = mysql_query($sql);
@@ -97,7 +97,7 @@ function filterSearch($words, $type, $category, $starttime) {
         $timeClause = "posttime > '$starttime'";
     }
 
-    $sql="select mediaid, title, path from media
+    $sql="select mediaid, title,type, path from media
         WHERE
         ($clause) and
         $typeClause and
