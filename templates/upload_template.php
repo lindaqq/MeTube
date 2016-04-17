@@ -54,24 +54,40 @@
 
         <div class="well">
             <h3>My Uploads:</h3>
-            <? php
-                for($i=0; $i<4; $i++){
+            <?php
+                foreach($myuploads as $myupload){
+                    $title = $myupload["title"];
+                    $mediaid = $myupload["mediaid"];
                     echo <<<_END
                     <div class="row">
-                      <div class="col-sm-2 col-md-2 col-lg-2">
+                      <div class="col-sm-4 col-md-4 col-lg-4">
+                        <h4>$title</h4>
                         <div class="img-thumbnail"> <img src="../templates/images/media.png" alt="Thumbnail Image 1" class="img-responsive" width="100" height="100"></div>
-      			       <p>$title</p>      
+      			             
     		          </div> 
-                      <div class="col-sm-2 col-md-2 col-lg-2">
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-sm-1 col-md-1 col-lg-1">
                       <p>block list:</p>
                       </div>
-                      
-                      <div class="col-sm-8 col-md-8 col-lg-8">
-                        
-                      </div>
-                      
+_END;
+                    $blocks = $myupload["block"];
                   
-                    </div>
+                    foreach($blocks as $block){
+                        $blockname = $block;
+                        echo <<<_END
+                        <div class="col-sm-1 col-md-1 col-lg-1">
+                            $blockname
+                            <a href="../public/media_upload_process.php?drop=$blockname&mediaid=$mediaid"><p>[drop]</p> </a>
+                        </div>
+_END;
+                        
+                    }
+                    echo <<<_END
+                      
+                    </div>           
+                    
 _END;
                 }
             
