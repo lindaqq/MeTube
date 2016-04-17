@@ -79,9 +79,14 @@ if(!file_exists($dirfile))
 	}
 	
 	//You can process the error code of the $result here.
-        render("upload_template.php", ["errortext" => $result,"titile" => "Uploads", "keywords" => $Keywords ]);
+        $myUploads = getUploads($_SESSION["username"]);
+        
+        render("upload_template.php", ["errortext" => $result,"titile" => "Uploads", "keywords" => $Keywords, "myuploads" => $myUploads]);
+        
     }else{
-        render("upload_template.php", ["errortext" => "","titile" => "Uploads", "keywords" => $Keywords ]);
+        $myUploads = getUploads($_SESSION["username"]);
+        
+        render("upload_template.php", ["errortext" => "","titile" => "Uploads", "keywords" => $Keywords, "myuploads" => $myUploads ]);
     }
     $db->sql_close();
 
