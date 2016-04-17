@@ -160,7 +160,7 @@ _END;
                 $content = $comment["content"];
                 $posttime = $comment["posttime"];
                 $posttime = split(' ', $posttime)[0];
-                $id = $comment["commentid"];
+                $commentid = $comment["commentid"];
                 
                 echo <<<_END
                  <div class="row">
@@ -177,7 +177,7 @@ _END;
 _END;
                 if(isset($_SESSION["username"]) && ($username==$_SESSION["username"])){
                     echo <<<_END
-                    <a href="../public/image.php?commentid=$id">delete</a>
+                    <a href="../public/image.php?id=$mediaid&commentid=$commentid">delete</a>
 _END;
                 }
                 
