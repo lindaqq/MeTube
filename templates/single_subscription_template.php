@@ -55,7 +55,7 @@
         <div class="well">
             <div class="row">
                 <div class="col-sm-6 col-md-6 col-lg-6">
-                <p class="lead"><?php echo $playlistname?> </p>   
+                <p class="lead"><?php echo $subscription."'s channel"?> </p>   
                 </div>
             
             </div>
@@ -71,7 +71,7 @@
                     <div class="col-sm-2 col-md-2 col-lg-2 col-xs-4">
                         <div class="img-thumbnail"> <img src="../templates/images/media.png" alt="Thumbnail Image 1" class="img-responsive" width="100" height="100"></div>
       			       <p>$title</p>
-                        <a href="../public/single_playlist.php?playlistid=$playlistid&playlistname=$playlistname&drop=$mediaid"><p>[drop]</p></a>
+                        
     		      </div>
 _END;
                 }  

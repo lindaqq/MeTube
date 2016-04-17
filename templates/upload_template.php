@@ -53,7 +53,32 @@
     </div>
 
         <div class="well">
-         <h3>Uploads</h3>
+            <h3>My Uploads:</h3>
+            <? php
+                for($i=0; $i<4; $i++){
+                    echo <<<_END
+                    <div class="row">
+                      <div class="col-sm-2 col-md-2 col-lg-2">
+                        <div class="img-thumbnail"> <img src="../templates/images/media.png" alt="Thumbnail Image 1" class="img-responsive" width="100" height="100"></div>
+      			       <p>$title</p>      
+    		          </div> 
+                      <div class="col-sm-2 col-md-2 col-lg-2">
+                      <p>block list:</p>
+                      </div>
+                      
+                      <div class="col-sm-8 col-md-8 col-lg-8">
+                        
+                      </div>
+                      
+                  
+                    </div>
+_END;
+                }
+            
+            ?>
+            
+            
+         <h3>New Upload:</h3>
             
             <div class="row text-center">
                 <div class="col-sm-6 col-md-6 col-lg-6 col-sm-offset-3 col-md-offset-3 col-lg-offset-3">
