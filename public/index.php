@@ -9,8 +9,11 @@ $db = new mysql_db(SERVER, USERNAME, PASSWORD,DATABASE);
 $populars = browseByViewcountAndType(3, 9);
 $recents = browseByUploadrecentAndType(3, 9);
 
-$friends = Array();
-
+$friends = array();
+if(isset($_SESSION["username"])){
+  $username = $_SESSION["username"];
+  $friends = browseByFriendshare($username, 3);
+}
 // render home page for image, can be changed to video later
 render("image_homepage.php", ["populars" => $populars, "recents" => $recents, "friends" => $friends]);
 $db->sql_close();
