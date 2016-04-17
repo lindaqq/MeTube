@@ -1,5 +1,5 @@
 
-<p class="lead"> Popular Pulic Uploads: </p>
+<p class="lead"> Popular Public Uploads: </p>
 <div class="row text-center">
     <?php
          //for($i=0; $i < 12; $i++){
@@ -14,7 +14,7 @@
                
             <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
                 <div class = "panel panel-default">
-      			   <div class="img-thumbnail"> <a href="../public/audio.php?id=$id"><img src="../templates/images/audio.jpg" alt="Thumbnail Image 1" class="img-responsive"></a></div>
+      			   <div class="img-thumbnail"> <a href="../public/audio.php?id=$id"><img src=$path alt="Thumbnail Image 1" class="img-responsive"></a></div>
       			   <p>$title</p>
                     <h6>viewed: $viewcount</h6>
                     <h6>uploaded at: $posttime</h6>
@@ -41,7 +41,7 @@ _END;
                echo <<<_END
             <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
                 <div class = "panel panel-default">
-      			   <div class="img-thumbnail"> <a href="../public/audio.php?id=$id"><img src="../templates/images/audio.jpg" alt="Thumbnail Image 1" class="img-responsive"></a></div>
+      			   <div class="img-thumbnail"> <a href="../public/audio.php?id=$id"><img src="$path" alt="Thumbnail Image 1" class="img-responsive"></a></div>
       			   <p>$title</p>
                     <h6>viewed: $viewcount</h6>
                     <h6>uploaded at: $posttime</h6>
@@ -65,7 +65,7 @@ _END;
                echo <<<_END
             <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
                 <div class = "panel panel-default">
-      			   <div class="img-thumbnail"> <a href="../public/audio.php?id=$id"><img src="../templates/images/audio.jpg" alt="Thumbnail Image 1" class="img-responsive"></a></div>
+      			   <div class="img-thumbnail"> <a href="../public/audio.php?id=$id"><img src= "$path" alt="Thumbnail Image 1" class="img-responsive"></a></div>
       			   <p>$title</p>
                     <h6>viewed: $viewcount</h6>
                     <h6>uploaded at: $posttime</h6>
@@ -79,9 +79,14 @@ _END;
 
 
 
-   <!--div class="row text-center"> 
-    <a href="../public/allimage.php" class="btn btn-lg btn-success">View More</a>
-<<<<<<< HEAD
-    </div-->
-            
+    <div class="row text-center">
+       <form action="../public/search.php" method="post">
+        <input type="hidden" name="keywords" value="">
+           <input type="hidden" name="" value="">
+           <input type="hidden" name="" value="">
+        <button class="btn btn-success btn-lg" type="submit">
+            View More</button>
+        </form>
+      
+    </div>
 

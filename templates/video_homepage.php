@@ -100,10 +100,14 @@ _END;
 
 
 
-
-   <!--div class="row text-center"> 
-    <a href="../public/allimage.php" class="btn btn-lg btn-success">View More</a>
-<<<<<<< HEAD
-    </div-->
-            
+ <div class="row text-center">
+       <form action="../public/search.php" method="post">
+        <input type="hidden" name="keywords" value="">
+           <input type="hidden" name="" value="">
+           <input type="hidden" name="" value="">
+        <button class="btn btn-success btn-lg" type="submit">
+            View More</button>
+        </form>
+      
+    </div>
 

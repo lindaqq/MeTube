@@ -6,6 +6,7 @@
     require("../includes/accountService.php"); 
     require("enum.php");
     $db = new mysql_db(SERVER, USERNAME, PASSWORD, DATABASE);
+    $errortext = "";
     
 if (isset($_GET["drop"])) {
   $mediaid = $_GET["mediaid"];
@@ -23,7 +24,9 @@ if(!file_exists($dirfile))
 	mkdir($dirfile);
 	chmod($dirfile, 0755);
 	if($_FILES["file"]["error"] > 0 )
-	{ 	$result=$_FILES["file"]["error"];} //error from 1-4
+	{ 	$result=$_FILES["file"]["error"]; //error from 1-4
+        $errortext = "failed to upload file, error code is $result";
+    }
 	else
 	{
 		$upfile = $dirfile.urlencode($_FILES["file"]["name"]);
@@ -38,6 +41,7 @@ if(!file_exists($dirfile))
 				if(!move_uploaded_file($_FILES["file"]["tmp_name"],$upfile))
 				{
 					$result="6"; //Failed to move file from temporary directory
+                    $errortext = "failed to upload file, error code is $result";
 				}
 				else /*Successfully upload file*/
 				{
@@ -73,12 +77,14 @@ if(!file_exists($dirfile))
 		     	//insert into media table
           addMedia($title, $username, $type, $catetory, $sharetype, $sharedfriends, $path, $detail, $candiscuss, $canrate, $keywords);
 					$result="0";
+                    $errortext = "successfully uploaded file";
 					chmod($upfile, 0644);
 				}
 			}
 			else  
 			{
 					$result="7"; //upload file failed
+                    $errortext = "failed to upload file, error code is $result";
 			}
 		//}
 	}
@@ -86,12 +92,12 @@ if(!file_exists($dirfile))
 	//You can process the error code of the $result here.
         $myUploads = getUploads($_SESSION["username"]);
         
-        render("upload_template.php", ["errortext" => $result,"titile" => "Uploads", "keywords" => $Keywords, "myuploads" => $myUploads]);
+        render("upload_template.php", ["errortext" => $errortext,"titile" => "Uploads", "keywords" => $Keywords, "myuploads" => $myUploads]);
         
     }else{
         $myUploads = getUploads($_SESSION["username"]);
         
-        render("upload_template.php", ["errortext" => "","titile" => "Uploads", "keywords" => $Keywords, "myuploads" => $myUploads ]);
+        render("upload_template.php", ["errortext" => $errortext,"titile" => "Uploads", "keywords" => $Keywords, "myuploads" => $myUploads ]);
     }
     $db->sql_close();
 

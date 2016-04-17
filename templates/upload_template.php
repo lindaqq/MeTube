@@ -95,7 +95,7 @@ _END;
             
             
          <h3>New Upload:</h3>
-            
+            <p><?php echo $errortext ?></p>
             <div class="row text-center">
                 <div class="col-sm-6 col-md-6 col-lg-6 col-sm-offset-3 col-md-offset-3 col-lg-offset-3">
                 <form method="post" action="../public/media_upload_process.php" enctype="multipart/form-data" >
@@ -206,8 +206,5 @@ _END;
                 
             </div>
               
-            <?php
-                echo $errortext;
-            ?>
         </div>
 </div>

@@ -70,10 +70,10 @@ require("../public/enum.php");
                     
                     echo <<<_END
                     <div class="col-sm-2 col-md-2 col-lg-2 col-xs-4">
-<a class="pull-left" href="$type.php?id=$mediaid">
+                    <a href="$type.php?id=$mediaid">
                         <div class="img-thumbnail"> <img src="../templates/images/media.png" alt="Thumbnail Image 1" class="img-responsive" width="100" height="100"></div>
       			       <p>$title</p>
-</a>
+                    </a>
                         
     		      </div>
 _END;

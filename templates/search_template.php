@@ -2,7 +2,7 @@
 <div class="panel panel-default">
     <div class="panel-body">
         <form class="form-inline" name="input" method="post" action="../public/search.php" id="filter-tables">
-<input type="hidden" name="key" value="<?php echo isset($key)?$key:"" ?>"></input>
+<input type="hidden" name="key" value="<?php echo isset($key)?$key:"" ?>">
         	<div class="row">
                 <div class="col-sm-4 col-md-4 col-lg-4">
                     <div class="panel panel-default">
@@ -75,13 +75,31 @@ require("../public/enum.php");
           $mediaid = $media['mediaid'];
           $path = $media['path'];
           $type = $Type[$media["type"]];
-               echo <<<_END
+            if($media["type"] == 3){
+                echo <<<_END
             <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
-
-      			<div class="img-thumbnail"> <a href="../public/$type.php?id=$mediaid"><img src="$path" alt="Thumbnail Image 1" class="img-responsive"></a></div>
+      			   <div class="img-thumbnail"> <a href="../public/$type.php?id=$mediaid"><img src=$path alt="Thumbnail Image 1" class="img-responsive"></a></div>
+      			<p>$title</p>
+        </div> 
+_END;
+            }
+            
+            else if($media["type"] == 2){
+                echo <<<_END
+            <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
+      			<div class="img-thumbnail"> <a href="../public/$type.php?id=$mediaid"><img src="../templates/images/audio.jpg" alt="Thumbnail Image 1" class="img-responsive"></a></div>
       			<p>$title</p>
     		</div> 
 _END;
+            }
+            else{
+                 echo <<<_END
+           
+_END;               
+            }
+            
+        
+               
              /////////////////// paganation??
         }   
     ?>
@@ -94,7 +112,7 @@ _END;
     <?php
         foreach($keywords as $keyword){
             echo <<<_END
-            <div class="col-sm-2 col-md-2 col-lg-2>
+            <div class="col-sm-2 col-md-2 col-lg-2">
                 <form action="../public/search.php" method="post">
                     <input type="hidden" name="keywords" value=$keyword>
                     <button class="btn btn-primary btn-lg" type="submit">
@@ -105,5 +123,6 @@ _END;
         }
     ?>
 </div>
+
 
 
