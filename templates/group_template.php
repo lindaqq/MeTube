@@ -16,7 +16,7 @@
                         <p class="list-group-item-text">$topic</p>
                         <br>
                         <div class="list-group-item-text">
-                            <button onclick="document.location.href = '../public/topic.php?groupid=$groupid'" class="btn btn-primary btn-primary" type="button">Join</button>
+                            <button onclick="document.location.href = '../public/topic.php?groupid=$groupid&groupname=$groupname&topic=$topic'" class="btn btn-primary btn-primary" type="button">Join</button>
                         </div>
                     </a>
 _END;

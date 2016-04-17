@@ -21,5 +21,7 @@
     
         render("subscription_template.php", ["subscriptions" => $subscriptions,"errortext" => $errortext,"title" => "Subsciption"]);
     }
+
+    $db->sql_close();
 ?>
 

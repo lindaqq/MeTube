@@ -85,15 +85,23 @@ _END;
     ?>
             
 </div>
-						<div class="widget">
-							<h4 class="widget-title">WordsCloud</h4>
-							<ul class="popular-tags">
-            <?php
-              foreach($keywords as $word) {
-                        echo <<<_END
-                <li><a href="#"><i class="icon-tag"></i>$word</a></li>
+						
+
+<h3>Word Cloud:</h3>
+<div class="row text-center">
+    <?php
+        foreach($keywords as $keyword){
+            echo <<<_END
+            <div class="col-sm-2 col-md-2 col-lg-2>
+                <form action="../public/search.php" method="post">
+                    <input type="hidden" name="keywords" value=$keyword>
+                    <button class="btn btn-primary btn-lg" type="submit">
+                    $keyword</button>
+                </form>
+            </div>
 _END;
-              }
-            ?>
-							</ul>
-						</div>
+        }
+    ?>
+</div>
+
+

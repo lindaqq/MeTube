@@ -1,5 +1,5 @@
 
-<p class="lead"> Popular Pulic Uploads: </p>
+<p class="lead"> Popular Public Uploads: </p>
 <div class="row text-center">
     <?php
          //for($i=0; $i < 12; $i++){
