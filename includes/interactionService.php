@@ -131,8 +131,8 @@ function rateMedia($mediaid, $username, $score) {
 //unit test
 //echo rateMedia('1', 'fangyu', 5);
 
-function createGroup($groupname, $detail) {
-    $query = "insert into groups (groupname, detail) values ('$groupname', '$detail')";
+function createGroup($groupname, $topic) {
+    $query = "insert into groups (groupname, topic) values ('$groupname', '$topic')";
 	$result = mysql_query( $query );
 
 	if (!$result)
@@ -145,7 +145,7 @@ function createGroup($groupname, $detail) {
 //echo createGroup('asd','asdfasd');
 
 function showGroups() {
-    $query = "select groupid, groupname, detail from groups";
+    $query = "select groupid, groupname, topic from groups";
     $result = mysql_query($query) or die("showGroups() fails". mysql_error());
 
     $storeArray = Array();

@@ -9,8 +9,8 @@ $db = new mysql_db(SERVER, USERNAME, PASSWORD,DATABASE);
 
 if (isset($_POST["groupname"])) {
   $groupname = $_POST["groupname"];
-  $detail = $_POST["detail"];
-  createGroup($groupname, $detail);
+  $topic = $_POST["topic"];
+  createGroup($groupname, $topic);
 }
 
 $groups = showGroups();
