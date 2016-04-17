@@ -63,13 +63,17 @@
   		    <div class="row text-center">
             <?php
                 
+               require("../public/enum.php"); 
                 foreach($favorites as $favorite){
                     $title = $favorite["title"];
                     $id = $favorite["mediaid"];
+                  $type = $Type[$favorite["type"]];
                     
                     echo <<<_END
+			    <a class="pull-left" href="$type.php?id=$id">
                 <div class="img-thumbnail"> <img src="../templates/images/media.png" alt="Thumbnail Image 1" class="img-responsive" width="100" height="100"></div>
       			<p>$title</p>
+</a>
                 <a href="../public/favorite.php?drop=$id"><p>[drop]</p></a>
     		</div>
 _END;

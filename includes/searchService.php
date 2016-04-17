@@ -97,7 +97,7 @@ function filterSearch($words, $type, $category, $starttime) {
         $timeClause = "posttime > '$starttime'";
     }
 
-    $sql="select mediaid, title, path from media
+    $sql="select mediaid, title,type, path from media
         WHERE
         ($clause) and
         $typeClause and

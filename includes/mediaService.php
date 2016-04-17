@@ -107,7 +107,7 @@ function addPlaylistMedia($playlistid, $mediaid) {
 //echo addPlaylistMedia('1', '9');
 
 function browseByFavorite($username) {
-    $query = "select mediaid, title, username from media where mediaid in (select mediaid from favorite where username='$username')";
+    $query = "select mediaid, title,type, username from media where mediaid in (select mediaid from favorite where username='$username')";
     $result = mysql_query($query) or die("browseByFavorite fails". mysql_error());
 
     $storeArray = Array();
