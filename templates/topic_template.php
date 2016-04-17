@@ -16,10 +16,10 @@ _END;
     
         <div class="row text-center">
     
-            <form role="form" action="../public/topic.php" method="post">
+        <form role="form" action="../public/topic.php?groupid=<?php echo $groupid.'&groupname='.$groupname.'&topic='.$topic?>" method="post">
                     <div class="row">
                         <div class="col-sm-6 col-md-6 col-lg-6 col-sm-offset-4 col-md-offset-4 col-lg-offset-4">   
-                            <textarea  class="form-control" name="comment" rows="4" cols="50" placeholder="add new comment" ></textarea>
+                            <textarea  class="form-control" name="discuss" rows="4" cols="50" placeholder="add new comment" ></textarea>
                         </div>
                         
                     </div>
