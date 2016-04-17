@@ -15,7 +15,7 @@ echo <<<_END
 			<!-- artigo em destaque -->
 			 <div class="featured-article">
 				<a href="#">
-					<img src="../templates/images/400X200.gif" alt="" class="thumb" max-height = 240>
+					<img src="../templates/images/audio.jpg" alt="" class="thumb" max-height = 240>
 <audio controls>
   <source src=$path type="audio/mpeg">
 Your browser does not support the audio element.
