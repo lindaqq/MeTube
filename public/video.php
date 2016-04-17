@@ -39,8 +39,6 @@ if (isset($username) && $_SERVER["REQUEST_METHOD"] == "POST"){
   }
 }
 
-// add delete comment
-
 $recommend = recommend($mediaid, 8); 
 $media = viewMedia($mediaid);
 $comments = getComments($mediaid);
@@ -52,9 +50,7 @@ if (isset($username) && isset($_GET["subscribe"])) {
 }
 
 
-
-
-render("image_template.php", ["media" => $media,"comments" => $comments,"mediaid" => $mediaid, "recommend" => $recommend,"playlists" => $playlists, "Category" => $Category, "Keywords" => $Keywords]);
+render("video_template.php", ["media" => $media,"comments" => $comments,"mediaid" => $mediaid, "recommend" => $recommend,"playlists" => $playlists, "Category" => $Category, "Keywords" => $Keywords]);
 
 $db->sql_close();
 ?>

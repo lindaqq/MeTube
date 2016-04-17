@@ -160,6 +160,7 @@ _END;
                 $content = $comment["content"];
                 $posttime = $comment["posttime"];
                 $posttime = split(' ', $posttime)[0];
+                $id = $comment["commentid"];
                 
                 echo <<<_END
                  <div class="row">
@@ -173,6 +174,15 @@ _END;
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <strong>$username</strong> <span class="text-muted">$posttime</span>
+_END;
+                if(isset($_SESSION["username"]) && ($username==$_SESSION["username"])){
+                    echo <<<_END
+                    <a href="../public/image.php?commentid=$id">delete</a>
+_END;
+                }
+                
+                echo <<<_END
+                            
                         </div>
                         <div class="panel-body">
                             $content
