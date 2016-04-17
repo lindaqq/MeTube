@@ -72,10 +72,11 @@
         foreach($result as $media) {
           $title = $media['title'];
           $mediaid = $media['mediaid'];
+          $path = $media['path'];
                echo <<<_END
             <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
 
-      			<div class="img-thumbnail"> <a href="../public/image.php?id=$mediaid"><img src="../templates/images/400X200.gif" alt="Thumbnail Image 1" class="img-responsive"></a></div>
+      			<div class="img-thumbnail"> <a href="../public/image.php?id=$mediaid"><img src="$path" alt="Thumbnail Image 1" class="img-responsive"></a></div>
       			<p>$title</p>
     		</div> 
 _END;

@@ -170,7 +170,7 @@ function addFavoriteMedia($username, $mediaid) {
 //echo addFavoriteMedia('fangyu1', '9');
 
 function browseByViewcountAndType($type, $num) {
-    $query = "select mediaid, title, username,  viewcount, posttime from media where type = '$type' and sharetype = 0  order by viewcount desc limit $num";
+    $query = "select mediaid, title, username,  viewcount, posttime, path from media where type = '$type' and sharetype = 0  order by viewcount desc limit $num";
     $result = mysql_query($query) or die("browseByViewcountAndType fails". mysql_error());
 
     $storeArray = Array();
@@ -184,7 +184,7 @@ function browseByViewcountAndType($type, $num) {
 //echo '<pre>'; print_r(browseByViewcountAndType('1', 3)); echo '</pre>';
 
 function browseByUploadrecentAndType($type, $num) {
-    $query = "select mediaid, title, username,  viewcount, posttime from media where type = '$type'  and sharetype = 0  order by posttime desc limit $num";
+    $query = "select mediaid, title, username,  viewcount, posttime, path from media where type = '$type'  and sharetype = 0  order by posttime desc limit $num";
     $result = mysql_query($query) or die("browseByUploadrecentAndType fails". mysql_error());
 
     $storeArray = Array();
