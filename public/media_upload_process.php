@@ -7,6 +7,11 @@
     require("enum.php");
     $db = new mysql_db(SERVER, USERNAME, PASSWORD, DATABASE);
     
+if (isset($_GET["drop"])) {
+  $mediaid = $_GET["mediaid"];
+  $friend = $_GET["drop"];
+  rmBlock($mediaid, $friend);
+}
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         //Create Directory if doesn't exist
 if(!file_exists('uploads/')){
