@@ -45,7 +45,7 @@ function recommend($mediaid, $num) {
     }
     $clause=implode(' OR ' ,$clauses);
 
-    $sql="select mediaid, title,username, path from media
+    $sql="select mediaid, title,username, path,type from media
           WHERE mediaid != '$mediaid'
           and ($clause)  and sharetype = 0 limit $num";
     $result = mysql_query($sql);

@@ -1,4 +1,5 @@
 <?php
+require("../public/enum.php");
 $title = $media["title"];
 $username = $media["username"];
 $viewcount = $media["viewcount"];
@@ -236,10 +237,11 @@ _END;
                   $title = $media["title"];
                   $username = $media["username"];
                   $id = $media["mediaid"];
+                  $type = $Type[$media["type"]];
 
                     echo <<<_END
                     <li class="media">
-			    <a class="pull-left" href="image.php?id=$id">
+			    <a class="pull-left" href="$type.php?id=$id">
 			      <img class="media-object" src="http://placehold.it/150x90" alt="...">
 			    </a>
 			    <div class="media-body">
