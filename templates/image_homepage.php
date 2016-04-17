@@ -86,7 +86,7 @@ _END;
            <input type="hidden" name="category" value="0">
            <input type="hidden" name="date" value="">
         <button class="btn btn-success btn-lg" type="submit">
-            $View More</button>
+            View More</button>
         </form>
       
     </div>
