@@ -6,6 +6,7 @@
                 foreach($groups as $group) {
                   $groupname = $group["groupname"];
                   $topic = $group["topic"];
+                    $groupid = $group["groupid"];
                     echo <<<_END
                     <a href="#" class="list-group-item">
                         <h4 class="list-group-item-heading">
@@ -15,7 +16,7 @@
                         <p class="list-group-item-text">$topic</p>
                         <br>
                         <div class="list-group-item-text">
-                            <button onclick="document.location.href = '../public/topic.php'" class="btn btn-primary btn-primary" type="button">Join</button>
+                            <button onclick="document.location.href = '../public/topic.php?groupid=$groupid'" class="btn btn-primary btn-primary" type="button">Join</button>
                         </div>
                     </a>
 _END;

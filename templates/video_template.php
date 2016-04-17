@@ -14,7 +14,7 @@ echo <<<_END
 			<!-- artigo em destaque -->
 			 <div class="featured-article">
 				<a href="#">
-          <video max-width="480" max-height="320" controls>
+          <video width="480" height="320" controls>
             <source src=$path type="video/mp4">
             Your browser does not support the video tag.
           </video>

@@ -1,8 +1,33 @@
 <div class="well">
         <div class="row">
                 <div class="col-sm-4 col-md-4 col-lg-4">
-                    <p class="lead"> topic of Group name:  </p>   
+                    <p class="lead"> Group name  </p>   
                 </div>
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                    <p class="lead"> Topic name  </p>   
+                </div>
+        </div>
+    
+        <div class="row text-center">
+    
+            <form role="form" action="../public/topic.php" method="post">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12 ">   
+                            <textarea  class="form-control" name="comment" rows="4" cols="50" placeholder="add new comment" ></textarea>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-4 col-md-4 col-lg-4">
+                        <button class="btn btn-info" type="submit">Add</button>
+                        </div>
+                    </div>
+                
+                    
+                </form>
+    
+        </div>
+            
                 
                  <form action="../public/topic.php" method="post">
                     
@@ -16,7 +41,7 @@
                     </div>
                 </form>
             
-        </div>  
+          
     
         <div class="row text-center">
             <?php
