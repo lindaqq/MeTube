@@ -51,7 +51,9 @@ $comments = getComments($mediaid);
 if (isset($username) && isset($_GET["subscribe"])) {
   $subscriber_id = $username;
   $channel_id = $media['username'];
-  addChannel($subscriber_id, $channel_id);
+  if ($subscriber_id != $channel_id) {
+    addChannel($subscriber_id, $channel_id);
+  }
 }
 
 
