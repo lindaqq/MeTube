@@ -106,7 +106,7 @@ _END;
            <input type="hidden" name="" value="">
            <input type="hidden" name="" value="">
         <button class="btn btn-success btn-lg" type="submit">
-            View More</button>
+            View All Medias</button>
         </form>
       
     </div>

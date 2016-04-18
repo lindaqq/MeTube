@@ -78,8 +78,8 @@ require("../public/enum.php");
             if($media["type"] == 3){
                 echo <<<_END
             <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
-                <div class = "panel panel-default">
-      			   <div class="img-thumbnail"> <a href="../public/$type.php?id=$mediaid"><img src=$path alt="Thumbnail Image 1" class="img-responsive"></a></div>
+                <div width="300" height="auto" class = "panel panel-default" >
+      			   <div class="img-thumbnail"> <a href="../public/$type.php?id=$mediaid"><img src=$path alt="Thumbnail Image 1" class="img-responsive" ></a></div>
       			<p>$title</p>
                 </div>
         </div> 
@@ -89,7 +89,7 @@ _END;
             else if($media["type"] == 2){
                 echo <<<_END
             <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
-                <div class = "panel panel-default">
+                <div width="300" height="auto" class = "panel panel-default">
       			<div class="img-thumbnail"> <a href="../public/$type.php?id=$mediaid"><img src="../templates/images/audio.jpg" alt="Thumbnail Image 1" class="img-responsive"></a></div>
       			<p>$title</p>
                 </div>
@@ -99,9 +99,9 @@ _END;
             else{
                 echo <<<_END
                 <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
-                    <div class = "panel panel-default">
+                    <div width="300" height="auto" class = "panel panel-default">
                         <a href="../public/$type.php?id=$mediaid">
-      			       <video width="280" height="200">
+      			       <video width="300" height="auto">
                         <source src=$path type="video/mp4">
                         Your browser does not support the video tag.
                         </video></a>
