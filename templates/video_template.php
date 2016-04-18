@@ -40,7 +40,7 @@ _END;
                     Rate:
                 </div>
                 
-                <form class="form-inline" role="form" action="../public/image.php?id=$mediaid" method="post">
+                <form class="form-inline" role="form" action="../public/video.php?id=$mediaid" method="post">
                    <div class="col-sm-2 col-md-2 col-lg-2">
                         <label class="radio">
                       <input type="radio" name="rate" value="1" checked>
@@ -72,9 +72,9 @@ _END;
         }
                         
                         echo <<<_END
-                        <a href="../public/image.php?id=$mediaid&subscribe=$mediaid" class="btn btn-primary"><span class="glyphicon glyphicon-thumbs-up"></span> Subscribe $username</a>
+                        <a href="../public/video.php?id=$mediaid&subscribe=$mediaid" class="btn btn-primary"><span class="glyphicon glyphicon-thumbs-up"></span> Subscribe $username</a>
                         
-                        <a href="../public/image.php?id=$mediaid&favorite=$mediaid" class="btn btn-danger"><span class="glyphicon glyphicon-thumbs-up"></span> Add to favorites</a>
+                        <a href="../public/video.php?id=$mediaid&favorite=$mediaid" class="btn btn-danger"><span class="glyphicon glyphicon-thumbs-up"></span> Add to favorites</a>
 _END;
                     }
                 
@@ -101,7 +101,7 @@ _END;
             else{
                 echo <<<_END
                 <div class="well">
-                    <form role="form" action="../public/image.php?id=$mediaid" method="post">
+                    <form role="form" action="../public/video.php?id=$mediaid" method="post">
                         <div class="row">
                             <div class="col-sm-4 col-md-4 col-lg-4">
                             <button class="btn btn-info" type="submit">Add to Playlists:</button>
@@ -139,7 +139,7 @@ _END;
             <div class="row">
             <h3>Add new comment:</h3>
             
-                <form role="form" action="../public/image.php?id=$mediaid" method="post">
+                <form role="form" action="../public/video.php?id=$mediaid" method="post">
                     <div class="row">
                         <div class="col-sm-12 col-md-12 col-lg-12 ">   
                             <textarea  class="form-control" name="comment" rows="4" cols="50" placeholder="add new comment" ></textarea>
@@ -181,7 +181,7 @@ _END;
 _END;
                 if(isset($_SESSION["username"]) && ($username==$_SESSION["username"])){
                     echo <<<_END
-                    <a href="../public/image.php?id=$mediaid&commentid=$commentid">delete</a>
+                    <a href="../public/video.php?id=$mediaid&commentid=$commentid">delete</a>
 _END;
                 }
                 
