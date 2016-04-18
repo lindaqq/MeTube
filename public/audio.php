@@ -21,6 +21,11 @@ if (isset($username) && isset($_GET["favorite"])) {
   addFavoriteMedia($username, $mediaid);
 }
 
+if (isset($username) && isset($_GET["commentid"])) {
+  $commentid = $_GET["commentid"];
+  rmComment($commentid);
+}
+
 if (isset($username) && $_SERVER["REQUEST_METHOD"] == "POST"){
   if(!empty($_POST["playlist"])){
     foreach($_POST["playlist"] as $playlistid) {
