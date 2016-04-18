@@ -37,7 +37,15 @@
                 <!--li class="active"--><li><a href="../public/index.php">Image</a></li>
                 <li><a href="../public/allvideo.php">Video</a></li>
                 <li><a href="../public/allaudio.php">Audio</a></li>
-                <li><a href="../public/group.php">Group</a></li>
+                <?php
+                if(isset($_SESSION["username"])){
+                    echo <<<_END
+                    <li><a href="../public/group.php">Group</a></li>
+_END;
+                }
+    
+    ?>
+                
             </ul>
 
              <!--
