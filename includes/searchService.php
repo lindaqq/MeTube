@@ -74,7 +74,7 @@ function filterSearch($words, $type, $category, $starttime) {
         }
     }
     if (count($clauses) == 0) {
-        $clauses = "1=1";
+        $clause = "1=1 or 1=1";
     } else {
         $clause=implode(' OR ' ,$clauses);
     }

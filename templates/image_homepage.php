@@ -81,11 +81,13 @@ _END;
 
    <div class="row text-center">
        <form action="../public/search.php" method="post">
-        <input type="hidden" name="keywords" value="">
-           <input type="hidden" name="" value="">
-           <input type="hidden" name="" value="">
+        <input type="hidden" name="key" value="">
+           <input type="hidden" name="type" value="0">
+           <input type="hidden" name="category" value="0">
+           <input type="hidden" name="date" value="">
         <button class="btn btn-success btn-lg" type="submit">
-            View All Medias</button>
+            View All Media</button>
+
         </form>
       
     </div>
