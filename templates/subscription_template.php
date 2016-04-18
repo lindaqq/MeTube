@@ -55,7 +55,7 @@
         <div class="well">
             <div class="row">
                 <div class="col-sm-6 col-md-6 col-lg-6">
-                    <p class="lead"> My Subscriptions:  </p>   
+                    <p class="lead"> My Subscriptions: Can't subscribe yourself </p>   
                 </div>
             
             </div>
