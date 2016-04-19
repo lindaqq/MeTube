@@ -3,6 +3,7 @@
 // configuration
 require("../includes/config.php"); 
 require("../includes/searchService.php"); 
+require("../includes/sharingService.php"); 
 require("enum.php"); 
 $db = new mysql_db(SERVER, USERNAME, PASSWORD,DATABASE);
 
@@ -32,7 +33,7 @@ if (!isset($_POST["keywords"])) {
   $result = search($_POST["keywords"]); 
 }
 
-  render("search_template.php", ["title" => "Search Result", "result" => $result, "key" => $key, "keywords" => $Keywords]);
+  render("search_template.php", ["title" => "Search Result", "result" => $result, "key" => $key, "keywords" => getKeywords()]);
 $db->sql_close();
 ?>
 

@@ -2,6 +2,37 @@
 require_once('mysqlClass.inc.php');
 //$db = new mysql_db(SERVER, USERNAME, PASSWORD, DATABASE);
 
+function updateKeywords($keywords) {
+    $query = "UPDATE keywords
+        SET words = concat(words,',','$keywords') limit 1";
+    echo $query;
+    mysql_query($query) or die ("viewplus() failed. Could not query the database: <br />". mysql_error());
+    return 1;
+}
+//unit test
+//echo updateKeywords("sky,blue,car,audio,fly,man,cool,japan,fast,ac,ssss,asd,music,comfortable,beautiful");
+
+function getKeywords() {
+    $query = "select * from keywords limit 1";
+    $result = mysql_query($query) or die("remove block to sharefriends fails". mysql_error());
+    $row = mysql_fetch_array($result, MYSQL_ASSOC);
+    $storeArray = array();
+    
+                    $wordstr = $row["words"];
+                    $wordstr = preg_replace('/\s+/', '', $wordstr);
+                    $words = split(",",$wordstr);
+                    foreach($words as $word) {
+                      if ($word == "") {
+                        continue;
+                      }
+                      $storeArray[] = $word;
+                    }
+
+    return $storeArray;
+}
+//unit test
+//print_r( getKeywords());
+
 function addMedia($title, $username, $type, $catetory, $sharetype, $sharedfriends, $path, $detail, $candiscuss, $canrate, $keywords) {
     $insert = "insert into media (title, username, type, category, sharetype, path, detail, canDiscuss, canrate, keywords) values ('$title', '$username', '$type', '$catetory', '$sharetype', '$path', '$detail', '$candiscuss', '$canrate', '$keywords')";
     mysql_query($insert) or die("insert to media fails". mysql_error());
@@ -14,6 +45,7 @@ function addMedia($title, $username, $type, $catetory, $sharetype, $sharedfriend
         $shareInsert = "insert into sharedfriends (mediaid, username) values ('$id', '$friend')";
         mysql_query($shareInsert) or die("insert to sharefriends fails". mysql_error());
     }
+    updateKeywords($keywords);
 
     return 1;
 }
