@@ -92,16 +92,53 @@ _END;
                 }
             
             ?>
-            
+            <script>
+function ValidateSingleInput(oInput) {
+  var x = document.forms["myForm"]["type"].value;
+  switch(x) {
+    case '1':
+      var _validFileExtensions = [".mp4"];    
+      break;
+    case '2':
+      var _validFileExtensions = [".mp3"];    
+      break;
+    case '3':
+      var _validFileExtensions = [".jpg", ".png"];    
+      break;
+    default:
+      var _validFileExtensions = [".jpg", ".png"];    
+  }
+  if (oInput.type == "file") {
+    var sFileName = oInput.value;
+    if (sFileName.length > 0) {
+      var blnValid = false;
+      for (var j = 0; j < _validFileExtensions.length; j++) {
+        var sCurExtension = _validFileExtensions[j];
+        if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+          blnValid = true;
+          break;
+        }
+      }
+
+      if (!blnValid) {
+        alert("Sorry, " + sFileName + " is invalid, allowed extensions are: " + _validFileExtensions.join(", "));
+        oInput.value = "";
+        return false;
+      }
+    }
+  }
+  return true;
+}
+           </script> 
             
          <h3>New Upload:</h3>
             <p><?php echo $errortext ?></p>
             <div class="row text-center">
                 <div class="col-sm-6 col-md-6 col-lg-6 col-sm-offset-3 col-md-offset-3 col-lg-offset-3">
-                <form method="post" action="../public/media_upload_process.php" enctype="multipart/form-data" >
+                <form method="post" name="myForm" action="../public/media_upload_process.php" enctype="multipart/form-data"  >
                     <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
                     <label>Add a Media:</label> <label style="color:#663399"><em> (Each file limit 10M)</em></label><br/>
-                    <input  name="file" type="file" size="50" />
+                    <input  name="file" type="file" size="50" onchange="ValidateSingleInput(this);" />
                     <h4>title:</h4><input type="text" class="form-control" name="title" required autofocus>
                     <h4>type:</h4>
                     <div class="row text-center">
@@ -170,18 +207,18 @@ _END;
                     <div class="row text-center">
                         <div class="col-sm-6 col-md-6 col-lg-6">
                             <label class="radio">
-                         <input type="radio" name="share" value="0" checked>share to everyone </label>
+                         <input type="radio" name="share" value="0" checked onclick="getElementById('heit').disabled=true">share to everyone </label>
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6">
                             <label class="radio">
-                         <input type="radio" name="share" value="1" >share to friends only </label>
+                         <input type="radio" name="share" value="1" onclick="getElementById('heit').disabled=false">share to friends only </label>
                         </div>
                     
                     </div>
                      
                     
                     <h4>block certain friends:</h4>
-                        <textarea  class="form-control" name="block" rows="4" cols="50" placeholder="type in usernames of your friends that you want to block. Separate by ," ></textarea>
+                        <textarea disabled id="heit"  class="form-control" name="block" rows="4" cols="50" placeholder="type in usernames of your friends that you want to block. Separate by ," ></textarea>
                     
                     
                     <h4>Settings:</h4>
