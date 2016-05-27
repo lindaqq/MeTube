@@ -1,4 +1,5 @@
 # MeTube
+This is our database course project.
 
 ####account service  
 table account (id, username, password, addr, detail) addr and detail do not need autocheck  
